@@ -59,35 +59,25 @@ class Solution(object):
         :rtype: str
         """
         # this is to find the rules 
-        # pay attention to 2nd to (largest-1)th row
-
+        # pay attention to 2nd to (largest-1)th row; there will be an extra element
+        # nCycle = 2* numRows - 2
         sLen = len(s)
-        if sLen <=numRows or numRows ==1:
+        if sLen <= numRows or numRows == 1:
             return s
-        nCycle = 2*(numRows-1)
-        str_arr = ''
+        res = ''
+        nCycle = numRows*2 - 2
         for i in range(numRows):
             for j in range(i, sLen, nCycle):
-                str_arr+=s[j]
-                if i>0 and i<numRows-1:
-                    iExtra = j + nCycle - 2*i
-                    if iExtra < sLen:
-                        str_arr+=s[iExtra]
-        return str_arr
+                res += s[j]
+                if i > 0 and i < numRows-1:
+                    idx = j + nCycle - 2*i
+                    if idx < sLen:
+                        res+= s[idx]
+        return res
 
-        # sLen = len(s)
-        # str = []
-        # if sLen<=numRows or numRows<2:
-        #     return s
-        # lag = 2 * (numRows-1)
-        # for i in range(numRows):
-        #     for j in range(i, sLen, lag):
-        #         str.append(s[j])
-        #         if i>0 and i<numRows-1:
-        #             iExtra = j+lag-2*i
-        #             if iExtra < sLen:
-        #                 str.append(s[iExtra])
-        # return ''.join(str)
+
+
+
 
 
 

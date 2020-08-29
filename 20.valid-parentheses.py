@@ -67,29 +67,17 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        table = {')':'(', ']':'[', '}':'{'}
+        table = {
+            ')':'(', ']':'[', '}':'{'
+        }
         arr = []
         for c in s:
-            if c in table:
+            if c not in table:
+                arr.append(c)
+            else:
                 if not arr:
                     return False
-                if arr.pop()!=table[c]:
-                    return False
-            else:
-                arr.append(c)
-        return (not arr) 
-
-
-
-        # table = {')':'(', ']':'[', '}':'{'}
-        # arr = []
-        # for char in s:
-        #     if char in table:
-        #         if not arr:
-        #             return False
-        #         else:
-        #             if arr.pop()!=table[char]:
-        #                 return False
-        #     else:
-        #         arr.append(char)
-        # return (not arr)
+                else:
+                    if arr.pop()!=table[c]:
+                        return False
+        return (not arr)

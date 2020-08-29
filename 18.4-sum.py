@@ -44,61 +44,35 @@ class Solution(object):
         # """
 
         nums.sort()
-        result = []
+        ret = []
         for i in range(len(nums)-3):
-            if i > 0 and nums[i]==nums[i-1]:
+            if i > 0 and nums[i] == nums[i-1]:
                 continue
-            if sum(nums[i:i+4])> target:
-                break
-            target_3 = target - nums[i]
+            if sum(nums[i:i+4]) > target:
+                return ret
+            three_target = target - nums[i]
             for j in range(i+1, len(nums)-2):
-                if j>i+1 and nums[j]==nums[j-1]:
+                if j > i+1 and nums[j] == nums[j-1]:
                     continue
-                if sum(nums[j:j+3])>target_3:
+                if sum(nums[j:j+3]) > three_target:
                     break
                 left, right = j+1, len(nums)-1
+                two_target = three_target - nums[j]
                 while left < right:
-                    if nums[left]+nums[right] < target_3 - nums[j]:
+                    two_sum = nums[left] + nums[right]
+                    if two_sum > two_target:
+                        right -=1
+                    elif two_sum < two_target:
                         left+=1
-                    elif nums[left]+nums[right] > target_3 - nums[j]:
-                        right-=1
                     else:
-                        result.append([nums[i], nums[j], nums[left], nums[right]])
-                        left+=1
-                        right-=1
+                        ret.append([nums[i], nums[j], nums[left], nums[right]])
+                        left +=1 
+                        right -=1
                         while left < right and nums[left] == nums[left-1]:
                             left+=1
                         while left < right and nums[right] == nums[right+1]:
-                            right-=1   
-        return result
-
-        # nums.sort()
-        # result = []
-        # for i in range (len(nums)-3):
-        #     if i > 0 and nums[i]==nums[i-1]:
-        #         continue
-        #     if (nums[i]+nums[i+1]+nums[i+2]+nums[i+3]) > target:
-        #         return result
-        #     for j in range(i+1, len(nums)-2):
-        #         if j > i+1 and nums[j]==nums[j-1]:
-        #             continue
-        #         k,l = j+1, len(nums)-1
-        #         sum_target = target - nums[i] - nums[j]
-        #         while k < l:
-        #             sum = nums[k] + nums[l]
-        #             if sum == sum_target:
-        #                 result.append([nums[i],nums[j],nums[k],nums[l]])
-        #             if sum < sum_target:
-        #                 k += 1
-        #                 while k < l and nums[k] == nums[k-1]:
-        #                     k += 1
-        #             else:
-        #                 l -= 1
-        #                 while k < l and nums[l] == nums[l+1]:
-        #                     l -= 1
-        # return result
-
+                            right-=1
                 
-
-        
+        return ret
+                    
 

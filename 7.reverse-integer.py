@@ -49,43 +49,23 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        # boring problem; pay attention to overflow
-        limit = 2**31
-        isNegative = x<0
-        result = 0
-        if isNegative:
+        isNegative = False
+        xReverse = 0
+        if x < 0:
             x = -x
-        while x>0:
-            result = 10*result+ (x%10)
-            x=x//10
+            isNegative = True
+        while x:
+            xReverse = 10*xReverse + x%10
+            x = x//10
         if isNegative:
-            if result<=limit:
-                return -result
-            else:
+            if xReverse > 2**31:
                 return 0
+            else:
+                return -xReverse
         else:
-            if result>=limit:
+            if xReverse > 2**31-1:
                 return 0
             else:
-                return result
+                return xReverse
 
-        # limit = 2147483648
-        # isNegative = 0
-        # res = 0
-        # if x < 0:
-        #     x = -x
-        #     isNegative = 1
-        # while x:
-        #     res = 10*res+ x%10
-        #     x = x//10
-        # if isNegative:
-        #     if res>limit:
-        #         return 0
-        #     else:
-        #         return -res
-        # else:
-        #     if res>limit-1:
-        #         return 0
-        #     else:
-        #         return res
 

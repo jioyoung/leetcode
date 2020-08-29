@@ -44,7 +44,7 @@ class Solution(object):
         :rtype: int
         """
         # move the lower pointer until the two pointers meet
-
+        
         value = 0
         maxArea = 0
         left, right = 0, len(height)-1
@@ -57,20 +57,5 @@ class Solution(object):
                 value = (right-left)*height[right]
                 maxArea = max(maxArea, value)
                 right-=1
-        return maxArea
-
-        # res, max_res = 0, 0
-
-        # left, right = 0, len(height)-1
-        # while left < right:
-        #     if height[left] < height[right]:
-        #         res = height[left]*(right-left)
-        #         max_res = max(res, max_res)
-        #         left+=1
-        #     else:
-        #         res = height[right]*(right-left)
-        #         max_res = max(res, max_res)
-        #         right-=1
-        # return max_res                
-
+        return maxArea 
 

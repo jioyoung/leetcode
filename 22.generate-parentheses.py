@@ -41,40 +41,27 @@ class Solution(object):
         """
 
         #backtrack
-        # here no need to backtrack since every time a new string is generated
-        # by adding two strings
-        result = []
-        self.generate(0, 0, result, '', n)
-        return result
-
-    def generate(self, nLeft, nRight, result, str_rec, n):
-        if len(str_rec) == 2*n:
-            result.append(str_rec)
+        res = []
+        recur_res = []
+        self.recursiveGenerate(res, recur_res, 0, 0, n)
+        return res
+    
+    def recursiveGenerate(self, res, recur_res, nLeft, nRight, n):
+        if len(recur_res) == 2*n:
+            res.append(''.join(recur_res))
             return
         if nLeft < n:
-            self.generate(nLeft+1, nRight, result, str_rec+'(', n)
-        if nRight < nLeft:
-            self.generate(nLeft, nRight+1, result, str_rec+')', n)
+            recur_res.append('(')
+            nLeft+=1
+            self.recursiveGenerate(res, recur_res, nLeft, nRight, n)
+            nLeft-=1
+            recur_res.pop()
+        if nLeft>nRight:
+            recur_res.append(')')
+            nRight+=1
+            self.recursiveGenerate(res, recur_res, nLeft, nRight, n)
+            nRight-=1
+            recur_res.pop()
 
-
-    #     res = []
-    #     rec_res = []
-    #     self.generate(0, 0, res, rec_res, n)
-    #     return res
-
-    # def generate(self, nLeft, nRight, res, rec_res, n):
-    #     if len(rec_res) == n*2:
-    #         res.append(''.join(rec_res))
-    #         return
-    
-    #     if nLeft < n:
-    #         rec_res.append('(')
-    #         self.generate(nLeft+1,nRight,res, rec_res, n)
-    #         # 一定要这一步 回溯
-    #         rec_res.pop()
-    #     if nRight < nLeft:
-    #         rec_res.append(')')
-    #         self.generate(nLeft,nRight+1,res, rec_res, n)
-    #         rec_res.pop()
 
 

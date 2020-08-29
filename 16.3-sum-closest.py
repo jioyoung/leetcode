@@ -35,47 +35,21 @@ class Solution(object):
         """
         # sort, iteration and then two pointer
         nums.sort()
-        result = nums[0]+nums[1]+nums[2]
-        min_diff = abs(target-result)
+        res = sum(nums[0:3])
+        min_diff = abs(sum(nums[0:3]) - target)
         for i in range(len(nums)-2):
             left, right = i+1, len(nums)-1
             while left < right:
-                threeSum = nums[i] + nums[right] + nums[left]
-                diff = abs(target-threeSum)
-                if diff == 0:
+                threeSum = nums[i] + nums[left] + nums[right]
+                diff = abs(threeSum - target)
+                if threeSum == target:
                     return threeSum
+                if diff < min_diff:
+                    res = threeSum
+                    min_diff = diff
+                if threeSum > target:
+                    right-=1
                 else:
-                    if diff  < min_diff:
-                        min_diff = diff
-                        result = threeSum
-                    if threeSum > target:
-                        right-=1
-                    else:
-                        left+=1
-        return result
-        # nums.sort()
-        # result_min = nums[0] + nums[1] + nums[2]
-        # diff_min = abs(result_min-target)
-        # length = len(nums)
-        # for i in range(length-2):
-        #     j, k= i+1, length-1
-        #     while j < k:
-        #         result = nums[i]+nums[j]+nums[k]
-        #         diff = abs(result - target)
-        #         if result == target:
-        #             return result
-        #         else:
-        #             if abs(diff) < diff_min:
-        #                 result_min = result
-        #                 diff_min = diff
-        #             if result < target:
-        #                 j+=1
-        #             else:
-        #                 k-=1
-            
-        # return result_min
-
-
-
-        
+                    left+=1
+        return res
 

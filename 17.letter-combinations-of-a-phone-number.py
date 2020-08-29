@@ -44,44 +44,17 @@ class Solution(object):
         # the new char needs to be added to the each element in the result array, 
         if not digits:
             return []
-        num_map = {'2':'abc', '3':'def', '4':'ghi', '5':'jkl',
-                    '6':'mno', '7':'pqrs', '8':'tuv', '9':'wxyz'}
-        result = list(num_map[digits[0]])
-        for n in digits[1:]:
+        num_map = {
+            '2':"abc", '3':"def", '4':"ghi", '5':"jkl",
+            '6':"mno", '7':"pqrs", '8':"tuv", '9':"wxyz"
+        }
+        res = list(num_map[digits[0]])
+        for i in range(1, len(digits)):
             temp = []
-            new_char = num_map[n]
-            for string in result:
-                for c in new_char:
-                    temp.append(string+c)
-            result = temp
-        return result
-
-        
-
-
-
-        # if not digits:
-        #     return []
-        # map= {'2': 'abc', '3': 'def', '4': 'ghi', '5': 'jkl', 
-        #     '6': 'mno', '7': 'pqrs', '8': 'tuv', '9': 'wxyz'}
-        # sLen = len(digits)
-        # ret = []
-        
-        # # ret cannot be empty in the loop
-        # # or the output is always []
-        # string = map[digits[0]]
-        # for char in string:
-        #     ret.append(char)
-
-        # for i in range(1, sLen):
-        #     string = map[digits[i]]
-        #     tmp = []
-        #     for char in string:
-        #         for s_part in ret:
-        #             #ret cannot be empty
-        #             tmp.append(s_part+char)
-        #     ret = tmp
-        # return ret
-                    
+            for string in res:
+                for c in num_map[digits[i]]:
+                    temp.append(string + c)
+            res = list(temp)
+        return res
 
 

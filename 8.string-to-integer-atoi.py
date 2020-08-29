@@ -91,71 +91,36 @@ class Solution(object):
         :type str: str
         :rtype: int
         """
-        isNegative = 0
-        result = 0
         str = str.lstrip()
         if not str:
             return 0
-        if str[0].isalpha():
-            return 0
         i = 0
-        if str[i] == '-':
-            isNegative = 1
+        numL = 0
+        isNegative = False
+        if str[i] == '+':
             i+=1
-        elif str[i] == '+':
+        elif str[i] == '-':
             i+=1
-        while i < len(str) and str[i].isnumeric():
-            result = 10*result+int(str[i])
-            i+=1
-        limit = 2**31
+            isNegative = True
+        
+        for j in range(i, len(str)):
+            if str[j].isdigit():
+                numL+=1
+            else:
+                break
+        if numL == 0:
+            return 0
+        
+        value = int(str[i:i+numL])
         if isNegative:
-            if result>limit:
-                return -limit
+            if value > 2**31:
+                return -2**31
             else:
-                return -result
+                return -value
         else:
-            if result>=limit:
-                return limit-1
+            if value > 2**31-1:
+                return 2**31-1
             else:
-                return result 
-
-
-
-
-
-
-
-
-        # i = 0
-        # sLen = len(str)
-        # isNeg = 0
-        # res = 0
-        # #delete leading 
-        # while i<sLen and str[i] == ' ':
-        #     i+=1
-        # if i == sLen:
-        #     return 0
-        # elif str[i].isalpha():
-        #     return 0
-        # elif str[i]=='-':
-        #     i+=1
-        #     isNeg = 1 
-        # elif str[i]=='+':
-        #     i+=1
-        # base = ord('0')
-        # while i<sLen and str[i].isnumeric():
-        #     num = ord(str[i]) - base
-        #     res = 10*res+num
-        #     i+=1
-        # if isNeg:
-        #     if res>2**31:
-        #         return -2**31
-        #     else:
-        #         return -res
-        # else:
-        #     if res>2**31-1:
-        #         return 2**31-1
-        #     else:
-        #         return res 
+                return value
 
 

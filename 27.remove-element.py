@@ -74,14 +74,13 @@ class Solution(object):
         :rtype: int
         """
 
-        slow = 0
-        for num in nums:
-            if num == val:
-                continue
-            else:
-                nums[slow] = num
-                slow+=1
-        return slow
+        pos = 0
+        for number in nums:
+            if number != val:
+                nums[pos] = number
+                pos+=1
+        return pos
+
 
 
         # new_i = 0
