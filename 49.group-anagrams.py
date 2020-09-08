@@ -46,10 +46,7 @@ class Solution(object):
         visit = {}
         for string in strs:
             key_str = ''.join(sorted(string))
-            if key_str not in visit:
-                visit[key_str] = [string]
-            else:
-                visit[key_str].append(string)
+            visit.setdefault(key_str, []).append(string)
         return list(visit.values())
 
         # visit = {}

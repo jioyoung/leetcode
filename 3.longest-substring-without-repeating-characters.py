@@ -55,19 +55,19 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        start, maxLen = 0, 0
-        usedChar = {}
-        c = ''
-        for i in range(len(s)):
+        if not s:
+            return 0
+        maxLen = 1
+        start = 0
+        char_index = {}
+        char_index[s[0]] = 0
+        for i in range(1, len(s)):
             c = s[i]
-            if c in usedChar and usedChar[c]>=start:
-                start = usedChar[c]+1
-                # no need to recalculate the max lenght since this operation will not affect 
-                # the maximum length
+            if c in char_index and char_index[c] >= start:
+                start = char_index[c] + 1
             else:
                 maxLen = max(maxLen, i-start+1)
-            # update the dictionary
-            usedChar[c] = i
+            char_index[c] = i
+        
         return maxLen
-
 

@@ -46,9 +46,7 @@ class Solution(object):
             if count==4:
                 res.append(''.join(temp[0:-1]))
             return
-
-
-
+            
         if start > len(s) or count == 4: 
             return
 

@@ -47,12 +47,12 @@ class Solution(object):
         # use zip(* )
         if not strs:
             return ""
-        charList = list(zip(*strs))
-        prefixL = 0
-        for oneList in charList:
-            if len(set(oneList)) > 1:
-                break
+        char_tuple = zip(*strs)
+        res = ""
+        for tup in char_tuple:
+            if len(set(tup)) == 1:
+                res+=tup[0]
             else:
-                prefixL +=1 
-        return strs[0][:prefixL]
-        
+                break
+        return res
+

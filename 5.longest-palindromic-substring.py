@@ -18,7 +18,7 @@ class Solution:
     def longestPalindrome(self, s):
         maxLen = 1
         start = 0
-        dp_pal = [[False for j in range(len(s))] for i in range(len(s))]
+        dp_pal = [[False for _ in range(len(s))] for _ in range(len(s))]
         for i in range(len(s)):
             dp_pal[i][i] = True
             for j in range(i):

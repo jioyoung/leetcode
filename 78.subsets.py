@@ -41,22 +41,36 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+    #     res = []
+    #     path = []
+    #     self.getsubset(nums, 0, path, res)
+    #     return res
+
+    # def getsubset(self, nums, index, path, res):
+    #     if index == len(nums):
+    #         res.append(list(path))
+    #         return
+    #     #not include nums[index]
+    #     self.getsubset(nums, index+1, path, res)
+
+    #     #include nums[index]
+    #     path.append(nums[index])
+    #     self.getsubset(nums, index+1, path, res)
+    #     path.pop()
+
         res = []
         path = []
-        self.getsubset(nums, 0, path, res)
+        nums.sort()
+        self.getres(nums, len(nums), 0, path, res)
         return res
 
-    def getsubset(self, nums, index, path, res):
-        if index == len(nums):
-            res.append(list(path))
-            return
-        #not include nums[index]
-        self.getsubset(nums, index+1, path, res)
+    def getres(self, nums, length, index, path, res):
+        res.append(path)
+        for i in range(index, length):
+            # if i>index and nums[i]==nums[i-1]:
+            #     continue
+            self.getres(nums, length, i+1, path+[nums[i]], res)
 
-        #include nums[index]
-        path.append(nums[index])
-        self.getsubset(nums, index+1, path, res)
-        path.pop()
 
 
 
