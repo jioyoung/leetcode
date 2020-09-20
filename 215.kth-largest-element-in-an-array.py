@@ -35,6 +35,9 @@
 #
 
 # @lc code=start
+
+import heapq
+
 class Solution(object):
     def findKthLargest(self, nums, k):
         """
@@ -42,38 +45,49 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        nums.sort(reverse = True)
-        return nums[k-1]
-        #return self.getKthLargest(nums, 0, len(nums)-1, k)
+    #     nums.sort(reverse = True)
+    #     return nums[k-1]
+    #     #return self.getKthLargest(nums, 0, len(nums)-1, k)
     
-    # 选一个pivot 大的放左边 小的放右边 
-    # 重复 递归
+    # # 选一个pivot 大的放左边 小的放右边 
+    # # 重复 递归
 
-    def getKthLargest(self, nums, start, end, k):
-        i = start
-        pivot = nums[end]
-        if start == end:
-            return nums[start]
-        for j in range(start, end):
-            # j is from start to end-1 !!!!!!!!!
-            if nums[j]>=pivot:
-                # exchange i,j
-                nums[i], nums[j] = nums[j], nums[i]
-                i+=1
-        #交换i 和 end ; after that, ith index is pivot now
-        nums[i], nums[end] = nums[end], nums[i]
+    # def getKthLargest(self, nums, start, end, k):
+    #     i = start
+    #     pivot = nums[end]
+    #     if start == end:
+    #         return nums[start]
+    #     for j in range(start, end):
+    #         # j is from start to end-1 !!!!!!!!!
+    #         if nums[j]>=pivot:
+    #             # exchange i,j
+    #             nums[i], nums[j] = nums[j], nums[i]
+    #             i+=1
+    #     #交换i 和 end ; after that, ith index is pivot now
+    #     nums[i], nums[end] = nums[end], nums[i]
 
-        #idx start to i-1 are all >= pivot
-        count = i-start+1
-        if count == k:
-            return pivot
-        elif count < k:
-            # 在右边
-            return self.getKthLargest(nums, i+1, end, k-count)
-        else:
-            # 在左边 ith idx is pivot it can be ignored
-            return self.getKthLargest(nums, start, i-1, k)
-        
+    #     #idx start to i-1 are all >= pivot
+    #     count = i-start+1
+    #     if count == k:
+    #         return pivot
+    #     elif count < k:
+    #         # 在右边
+    #         return self.getKthLargest(nums, i+1, end, k-count)
+    #     else:
+    #         # 在左边 ith idx is pivot it can be ignored
+    #         return self.getKthLargest(nums, start, i-1, k)
+
+        h = []
+        for i in range(k):
+            heapq.heappush(h, nums[i])
+        for j in range(k, len(nums)):
+            smallest = heapq.heappop(h)
+            if nums[j] > smallest:
+                heapq.heappush(h, nums[j])
+            else:
+                heapq.heappush(h, smallest)
+        return heapq.heappop(h)
+
 
         
 # @lc code=end

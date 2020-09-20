@@ -7,43 +7,41 @@
 # @lc code=start
 class Solution:
     def findOrder(self, numCourses, prerequisites):
-        courseChild = {} # course : number of pres
-        coursePre = {} # course: set(childs)
+        childCourse = {}
+        preCourse = {}
+        for request in prerequisites:
+            if request[0] not in childCourse:
+                childCourse[request[0]] = 1
+            else:
+                childCourse[request[0]] +=1
+            if request[1] not in preCourse:
+                preCourse[request[1]] = set([request[0]])
+            else:
+                preCourse[request[1]].add(request[0])
+        
         courseTake = set()
-        for one in prerequisites:
-            if one[0] not in courseChild:
-                courseChild[one[0]] = 1
-            else:
-                courseChild[one[0]] +=1
-            if one[1] not in coursePre:
-                coursePre[one[1]] = set([one[0]])
-            else:
-                coursePre[one[1]].add(one[0])
         
         for i in range(numCourses):
-            if i not in courseChild:
+            if i not in childCourse:
                 courseTake.add(i)
-        
-        if not courseTake:
+        if len(courseTake) == 0:
             return []
-
         ret = list(courseTake)
-
+        
         while courseTake:
-            take = courseTake.pop()
-            if take in coursePre:
-                for ichild in coursePre[take]:
-                    # value is child
-                    courseChild[ichild]-=1
-                    if courseChild[ichild] == 0:
-                        courseTake.add(ichild)
-                        ret.append(ichild)
-        if sum(courseChild.values())>0:
+            courseLearn = courseTake.pop()
+            if courseLearn in preCourse:
+                for iCourse in preCourse[courseLearn]:
+                    childCourse[iCourse]-=1
+                    if childCourse[iCourse] == 0:
+                        courseTake.add(iCourse)
+                        ret.append(iCourse)
+        if sum(childCourse.values()) > 0:
             return []
+        else:
+            return ret
 
-        return ret
-
-
+# print(Solution().findOrder(2, [[1,0]]))
         
 # @lc code=end
 

@@ -36,15 +36,13 @@ class Solution(object):
         :type num: int
         :rtype: int
         """
-        # while num >=10:
-        #     digitS = 0
-        #     while num != 0:
-        #         digitS+=num%10
-        #         num=num//10
-        #     num = digitS
-
-        return num if num==0 else (num-1)%9+1
-
+        while num >= 10:
+            newNum = 0
+            while num > 0:
+                newNum+=num%10
+                num=num//10
+            num = newNum
+        return num
         
 # @lc code=end
 

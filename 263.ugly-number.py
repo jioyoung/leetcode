@@ -55,12 +55,13 @@ class Solution(object):
         :type num: int
         :rtype: bool
         """
-        factor_arr = [2,3,5]
         if num == 0:
             return False
-        for i in factor_arr:
-            while num%i==0:
-                num/=i
-        return num==1
+        factors = [2 ,3, 5]
+        for i in range(len(factors)):
+            value = factors[i]
+            while num % value == 0:
+                num = num//value
+        return num == 1
 # @lc code=end
 

@@ -33,44 +33,43 @@
 #
 
 # @lc code=start
-class Solution(object):
+class Solution:
     def majorityElement(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
+        group1 = 0
+        group2 = 1
+        count1 = 0
+        count2 = 0
         if not nums:
             return []
-        count1, count2, group1, group2 = 0,0,0,1
-        for value in nums:
-            if value == group1:
+        for oneValue in nums:
+            if oneValue == group1:
                 count1+=1
-            elif value == group2:
+            elif oneValue == group2:
                 count2+=1
             elif count1 == 0:
-                group1 = value
-                count1 = 1
+                group1 = oneValue
+                count1=1
             elif count2 == 0:
-                group2 = value
-                count2 = 1
+                group2 = oneValue
+                count2=1
             else:
                 count1-=1
                 count2-=1
-        
+                
         count1, count2 = 0, 0
-        for value in nums:
-            if value == group1:
+        for oneValue in nums:
+            if oneValue == group1:
                 count1+=1
-            elif value == group2:
+            elif oneValue == group2:
                 count2+=1
-        length = len(nums)
         res = []
+        length = len(nums)
         if count1 > length//3:
             res.append(group1)
         if count2 > length//3:
             res.append(group2)
         return res
-        
+            
         
 # @lc code=end
 

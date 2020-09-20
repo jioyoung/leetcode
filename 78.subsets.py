@@ -60,7 +60,6 @@ class Solution(object):
 
         res = []
         path = []
-        nums.sort()
         self.getres(nums, len(nums), 0, path, res)
         return res
 

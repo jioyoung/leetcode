@@ -44,28 +44,45 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
-        # citations.sort()
-        # n = 1
-        # for i in range(len(citations)-1, -1, -1):
-        #     if citations[i]>=n:
-        #         n+=1
-        #     else:
+        # sort by cite from high to low
+        # find the index that index > cite[index]
+        # h-index = index-1
+
+
+
+        # citations.sort(reverse = True)
+        # i = 1
+        # while i <= len(citations):
+        #     if i > citations[i-1]:
         #         break
-        # return n-1
-        citations.sort()
+        #     i+=1
+        # return i -1  
+
+
+        # sort from high to low
+        # find the largest index that index+1 <= cite[index] 
+
+        # sort from low to high
+        # find the first index that length - index <= cite[index]
+        # first index that index + cite[index] >= length
+
+        # binary search
+        # f(index) = index+1-cite(index)
+        # find the largest index that f(index) <=0 
+
         length = len(citations)
-        left = 0
-        right = length-1
-        # binary search for the first index that cite[i]>=length-i
-        # or cite[i] + i >= length
-        # length - i is the h-index
-        while left<=right:
+        citations.sort()
+        left, right = 0, length-1
+        while left <= right:
             mid = (left+right)//2
-            if citations[mid]+mid < length:
-                left = mid+1
+            if (mid+citations[mid])>=length:
+                right = mid -1
             else:
-                right=mid-1
-        return length - left
+                left = mid +1 
+        return length-left
+        
+
+
         
 # @lc code=end
 

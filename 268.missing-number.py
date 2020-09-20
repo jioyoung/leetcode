@@ -49,9 +49,12 @@ class Solution(object):
         # for i in range(len(nums)):
         #     result = result ^ i ^ nums[i]
         # return result
-        nRight = len(nums)
-        true_sum = (1+nRight)*nRight/2
-        return true_sum-sum(nums)
+        # return (len(nums)+1)*len(nums)/2 - sum(nums)
+
+        res = len(nums)
+        for i in range(len(nums)):
+            res = res ^ i ^ nums[i]
+        return res
         
 # @lc code=end
 

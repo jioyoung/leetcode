@@ -839,7 +839,7 @@ GROUP BY - Expert Tips
 - As with ORDER BY, you can substitute numbers for column names in the GROUP BY clause. It’s generally recommended to do this only when you’re grouping many columns, or if something else is causing the text in the GROUP BY clause to be excessively long.
 
 
-A reminder here that **any column that is not within an aggregation must show up in your GROUP BY statement**. 
+A reminder here that **any column that is not within an aggregation in SELECT must show up in your GROUP BY statement**. 
 
 #### Example
 

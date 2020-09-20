@@ -41,19 +41,24 @@ class Solution(object):
         :rtype: int
         """
         # three pointers
-        ugly=[1]
-        i2, i3, i5 = 0,0,0
-        while n > 1:
-            factor2, factor3, factor5 = 2*ugly[i2], 3*ugly[i3], 5*ugly[i5]
-            factor_min = min(factor2, factor3, factor5)
-            if factor_min == factor2:
-                i2+=1
-            if factor_min == factor3:
-                i3+=1
-            if factor_min == factor5:
-                i5+=1
-            ugly.append(factor_min)
-            n-=1
+        ugly = [None] * n
+        id2, id3, id5 = 0,0,0
+        ugly[0] = 1
+        for i in range(1, n):
+            candidate2 = ugly[id2] * 2
+            candidate3 = ugly[id3] * 3
+            candidate5 = ugly[id5] * 5
+            minVal = min(candidate2, candidate3, candidate5)
+            if minVal == candidate2:
+                id2+=1
+            if minVal == candidate3:
+                id3+=1
+            if minVal == candidate5:
+                id5+=1
+            ugly[i] = minVal
+
         return ugly[-1]
+
+
 # @lc code=end
 

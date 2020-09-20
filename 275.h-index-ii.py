@@ -55,18 +55,21 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
-        # we need to find the first i that cita[i] >= length - i
-        # which means we need to find the first i that cita[i]+i >= length
-        # length - i is the h-index
+        # h_index: sort from high to low, the last one that
+        # the rank <= citations[i], rank is the h_index
+        
+        # sort from low to high, rank = length - index
+        # length - index <= cite[index]
         length = len(citations)
-        left = 0
-        right = length - 1
+        left, right = 0, length - 1
         while left <= right:
             mid = (left+right)//2
-            if citations[mid] + mid < length:
-                left=mid+1
+            if mid+citations[mid]>=length:
+                right = mid - 1
             else:
-                right=mid-1
-        return length-left
+                left = mid + 1
+        # if left == length, return 0
+        return length -left
+
 # @lc code=end
 

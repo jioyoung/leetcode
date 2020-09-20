@@ -47,19 +47,21 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        dict_s = dict()
-        if len(s)!=len(t):
+        if len(s) != len(t):
             return False
+        dictS = {}
         for c in s:
-            if c in dict_s:
-                dict_s[c]+=1
+            if c in dictS:
+                dictS[c]+=1
             else:
-                dict_s[c]=1
+                dictS[c] = 1
+        
         for c in t:
-            value = dict_s.get(c, 0)
-            if value == 0:
+            num = dictS.get(c, 0)
+            if num == 0:
                 return False
-            dict_s[c]-=1
+            dictS[c]-=1
+        
             
         return True
         
