@@ -51,31 +51,27 @@ class Solution(object):
         """
         # check if the sum is greater than 9
         # iterate until one list is empty
-        cur = head = ListNode(0)
-        value = 0
+        remain = 0
+        val = 0
+        dummy = cur = ListNode(0)
         while l1 or l2:
+            val = remain
             if l1:
-                value += l1.val
-                # do not forget to update l1 or l2
+                val+=l1.val
                 l1 = l1.next
             if l2:
-                value += l2.val
+                val+=l2.val
                 l2 = l2.next
-                
-            if value > 9:
-                cur.next = ListNode(value-10)
-                cur = cur.next
-                value = 1
+            if val >=10:
+                remain = 1
+                val -= 10
             else:
-                cur.next = ListNode(value)
-                cur = cur.next
-                value = 0
-        
-        # add 1 if the previous sum is greater than 9
-        if value == 1:
+                remain = 0
+            cur.next = ListNode(val)
+            cur = cur.next
+        if remain == 1:
             cur.next = ListNode(1)
-
-        return head.next
+        return dummy.next
 
                 
                

@@ -49,7 +49,7 @@ class Solution(object):
         :type postorder: List[int]
         :rtype: TreeNode
         """
-        if not inorder or not postorder:
+        if not inorder:
             return None
         index = inorder.index(postorder.pop())
         root = TreeNode(inorder[index])

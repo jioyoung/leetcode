@@ -41,23 +41,21 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
-        if numRows <=2:
-            if numRows == 0:
-                return []
-            elif numRows == 1:
-                return [[1]]
-            else:
-                return [[1], [1,1]]
-        else:
-            ret = [None]*numRows
-            ret[0] = [1]
-            ret[1] = [1,1]
-            for i in range(2, numRows):
-                ret[i] = [None]*(i+1)
-                ret[i][0], ret[i][i] = 1, 1
-                for j in range(1, i):
-                    ret[i][j]=ret[i-1][j-1]+ret[i-1][j]
-                
-            return ret
-        
+        n=numRows
+        if n == 0:
+            return []
+        if n ==1:
+            return [[1]]
+        if n ==2:
+            return [[1], [1,1]]
+        res = [[1], [1,1]]
+        for i in range(3, n+1):
+            temp = [None]*i
+            temp[0] = 1
+            temp[-1] = 1
+            for j in range(1, i-1):
+                temp[j] = res[-1][j]+res[-1][j-1]
+            res.append(temp)
+        return res
+print(Solution().generate(5))       
 

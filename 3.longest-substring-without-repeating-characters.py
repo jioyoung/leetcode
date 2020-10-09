@@ -55,19 +55,16 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        if not s:
-            return 0
-        maxLen = 1
-        start = 0
-        char_index = {}
-        char_index[s[0]] = 0
-        for i in range(1, len(s)):
+        start_idx = 0
+        maxL = 0
+        charDict = {}
+        # key = char, value = index 
+        for i in range(len(s)):
             c = s[i]
-            if c in char_index and char_index[c] >= start:
-                start = char_index[c] + 1
+            if c in charDict and charDict[c]>=start_idx:
+                start_idx = charDict[c] + 1
             else:
-                maxLen = max(maxLen, i-start+1)
-            char_index[c] = i
-        
-        return maxLen
+                maxL = max(maxL, i-start_idx+1)
+            charDict[c] = i
+        return maxL
 

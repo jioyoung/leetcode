@@ -78,24 +78,36 @@ class Solution(object):
         :rtype: Node
         """
 
-        if root is None:
-            return root
-        pre = start = root
-        cur = None
-        while pre.left is not None:
-            if cur is None:
-                pre.left.next = pre.right
-                pre = start.left
-                cur = start.right
-                start = pre # update the start      
-            else:
-                pre.left.next = pre.right
-                pre.right.next = cur.left
-                pre = cur
-                cur = cur.next
+        # if root is None:
+        #     return root
+        # pre = start = root
+        # cur = None
+        # while pre.left is not None:
+        #     if cur is None:
+        #         pre.left.next = pre.right
+        #         pre = start.left
+        #         cur = start.right
+        #         start = pre # update the start      
+        #     else:
+        #         pre.left.next = pre.right
+        #         pre.right.next = cur.left
+        #         pre = cur
+        #         cur = cur.next
+        # return root
+
+        cur = root
+        while cur:
+            tail = dummy = Node(0)
+            while cur:
+                if cur.left:
+                    tail.next = cur.left
+                    tail = tail.next
+                if cur.right:
+                    tail.next = cur.right
+                    tail = tail.next
+                cur = cur.next 
+            cur = dummy.next 
         return root
-
-
 
 # @lc code=end
 

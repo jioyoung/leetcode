@@ -78,57 +78,5 @@ class Solution(object):
             return 1/ret
         else:
             return ret
-
-
-    #     if n == 0:
-    #         return 1
-    #     if x == 1:
-    #         return 1
-    #     if x ==-1:
-    #         if n%2 == 0:
-    #             return 1 
-    #         else:
-    #             return -1
-    #     if n < 0:
-    #         return 1/self.rec_pow(x, -n)
-    #     else:
-    #         return self.rec_pow(x, n)
-        
-    # def rec_pow(self, x, n):
-    #     if n == 0:
-    #         return 1
-    #     if n%2==0:
-    #         return self.rec_pow(x*x, n//2)
-    #     else:
-    #         return x*self.rec_pow(x*x, n//2)
-
-
-    #     res = 0
-    #     if n == 0:
-    #         return 1
-    #     if x == 1:
-    #         return 1
-    #     if x == -1:
-    #         if n % 2 ==0:
-    #             return 1
-    #         else:
-    #             return -1
-    #     elif n<0:
-    #         n = -n
-    #         res = 1/self.rec_pow(x, n)
-    #     else:
-    #         res = self.rec_pow(x, n)
-    #     return res
-        
-    # def rec_pow(self, x, n):
-    #     # n is always positive
-    #     if n == 0:
-    #         return 1
-    #     if n % 2 ==0:
-    #         return self.rec_pow(x*x, n//2)
-    #     else:
-    #         return x*self.rec_pow(x*x, n//2)
-          
-        
 # @lc code=end
 

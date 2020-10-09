@@ -38,9 +38,9 @@ class Solution(object):
         """
         # use dictionary
         # diff between value and target is the key of the dict
-        num_dict = {}
+        numDict = {}
         for i in range(len(nums)):
-            if nums[i] not in num_dict:
-                num_dict[target- nums[i]] = i
+            if nums[i] not in numDict:
+                numDict[target-nums[i]] = i
             else:
-                return [num_dict[nums[i]], i] 
+                return [numDict[nums[i]], i]

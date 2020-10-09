@@ -57,18 +57,17 @@ class Solution(object):
         :type root: TreeNode
         :rtype: None Do not return anything, modify root in-place instead.
         """
-        while root is not None:
+        while root:
             if root.left is None:
                 root = root.right
             else:
                 pre = root.left
-                while pre.right is not None:
+                while pre.right:
                     pre = pre.right
                 pre.right = root.right
                 root.right = root.left
                 root.left = None
                 root = root.right
-        
         
 # @lc code=end
 

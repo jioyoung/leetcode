@@ -40,42 +40,19 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-
-        # every time update the range of the current jump
         if len(nums)<=1:
             return 0
         step_left = 1
         step_right = nums[0]
-        nstep=1
+        nstep = 1
         while step_left<=step_right:
             if step_right>=len(nums)-1:
                 return nstep
             else:
                 nstep+=1
-                old_right= step_right
-                for i in range(step_left, step_right+1):
-                    step_right = max(step_right, i+nums[i])
+                old_right = step_right
+                for i in range(step_left, old_right+1):
+                    step_right = max(step_right, nums[i]+i)
                 step_left = old_right+1
-        return nstep
 
-
-        # if len(nums)<=1:
-        #     return 0
-        # step_min = 1
-        # step_max = nums[0]
-        # nstep = 1
-        # while step_min <=step_max:
-        #     if step_max >=len(nums)-1:
-        #         return nstep
-        #     else:
-        #         nstep+=1 #update the nstep
-        #         last_max = step_max
-        #         for i in range(step_min, last_max+1):
-        #             step_max=max(i+nums[i], step_max)
-        #         step_min=last_max+1
-            
-
-
-
-        
 

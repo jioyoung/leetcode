@@ -60,38 +60,19 @@ class Solution(object):
         """
 
         # backtracking
-        result = []
-        self.getCombine(candidates, target, 0, result, [])
-        return result
-
-    def getCombine(self, candidate, target, start, result, rec_result):
+        res = []
+        self.getCombination(0, candidates, target, res, [])
+        return res
+    
+    def getCombination(self, start, candidates, target, res, rec_res):
+        if target == 0:
+            res.append(list(rec_res))
+            return
         if target < 0:
             return
-        if target == 0:
-            result.append(list(rec_result))
-            return
-        else:
-            for i in range(start, len(candidate)):
-                rec_result.append(candidate[i])
-                self.getCombine(candidate, target-candidate[i], i, result, rec_result)
-                rec_result.pop()
-
-
-    #     res = []
-    #     start = 0
-    #     self.getResult(candidates, target, start, res, [])
-    #     return res
-
-    # def getResult(self, candidates, target, start, res, rec_res):
-    #     if target < 0:
-    #         return
-    #     elif target == 0:
-    #         ## list( ) necessary I think append just append the pointer to the parameter list
-    #         ## or the rec_res will be all empty [] at last
-    #         res.append(list(rec_res))
-    #         return
-    #     for i in range(start, len(candidates)):
-    #         rec_res.append(candidates[i])
-    #         self.getResult(candidates, target-candidates[i], i, res, rec_res)
-    #         rec_res.pop()
+        for i in range(start, len(candidates)):
+            rec_res.append(candidates[i])
+            self.getCombination(i, candidates, target-candidates[i], res, rec_res)
+            rec_res.pop()
+        return
 

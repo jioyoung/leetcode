@@ -42,47 +42,35 @@ class Solution(object):
         """
         # 找左边界 相等也要 right = mid-1 最后左边界是有效的left
         # 找右边界 相等也要往右 left = mid+1 最后右边界是right
+        first_id = self.search1st(nums, 0, len(nums)-1, target)
+        if first_id == -1:
+            return [-1, -1]
+        return [first_id, self.searchlast(nums, first_id, len(nums)-1, target)]
         
-        left, right = 0, len(nums)-1
+        
+    def search1st(self, nums, left, right, target):
+        endidx = right
         while left <=right:
             mid = (left+right)//2
             if nums[mid] >= target:
-                right = mid-1
+                right=mid-1
             else:
-                left = mid + 1
-        if left == len(nums) or nums[left] != target:
-            return [-1, -1]
-        left_margin = left
-        right = len(nums)-1
-        while left <= right:
+                left=mid+1
+        if left <= endidx and nums[left] == target:
+            return left
+        else:
+            return -1
+        
+    def searchlast(self, nums, left, right, target):
+        endidx = left
+        while left <=right:
             mid = (left+right)//2
             if nums[mid] <= target:
-                left = mid+1
+                left=mid+1
             else:
-                right = mid-1
-        return [left_margin, right]
-        
-        
-        #left, right = 0, len(nums)-1
-        # while left<=right:
-        #     mid = (left+right)//2
-        #     if nums[mid]<target:
-        #         left = mid+1
-        #     else:
-        #         right = mid-1
-        # # 是否有效
-        # if left == len(nums) or nums[left]!=target:
-        #     return [-1, -1]
-        # right = len(nums)-1
-        # res = [None]*2
-        # res[0] = left
-        # while left<=right:
-        #     mid = (left+right)//2
-        #     if nums[mid]>target:
-        #         right = mid-1
-        #     else:
-        #         left = mid +1
-        # res[1]=right
-        # return res
-
+                right=mid-1
+        if right >=endidx and nums[right] == target:
+            return right
+        else:
+            return -1
     

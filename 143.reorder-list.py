@@ -63,14 +63,13 @@ class Solution(object):
             
 
     def reverseList(self, head):
-        pre = None
-        cur = head
-        while cur is not None:
-            tempNode = cur.next
-            cur.next = pre
-            pre = cur
-            cur = tempNode
-        return pre
+        tail = None
+        while head:
+            temp = head.next
+            head.next = tail
+            tail = head
+            head = temp
+        return tail
         
 # @lc code=end
 

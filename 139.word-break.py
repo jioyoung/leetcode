@@ -66,16 +66,15 @@ class Solution(object):
         dp[i] true is s[0:i-1] can be constructed form the words in the dict
         dp[j] = dp[i] && dp[i+1, j]
         '''
-        dp = [True] + [False]*len(s)
-        for start in range(len(s)):
-            if dp[start]:
-                for end in range(start+1, len(s)+1):
-                    if s[start:end] in wordDict:
-                        dp[end] = True
+        validEnd = set([0])
+        for i in range(len(s)):
+            if i in validEnd:
+                for end in range(i+1, len(s)+1):
+                    if s[i:end] in wordDict:
+                        validEnd.add(end)
                         if end == len(s):
                             return True
-        return dp[-1]
-
+        return False
         
 # @lc code=end
 

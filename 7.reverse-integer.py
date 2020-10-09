@@ -49,23 +49,25 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
-        isNegative = False
-        xReverse = 0
+        if x == 0:
+            return x
+        isNegative = 0
         if x < 0:
+            isNegative = 1
             x = -x
-            isNegative = True
+        reverse = 0
         while x:
-            xReverse = 10*xReverse + x%10
+            reverse = 10*reverse+(x%10)
             x = x//10
         if isNegative:
-            if xReverse > 2**31:
+            if reverse > 2**31:
                 return 0
             else:
-                return -xReverse
+                return -reverse
         else:
-            if xReverse > 2**31-1:
+            if reverse > 2**31-1:
                 return 0
             else:
-                return xReverse
+                return reverse
 
 

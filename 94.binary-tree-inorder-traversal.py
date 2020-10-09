@@ -45,28 +45,32 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        '''
-        res = []
-        stacklist = []
+        if not root:
+            return []
+        nodeStack = []
         cur = root
-        while cur or stacklist:
-            while cur:
-                stacklist.append(cur)
-                cur = cur.left
-            cur = stacklist.pop()
-            res.append(cur.val)
-            cur=cur.right
-        return res
-        '''
         res = []
-        self.getRes(root, res)
+        while cur or nodeStack:
+            while cur:
+                nodeStack.append(cur)
+                cur = cur.left
+            cur = nodeStack.pop()
+            res.append(cur.val)
+            cur = cur.right
         return res
+
+
+
+
+    #     res = []
+    #     self.getRes(root, res)
+    #     return res
     
-    def getRes(self, node, res):
-        if not node:
-            return
-        self.getRes(node.left,res)
-        res.append(node.val)
-        self.getRes(node.right, res)
+    # def getRes(self, node, res):
+    #     if not node:
+    #         return
+    #     self.getRes(node.left,res)
+    #     res.append(node.val)
+    #     self.getRes(node.right, res)
 # @lc code=end
 

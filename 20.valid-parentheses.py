@@ -67,17 +67,15 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        table = {
-            ')':'(', ']':'[', '}':'{'
-        }
-        arr = []
+        parenDict={')':'(', '}':'{', ']':'['}
+        tokens = []
         for c in s:
-            if c not in table:
-                arr.append(c)
+            if c not in parenDict:
+                tokens.append(c)
             else:
-                if not arr:
+                if (not tokens) or tokens.pop()!=parenDict[c]:
                     return False
-                else:
-                    if arr.pop()!=table[c]:
-                        return False
-        return (not arr)
+        if tokens:
+            return False
+        else:
+            return True

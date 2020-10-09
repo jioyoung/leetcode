@@ -43,22 +43,14 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         # sort string as a key in the dictionary
-        visit = {}
-        for string in strs:
-            key_str = ''.join(sorted(string))
-            visit.setdefault(key_str, []).append(string)
-        return list(visit.values())
-
-        # visit = {}
-        # for string in strs:
-        #     s_list = list(string)
-        #     s_list.sort()
-        #     s_string = ''.join(s_list)
-        #     if s_string not in visit:
-        #         visit[s_string] = [string]
-        #     else:
-        #         visit[s_string].append(string)
-        # return list(visit.values())
+        wordDict = {}
+        for word in strs:
+            s = ''.join(sorted(word))
+            if s not in wordDict:
+                wordDict[s] = [word]
+            else:
+                wordDict[s].append(word)
+        return wordDict.values()
     
 
 # @lc code=end

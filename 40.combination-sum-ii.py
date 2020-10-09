@@ -58,42 +58,23 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-        res = []
-        start = 0
         candidates.sort()
-        self.getResult(candidates, target, start, res, [])
+        res = []
+        self.getCombination(candidates,res, [], target, 0)
         return res
-
-
-    def getResult(self, candidate, target, start , res, rec_rec):
-        if target<0:
-            return 
-        if target == 0:
-            res.append(rec_rec)
-            return 
-        for i in range(start, len(candidate)):
-            if i > 0 and candidate[i]==candidate[i-1]:
-                continue
-            rec_rec.append(candidate[i])
-            self.getResult(candidate, target-candidate[i], i+1, res, rec_rec)
-            rec_rec.pop()
         
-
-
-    # def getResult(self, candidates, target, start, res, rec_res):
-    #     if target < 0:
-    #         return
-    #     elif target == 0:
-    #         ## list( ) necessary I think append just append the pointer to the parameter list
-    #         ## or the rec_res will be all empty [] at last
-    #         res.append(list(rec_res))
-    #         return
-    #     for i in range(start, len(candidates)):
-    #         # i > start
-    #         if i > start and candidates[i]==candidates[i-1]:
-    #             continue
-    #         rec_res.append(candidates[i])
-    #         self.getResult(candidates, target-candidates[i], i+1, res, rec_res)
-    #         rec_res.pop()
+    def getCombination(self, candidates, res, rec_res, target, start):
+        if target == 0:
+            res.append(list(rec_res))
+            return 
+        if target < 0:
+            return 
+        for i in range(start, len(candidates)):
+            if i > start and candidates[i-1] == candidates[i]:
+                continue
+            rec_res.append(candidates[i])
+            self.getCombination(candidates,res, rec_res, target-candidates[i], i+1) 
+            rec_res.pop()
+        return
 
  

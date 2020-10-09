@@ -42,26 +42,23 @@ class Solution(object):
 
         #backtrack
         res = []
-        recur_res = []
-        self.recursiveGenerate(res, recur_res, 0, 0, n)
+        self.getRes(0,0,n,res, [])
         return res
-    
-    def recursiveGenerate(self, res, recur_res, nLeft, nRight, n):
-        if len(recur_res) == 2*n:
-            res.append(''.join(recur_res))
+        
+        
+    def getRes(self, nLeft, nRight, n, res, rec_res):
+        if len(rec_res) == 2*n:
+            res.append(''.join(rec_res))
             return
         if nLeft < n:
-            recur_res.append('(')
-            nLeft+=1
-            self.recursiveGenerate(res, recur_res, nLeft, nRight, n)
-            nLeft-=1
-            recur_res.pop()
-        if nLeft>nRight:
-            recur_res.append(')')
-            nRight+=1
-            self.recursiveGenerate(res, recur_res, nLeft, nRight, n)
-            nRight-=1
-            recur_res.pop()
+            rec_res.append('(')
+            self.getRes(nLeft+1, nRight, n, res, rec_res)
+            rec_res.pop()
+        if nLeft > nRight:
+            rec_res.append(')')
+            self.getRes(nLeft, nRight+1, n, res, rec_res)
+            rec_res.pop()
+        return
 
 
 
