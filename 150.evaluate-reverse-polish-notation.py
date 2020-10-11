@@ -7,24 +7,23 @@
 # @lc code=start
 class Solution:
     def evalRPN(self, tokens):
-        tokenStack = []
-        for t in tokens:
-            if t.isdigit():
-                tokenStack.append(int(t))
-            elif len(t)>1 and t[0].isdigit() == False:
-                tokenStack.append(-int(t[1:]))
+        numStack = []
+        opSet = set(["+", "-" , "*" , "/"])
+        for token in tokens:
+            if token not in opSet:
+                numStack.append(int(token))
             else:
-                v2 = tokenStack.pop()
-                v1 = tokenStack.pop()
-                if t == '+':
-                    tokenStack.append(v1+v2)
-                elif t=='-':
-                    tokenStack.append(v1-v2)
-                elif t=='*':
-                    tokenStack.append(v1*v2)
+                val2 = numStack.pop()
+                val1 = numStack.pop()
+                if token == '+':
+                    numStack.append(val1+val2)
+                elif token == '-':
+                    numStack.append(val1-val2)
+                elif token == '*':
+                    numStack.append(val1*val2)
                 else:
-                    tokenStack.append(int(v1/v2))
-        return tokenStack.pop()
+                    numStack.append(int(val1/val2))
+        return numStack[-1]
 
 # @lc code=end
 

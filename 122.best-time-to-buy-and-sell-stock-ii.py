@@ -62,14 +62,13 @@ class Solution(object):
         :rtype: int
         """
         length = len(prices)
-        if length<=1:
+        if length <=1:
             return 0
-        else:
-            profit =0 
-            for i in range(1, length):
-                diff_day = prices[i]-prices[i-1]
-                if diff_day>0:
-                    profit+=diff_day
-            return profit
+        profit = 0
+        for i in range(1, length):
+            diff = prices[i]-prices[i-1]
+            if diff > 0:
+                profit+=diff
+        return profit
         
 

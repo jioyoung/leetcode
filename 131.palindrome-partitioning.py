@@ -39,9 +39,7 @@ class Solution(object):
         :rtype: List[List[str]]
         """
         #分治的思想
-        dp = [None]*len(s)
-        for i in range(len(s)):
-            dp[i] = [None]*len(s)
+        dp = [[None for i in range(len(s))] for j in range(len(s))]
         for length in range(0, len(s)):
             for i in range(0, len(s)-length):
                 j = i+length

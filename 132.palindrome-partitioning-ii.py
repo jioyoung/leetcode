@@ -43,10 +43,11 @@ class Solution(object):
                 j = i+one_len
                 valid[i][j] = s[i]==s[j] and (one_len<=2 or valid[i+1][j-1])
         
-    '''
-    https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-132-palindrome-partitioning-ii/
-    subproblem + palindrome
-    '''
+        '''
+        https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-132-palindrome-partitioning-ii/
+        subproblem + palindrome
+        '''
+        # valid[i][j] is Boolean whether s[i:j+1] is pal
         cut = [length-1]*length
         for i in range(length):
             if valid[0][i]:

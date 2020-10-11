@@ -69,19 +69,39 @@ class Solution(object):
         """
         if not root:
             return 0
-        return self.sumNumHelper(root, 0)
+        nodeQueue = [root]
+        sumQueue = [root.val]
+        res = 0
+        while nodeQueue:
+            level_len = len(nodeQueue)
+            for i in range(level_len):
+                node = nodeQueue.pop(0)
+                currentSum = sumQueue.pop(0)
+                if node.left:
+                    nodeQueue.append(node.left)
+                    sumQueue.append(currentSum*10+node.left.val)
+                if node.right:
+                    nodeQueue.append(node.right)
+                    sumQueue.append(currentSum*10+node.right.val)
+                if node.left is None and node.right is None:
+                    res += currentSum
+        return res
+
+    #     if not root:
+    #         return 0
+    #     return self.sumNumHelper(root, 0)
     
-    def sumNumHelper(self, root, presum):
-        current = 10*presum+root.val
-        if not root.left and not root.right:
-            # root has no left and right
-            return current
-        ans = 0
-        if root.left:
-            ans+=self.sumNumHelper(root.left,current)
-        if root.right:
-            ans+=self.sumNumHelper(root.right,current)
-        return ans
+    # def sumNumHelper(self, root, presum):
+    #     current = 10*presum+root.val
+    #     if not root.left and not root.right:
+    #         # root has no left and right
+    #         return current
+    #     ans = 0
+    #     if root.left:
+    #         ans+=self.sumNumHelper(root.left,current)
+    #     if root.right:
+    #         ans+=self.sumNumHelper(root.right,current)
+    #     return ans
         
 # @lc code=end
 

@@ -82,7 +82,5 @@ class Solution(object):
         for i in range(1, len(nums)):
             answer ^=nums[i]
         return answer
->>>>>>> fb7103779365f5d4964fc2e056d5fdf7f1825ad6
-        
 # @lc code=end
 

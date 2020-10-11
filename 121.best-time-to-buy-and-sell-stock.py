@@ -47,16 +47,14 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
-        length = len(prices)
-        if length <=1:
+        if len(prices)<=1:
             return 0
-        else:
-            profit = 0
-            curmin = prices[0] 
-            for i in range(1, length):
-                if prices[i] > curmin:
-                    profit = max(profit, prices[i]-curmin)
-                else:
-                    curmin = prices[i]
-            return profit
+        curMin = prices[0]
+        res = 0
+        for i in range(1, len(prices)):
+            if prices[i] > curMin:
+                res = max(prices[i]-curMin, res)
+            else:
+                curMin = prices[i]
+        return res
 

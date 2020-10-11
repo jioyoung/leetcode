@@ -100,6 +100,5 @@ class Solution(object):
                 location = i+1
                 remain=0
         return location
-        
 # @lc code=end
 

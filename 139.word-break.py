@@ -71,6 +71,5 @@ class Solution(object):
                         if end == len(s):
                             return True
         return False
-        
 # @lc code=end
 

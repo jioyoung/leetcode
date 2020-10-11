@@ -82,10 +82,10 @@ class Solution(object):
         """
         if not head:
             return False
-        while head.next and head.val is not None:
+        while head and head.val is not None:
             head.val=None
             head=head.next
-        if head.next is None:
+        if not head:
             return False
         else:
             return True

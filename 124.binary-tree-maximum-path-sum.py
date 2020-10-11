@@ -76,6 +76,9 @@ class Solution(object):
         max_cur = root.val + left + right
         if max_cur > max_all[0]:
             max_all[0] = max_cur # max_all is always a list and have only one value
+        # max_all is the current max including the current root
+        # the reason to set max_all as a list is that this setting can
+        # treat it as a global variable
         return root.val + max(left, right)
 
 
