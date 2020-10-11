@@ -8,18 +8,17 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        if len(nums)==0:
-            return
-        start_0 = 0
-        end_2 = len(nums)-1
-        i=0
-        while i<=end_2:
+        right_0 = 0
+        left_2 = len(nums)-1
+        i = 0
+        while i <= left_2:
             if nums[i]==0:
-                nums[start_0], nums[i] = nums[i], nums[start_0]
-                start_0+=1
+                nums[i], nums[right_0] = nums[right_0], nums[i]
+                right_0+=1
                 i+=1
-            elif nums[i]==2:
-                nums[end_2], nums[i] = nums[i], nums[end_2]
-                end_2-=1
+            elif nums[i] == 2:
+                nums[i], nums[left_2] = nums[left_2], nums[i]
+                left_2-=1
+                # do not update i, check if it is zero
             else:
                 i+=1

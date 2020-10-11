@@ -61,11 +61,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
-        '''
-        dynamic programming
-        dp[i] true is s[0:i-1] can be constructed form the words in the dict
-        dp[j] = dp[i] && dp[i+1, j]
-        '''
+        
         validEnd = set([0])
         for i in range(len(s)):
             if i in validEnd:

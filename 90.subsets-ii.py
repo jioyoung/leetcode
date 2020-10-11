@@ -40,16 +40,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        res = []
-        path = []
         nums.sort()
-        self.getres(nums, len(nums), 0, path, res)
+        res = []
+        self.getSubsetWithDup(nums, res, [], 0)
         return res
-
-    def getres(self, nums, length, index, path, res):
-        res.append(path)
-        for i in range(index, length):
-            if i>index and nums[i]==nums[i-1]:
+        
+    def getSubsetWithDup(self, nums, res, rec_res, start):
+        res.append(list(rec_res))
+        for i in range(start, len(nums)):
+            if i > start and nums[i]==nums[i-1]:
                 continue
-            self.getres(nums, length, i+1, path+[nums[i]], res)
-
+            else:
+                rec_res.append(nums[i])
+                self.getSubsetWithDup(nums, res, rec_res, i+1)
+                rec_res.pop()
+        return 

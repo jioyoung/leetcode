@@ -53,23 +53,21 @@ class Solution(object):
         """
         if not root:
             return False
-        queue = []
-        queue.append(root)
-        queuesum=[root.val]
-        while queue:
-            level_num = len(queue)
-            for i in range(level_num):
-                node = queue.pop(0)
-                currentS = queuesum.pop(0)
-                if node.left is not None:
-                    queue.append(node.left)
-                    queuesum.append(currentS+node.left.val)
-                if node.right is not None:
-                    queue.append(node.right)
-                    queuesum.append(currentS+node.right.val)
-                if (node.left is None) and (node.right is None) and currentS == sum:
+        nodeQueue= [root]
+        sumQueue = [root.val]
+        while nodeQueue:
+            level_len = len(nodeQueue)
+            for i in range(level_len):
+                node = nodeQueue.pop(0)
+                currentSum = sumQueue.pop(0)
+                if node.left:
+                    nodeQueue.append(node.left)
+                    sumQueue.append(currentSum+node.left.val)
+                if node.right:
+                    nodeQueue.append(node.right)
+                    sumQueue.append(currentSum+node.right.val)
+                if node.left is None and node.right is None and currentSum == sum:
                     return True
-
         return False
 
 

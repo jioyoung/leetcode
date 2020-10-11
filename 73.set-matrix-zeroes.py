@@ -66,42 +66,34 @@ class Solution(object):
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
-        nrow = len(matrix)
-        if nrow == 0:
+        m = len(matrix)
+        if m== 0:
+            return 
+        n = len(matrix[0])
+        if n==0:
             return
-        ncol = len(matrix[0])
-        if ncol == 0:
-            return
-        c1_zero, r1_zero = 0, 0
-        for i in range(nrow):
+        firstRow_zero = False
+        firstCol_zero = False
+        for j in range(n):
+            if matrix[0][j]==0:
+                firstRow_zero = True
+        for i in range(m):
             if matrix[i][0] == 0:
-                c1_zero = 1
-                break
-        for j in range(ncol):
-            if matrix[0][j] == 0:
-                r1_zero = 1
-                break
-
-        for i in range(1, nrow):
-            for j in range(1, ncol):
+                firstCol_zero = True
+        for i in range(1, m):
+            for j in range(1, n):
                 if matrix[i][j]==0:
-                    matrix[i][0]=0
                     matrix[0][j]=0
-
-        for i in range(1, nrow):
-            for j in range(1, ncol):
-                if matrix[i][0]==0 or matrix[0][j]==0:
+                    matrix[i][0]=0
+        for i in range(1, m):
+            for j in range(1, n):
+                if matrix[0][j] == 0 or matrix[i][0] == 0:
                     matrix[i][j] = 0
-        if c1_zero == 1:
-            for i in range(nrow):
-                matrix[i][0]=0
-        if r1_zero == 1:
-            matrix[0] = [0]*ncol
-        
-
-
-
-
-
-        
+        if firstRow_zero == True:
+            for j in range(n):
+                matrix[0][j] = 0
+        if firstCol_zero == True:
+            for i in range(m):
+                matrix[i][0] = 0
+        return      
 

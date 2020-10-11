@@ -39,19 +39,18 @@ class Solution(object):
         :rtype: int
         """
         nRow = len(grid)
+        if nRow == 0:
+            return 0
         nCol = len(grid[0])
-        if nRow == 1 or nCol == 1:
-            return sum([sum(oneList) for oneList in zip(*grid)])
-        step_dp = [None] * nRow
-        step_dp[0] = grid[0][0]
-        for i in range(1, nRow):
-            step_dp[i] = grid[i][0] + step_dp[i-1]
+        if nCol == 0:
+            return 0
         for j in range(1, nCol):
-            for i in range(nRow):
-                if i==0:
-                    step_dp[i]+=grid[i][j]
-                else:
-                    step_dp[i] = min(step_dp[i-1], step_dp[i])+grid[i][j]
-        return step_dp[-1]
+            grid[0][j]+=grid[0][j-1]
+        for i in range(1,nRow):
+            grid[i][0]+=grid[i-1][0]
+        for i in range(1,nRow):
+            for j in range(1, nCol):
+                grid[i][j] += min(grid[i][j-1], grid[i-1][j])
+        return grid[-1][-1]
 
 

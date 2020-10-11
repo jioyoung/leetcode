@@ -72,18 +72,17 @@ class Solution(object):
         :type q: TreeNode
         :rtype: bool
         """
-        return self.getRes(p, q)
-
-    def getRes(self, node1, node2):
-        if (node1 is None) and (node2 is None):
+        return self.checkIsSameTree(p, q)
+    
+    def checkIsSameTree(self, p, q):
+        if p is None and q is None:
             return True
-        elif (node1 is None) or (node2 is None):
+        elif p is None or q is None:
             return False
-
-        bool1 = self.getRes(node1.left, node2.left)
-        bool2 = node1.val == node2.val
-        bool3 = self.getRes(node1.right, node2.right)
-        return bool1 and bool2 and bool3
+        else:
+            return p.val == q.val and \
+                   self.checkIsSameTree(p.left, q.left) and \
+                   self.checkIsSameTree(p.right, q.right)
         
 # @lc code=end
 

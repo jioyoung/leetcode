@@ -72,65 +72,51 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: List[str]
         """
-        '''
-        这样也通过了，，，真的蠢
-        先判断能不能breakable 和 139 一样 用dp
-        然后再用一次dp 记录parent 的index
-        最后把目标index组变成string
+        canBreak = self.canBreak(s, wordDict)
+        if canBreak == False:
+            return []
         
-        '''
-
-        if not self.breakable(s, wordDict):
-            return []
-        dp = {}
-        for i in range(len(s)):
-            if s[:i+1] in wordDict:
-                dp[i] = [[i]]
-
-        for i in range(1,len(s)):
-            if (i-1) in dp:
-                for j in range(i, len(s)):
-                    if s[i:j+1] in wordDict:
-                        if j not in dp:
-                            dp[j]=[]
-                        for alist in dp[i-1]:
-                            dp[j].append(alist+[j])
-                del dp[i-1]
-        if len(s)-1 not in dp:
-            return []
-        ret = []
-        for aList in dp[len(s)-1]:
-            temp=[]
-            num = len(aList)
-            for i in range(num):
-                if i == 0:
-                    temp.append(s[:aList[i]+1])
-                else:
-                    temp.append(s[aList[i-1]+1:aList[i]+1])
-            ret.append(' '.join(temp))
-        return ret
-
-    def breakable(self, s, wordDict):
-        """
-        :type s: str
-        :type wordDict: List[str]
-        :rtype: bool
-        """
-        '''
-        dynamic programming
-        dp[i] true is s[0:i-1] can be constructed
-        form the words in the dict
-        dp[j] = dp[i] && dp[i+1, j]
-        '''
-        dp = [True] + [False]*len(s)
+        validEnd = {}
+        validEnd[0] = [[0]]
+        
+        # [0,1,2,3,4,5]
+        
         for start in range(len(s)):
-            if dp[start]:
+            if start in validEnd:
                 for end in range(start+1, len(s)+1):
                     if s[start:end] in wordDict:
-                        dp[end] = True
+                        if end in validEnd:
+                            for oneList in validEnd[start]:
+                                validEnd[end].append(oneList+[end])
+                        else:
+                            validEnd[end] = []
+                            for oneList in validEnd[start]:
+                                validEnd[end].append(oneList+[end])
+                del validEnd[start]
+        
+        res = []
+        
+        for oneList in validEnd[len(s)]:
+            temp = []
+            for i in range(1, len(oneList)):
+                start = oneList[i-1]
+                end = oneList[i]
+                temp.append(s[start:end])
+
+            res.append(' '.join(temp))
+        return res
+    
+    def canBreak(self, s, wordDict):
+        validEnd= set([0])
+        for start in range(len(s)):
+            if start in validEnd:
+                for end in range(start+1, len(s)+1):
+                    if s[start:end] in wordDict:
+                        validEnd.add(end)
                         if end == len(s):
                             return True
-        return dp[-1]
-        
+        return False
+
+
 # @lc code=end
 

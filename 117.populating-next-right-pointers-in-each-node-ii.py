@@ -74,38 +74,36 @@ class Solution(object):
         :type root: Node
         :rtype: Node
         """
-        '''
-        if root is None:
-            return root
-        queue = []
-        queue.append(root)
-        while queue:
-            num_level = len(queue)
-            pre = queue[0]
-            for i in range(num_level):
-                cur = queue.pop(0)
-                if i > 0:
-                    pre.next = cur
-                pre = cur
-                if cur.left is not None:
-                    queue.append(cur.left)
-                if cur.right is not None:
-                    queue.append(cur.right)
-        return root
-        '''
         cur = root
-        while cur is not None:
-            dummy = tail = Node(0)
-            while cur is not None:
-                if cur.left is not None:
+        while cur:
+            dummy = Node(0)
+            tail = dummy
+            while cur:
+                if cur.left:
                     tail.next = cur.left
                     tail = tail.next
-                if cur.right is not None:
+                if cur.right:
                     tail.next = cur.right
                     tail = tail.next
                 cur = cur.next
             cur = dummy.next
         return root
-
+    
+#         if not root:
+#             return None
+#         nodeQueue = [root]
+#         while nodeQueue:
+#             level_len = len(nodeQueue)
+#             pre = None
+#             for i in range(level_len):
+#                 node = nodeQueue.pop(0)
+#                 if i > 0:
+#                     pre.next = node
+#                 pre = node
+#                 if node.left:
+#                     nodeQueue.append(node.left)
+#                 if node.right:
+#                     nodeQueue.append(node.right)
+#         return root 
 # @lc code=end
 

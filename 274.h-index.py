@@ -61,6 +61,9 @@ class Solution(object):
 
         # sort from high to low
         # find the largest index that index+1 <= cite[index] 
+        # 让其按被引次数从高到低排列，往下核对，
+        # 直到某篇论文的序号大于该论文被引次数，那个序号减去1就是h指数
+
 
         # sort from low to high
         # find the first index that length - index <= cite[index]

@@ -51,6 +51,8 @@ class Solution(object):
         """
         # binary search for mid count the num that is less 
         # than or equal to mid
+        # 原数组不是有序，但是我们知道重复的那个数字肯定是 1 到 n 中的某一个，
+        # 而 1,2...,n 就是一个有序序列。因此我们可以对 1,2...,n 进行二分查找。
         length = len(nums)
         left = 1
         right = length -1

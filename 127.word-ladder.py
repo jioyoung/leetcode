@@ -76,6 +76,46 @@ class Solution(object):
         :type wordList: List[str]
         :rtype: int
         """
-        
+        if endWord not in wordList:
+            return 0
+        wordQueue = []
+        alphaString = 'abcdefghijklmnopqrstuvwxyz'
+        wordQueue.append(beginWord)
+        visited = set([beginWord])
+        isFound = False
+        length=0
+        while wordQueue:
+            size = len(wordQueue)
+            subVisit = []
+            for i in range(size):
+                temp = wordQueue.pop(0)
+                for j in range(len(temp)):
+                    part1 = temp[:j]
+                    part2 = temp[j+1:]
+                    for ch in alphaString:
+                        if temp[j] != ch:
+                            neighbour = part1 + ch + part2
+                            if neighbour in wordList and neighbour not in visited:
+                                subVisit.append(neighbour)
+                                if neighbour == endWord:
+                                    isFound = True
+                                    break
+                                wordQueue.append(neighbour)
+                    if isFound:
+                        break  
+                if isFound:
+                    break  
+            if len(subVisit)>0:
+                length+=1
+            visited.update(subVisit)
+            if isFound:
+                length+=1
+                break
+
+        if isFound:
+            return length
+        else:
+            return 0
+             
 # @lc code=end
 

@@ -46,17 +46,3 @@ class Solution(object):
             all_max = max(cur_max, all_max)
         return all_max
 
-
-
-        # numsL = len(nums)
-        # if numsL==1:
-        #     return nums[0]
-        # cur_max = nums[0] # it is the largest sum of subarray that ends at i (including i)
-        # all_max = nums[0] # it is the largest sum of subarray till i (no need to include i)
-        # for i in range(1, numsL):
-        #     cur_max = max(cur_max+nums[i], nums[i])
-        #     all_max = max(cur_max, all_max)
-        # return all_max
-
-        
-

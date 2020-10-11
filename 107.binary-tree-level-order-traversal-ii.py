@@ -55,21 +55,20 @@ class Solution(object):
         """
         if not root:
             return []
+        nodeQueue = [root]
         res = []
-        queue = []
-        queue.append(root)
-        while queue:
-            sublist = []
-            level_num = len(queue)
-            for i in range(level_num):
-                node = queue.pop(0)
-                if node is not None:
-                    sublist.append(node.val)
-                    queue.append(node.left)
-                    queue.append(node.right)
-            if sublist:
-                res.insert(0, sublist)
-        return res
+        while nodeQueue:
+            subList = []
+            level_len = len(nodeQueue)
+            for i in range(level_len):
+                node = nodeQueue.pop(0)
+                subList.append(node.val)
+                if node.left:
+                    nodeQueue.append(node.left)
+                if node.right:
+                    nodeQueue.append(node.right)
+            res.append(subList)
+        return res[::-1]
 
 
         

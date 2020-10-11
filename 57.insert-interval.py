@@ -5,37 +5,31 @@
 #
 class Solution:
     def insert(self, intervals, newInterval):
+        if not intervals:
+            return [newInterval]
+        if not newInterval:
+            return intervals
         res = []
-        itval = []
-        for i in range(len(intervals)):
-            itval = intervals[i]
-            if itval[1] < newInterval[0]:
-                res.append(itval)
-            else:
-                if itval[0] > newInterval[1]:
-                    res.append(newInterval)
-                    res.extend(intervals[i:])
-                    return res
+        i = 0
+        j = 0
+        while i < len(intervals) or j < 1:
+            if i < len(intervals) and j < 1:
+                if intervals[i][0] <= newInterval[0]:
+                    candidate = intervals[i]
+                    i+=1
                 else:
-                    newInterval[0] = min(newInterval[0], itval[0])
-                    newInterval[1] = max(newInterval[1], itval[1])
-        res.append(newInterval)
+                    candidate = newInterval
+                    j+=1
+            elif i < len(intervals):
+                candidate = intervals[i]
+                i+=1
+            else:
+                candidate = newInterval
+                j+=1
+            if not res:
+                res.append(candidate)
+            elif res[-1][1] < candidate[0]:
+                res.append(candidate)
+            else:
+                res[-1][1] = max(res[-1][1], candidate[1])
         return res
-
-
-
-        # res = []
-        # for i in range(len(intervals)):
-        #     one_list = intervals[i]
-        #     if one_list[1]<newInterval[0]:
-        #         res.append(one_list)
-        #     else:
-        #         if one_list[0]>newInterval[1]:
-        #             res.append(newInterval)
-        #             return res + intervals[i:]
-        #         else:
-        #             newInterval[0] = min(newInterval[0], one_list[0])
-        #             newInterval[1] = max(newInterval[1], one_list[1])
-        # return res + [newInterval]
-
-#print(Solution().insert([[1,3],[6,9]],[2,5] ))

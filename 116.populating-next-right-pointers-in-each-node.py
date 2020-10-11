@@ -77,27 +77,10 @@ class Solution(object):
         :type root: Node
         :rtype: Node
         """
-
-        # if root is None:
-        #     return root
-        # pre = start = root
-        # cur = None
-        # while pre.left is not None:
-        #     if cur is None:
-        #         pre.left.next = pre.right
-        #         pre = start.left
-        #         cur = start.right
-        #         start = pre # update the start      
-        #     else:
-        #         pre.left.next = pre.right
-        #         pre.right.next = cur.left
-        #         pre = cur
-        #         cur = cur.next
-        # return root
-
         cur = root
         while cur:
-            tail = dummy = Node(0)
+            dummy = Node(0)
+            tail = dummy
             while cur:
                 if cur.left:
                     tail.next = cur.left
@@ -105,9 +88,26 @@ class Solution(object):
                 if cur.right:
                     tail.next = cur.right
                     tail = tail.next
-                cur = cur.next 
-            cur = dummy.next 
+                cur = cur.next
+            cur = dummy.next
         return root
+    
+#         if not root:
+#             return None
+#         nodeQueue = [root]
+#         while nodeQueue:
+#             level_len = len(nodeQueue)
+#             pre = None
+#             for i in range(level_len):
+#                 node = nodeQueue.pop(0)
+#                 if i > 0:
+#                     pre.next = node
+#                 pre = node
+#                 if node.left:
+#                     nodeQueue.append(node.left)
+#                 if node.right:
+#                     nodeQueue.append(node.right)
+#         return root 
 
 # @lc code=end
 

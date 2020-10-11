@@ -50,7 +50,10 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         if k ==1:
-            return [[n]]
+            if n<=9:
+                return [[n]]
+            else:
+                return []
         if k > 9:
             return []
         ret = []
@@ -71,7 +74,7 @@ class Solution(object):
         if k == 0 and n == 0:
             ret.append(list(recList))
             return 
-        if k == 0 and n!=0:
+        if k == 0 or n==0:
             return
         if left > right:
             return

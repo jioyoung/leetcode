@@ -75,24 +75,6 @@ class Solution(object):
                     count = 1
             s = newS
         return s
-
-        # s = '1'
-        # if n == 1:
-        #     return s
-        # for i in range(2,n+1):
-        #     count = 1
-        #     newS = []
-        #     s=s+'*'# add something at the end to make the loop simple
-        #     for j in range(len(s)-1):
-        #         if s[j]==s[j+1]:
-        #             count+=1
-        #         else:
-        #             newS.append(str(count))
-        #             newS.append(s[j])
-        #             count = 1
-        #     s = ''.join(newS)
-        
-        # return s
                 
 # @lc code=end
 

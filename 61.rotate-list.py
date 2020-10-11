@@ -53,25 +53,24 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        if not head or k == 0:
+        # get the length of the list and get the tail node
+        if not head:
             return head
-        nodeL = 0 # the length of the ListNode
-        tail = cur = head
-        while cur:
-            nodeL+=1
-            if not cur.next:
-                tail = cur 
+        tail = head
+        cur = head
+        length = 1
+        while tail.next:
+            length+=1
+            tail=tail.next
+        # tail is now the tail node
+        nstep = k % length
+        if nstep == 0:
+            return head
+        for i in range(length-nstep-1):
             cur = cur.next
-        rotate_idx = k%nodeL
-        if rotate_idx == 0:
-            # no need to have any operations
-            return head
-        rotate_node = head
-        for _ in range(nodeL-rotate_idx-1):
-            rotate_node = rotate_node.next
-        tail.next = head
-        head = rotate_node.next
-        rotate_node.next = None
-        return head
+        newHead = cur.next
+        tail.next= head
+        cur.next = None
+        return newHead
 # @lc code=end
 

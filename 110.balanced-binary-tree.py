@@ -67,51 +67,26 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
-        if not root:
-            return True
-        '''
-        count_left = self.maxDepth(root.left)
-        count_right = self.maxDepth(root.right)
-        if abs(count_left-count_right)>1:
+        depth = self.getDepth(root)
+        if depth == -1:
             return False
-
-        return self.isBalanced(root.left) and self.isBalanced(root.right) 
-        '''
-        return self.getDepth(root)!=-1
-
+        else:
+            return True
+        
+        
     def getDepth(self, root):
-        if root is None:
+        if not root:
             return 0
         left_depth = self.getDepth(root.left)
         if left_depth == -1:
             return -1
-        right_depth = self.getDepth(root.right)    
+        right_depth = self.getDepth(root.right)
         if right_depth == -1:
             return -1
         if abs(left_depth-right_depth) > 1:
             return -1
+        
         return max(left_depth, right_depth)+1
-
-
-    def maxDepth(self, root):
-        if not root:
-            return 0
-        count = 0
-        queue = []
-        queue.append(root)
-        while queue:
-            level_num = len(queue)
-            for i in range(level_num):
-                node = queue.pop(0)
-                if node is not None:
-                    if node.left is not None:
-                        queue.append(node.left)
-                    if node.right is not None:
-                        queue.append(node.right)
-            count+=1
-        return count
-
-
         
 # @lc code=end
 

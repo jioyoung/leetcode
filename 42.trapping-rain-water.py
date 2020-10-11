@@ -32,7 +32,7 @@ class Solution(object):
     def trap(self, height):
         if not height or len(height) < 3:
             return 0
-        '''
+
         left, right = 0, len(height)-1
         lmax, rmax = height[left], height[right]
         vol = 0
@@ -46,35 +46,23 @@ class Solution(object):
                 rmax = max(rmax, height[right])
                 vol+=rmax-height[right]
         return vol
-        '''
 
-        # stack  decreasing stack
-        stack = []
-        i = 0
-        result = 0
-        while i<len(height):
-            if (not stack) or height[i]<=height[stack[-1]]:
-                stack.append(i)
-                i+=1
-            else:
-                last = stack.pop()
-                if not stack:
-                    continue 
-                result += (min(height[stack[-1]], height[i]) - height[last])*(i-stack[-1]-1)
-        return result
+
+        # # stack  decreasing stack
         # stack = []
         # i = 0
-        # vol=0
-        # while i < len(height):
-        #     if (not stack) or (height[i]<=height[stack[-1]]):
+        # result = 0
+        # while i<len(height):
+        #     if (not stack) or height[i]<=height[stack[-1]]:
         #         stack.append(i)
         #         i+=1
         #     else:
         #         last = stack.pop()
         #         if not stack:
-        #             continue
-        #         vol+= (min(height[i], height[stack[-1]])-height[last])*(i-1-stack[-1]) 
-        # return vol
+        #             continue 
+        #         result += (min(height[stack[-1]], height[i]) - height[last])*(i-stack[-1]-1)
+        # return result
+
 
 
         

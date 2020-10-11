@@ -42,26 +42,27 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        rec_res = []
-        self.generateRes(n, k, 1, res, rec_res)
+        self.getCombine(n, k, 1, res, [])
         return res
-    
-    def generateRes(self, n, k, start, res, rec_res):
-        if len(rec_res)==k:
+        
+    def getCombine(self, n, k, start, res, rec_res):
+        if len(rec_res) == k:
             res.append(list(rec_res))
             return
-        if n-start+1<k-len(rec_res):
+        
+        if len(rec_res) + n - start + 1 < k:
+            return 
+        
+        if len(rec_res) + n - start + 1 == k:
+            res.append(rec_res + list(range(start, n+1)))
             return
-        if n-start+1==k-len(rec_res):
-            rec_res1 = rec_res+list(range(start,n+1))
-            res.append(list(rec_res1))
-
-            return
-
-        for i in range(start,n+1):
+        
+        for i in range(start, n+1):
             rec_res.append(i)
-            self.generateRes(n, k, i+1, res, rec_res)
-            rec_res.pop() 
-    
+            self.getCombine(n, k, i+1, res, rec_res)
+            rec_res.pop()
+        return
+
+
 # @lc code=end
 

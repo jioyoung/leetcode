@@ -68,6 +68,5 @@ class Solution(object):
                 root.right = root.left
                 root.left = None
                 root = root.right
-        
 # @lc code=end
 

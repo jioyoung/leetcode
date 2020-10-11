@@ -16,6 +16,7 @@ class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
         if root in (None, p, q):
             return root
+        # if root is none , it means p and q do not exist in the child nodes of root
         leftCommonAncestor = self.lowestCommonAncestor(root.left, p,q)
         rightCommonAncestor = self.lowestCommonAncestor(root.right, p,q)
         if leftCommonAncestor is None:

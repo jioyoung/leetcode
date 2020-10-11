@@ -49,16 +49,29 @@ class Solution(object):
         '''
         postorder: left right middle
         '''
-        ret = []
-        self.postorderHelp(root, ret)
-        return ret
+    #     ret = []
+    #     self.postorderHelp(root, ret)
+    #     return ret
 
-    def postorderHelp(self, root, retList):
-        if root is None:
-            return
-        self.postorderHelp(root.left, retList)
-        self.postorderHelp(root.right, retList)
-        retList.append(root.val)
-        
+    # def postorderHelp(self, root, retList):
+    #     if root is None:
+    #         return
+    #     self.postorderHelp(root.left, retList)
+    #     self.postorderHelp(root.right, retList)
+    #     retList.append(root.val)
+
+        if not root:
+            return []
+        nodeStack = [root]
+        res = []
+        while nodeStack:
+            node = nodeStack.pop()
+            if not node:
+                continue
+            res.append(node.val)
+            nodeStack.append(node.left)
+            nodeStack.append(node.right)
+        return res[::-1]
+
 # @lc code=end
 

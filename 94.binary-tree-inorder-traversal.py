@@ -45,10 +45,8 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        if not root:
-            return []
-        nodeStack = []
         cur = root
+        nodeStack = []
         res = []
         while cur or nodeStack:
             while cur:
@@ -58,9 +56,6 @@ class Solution(object):
             res.append(cur.val)
             cur = cur.right
         return res
-
-
-
 
     #     res = []
     #     self.getRes(root, res)

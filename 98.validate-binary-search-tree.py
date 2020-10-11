@@ -68,6 +68,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: bool
         """
+        # inorder of the BST is ascending
         if not root:
             return True
         pre = None
@@ -87,10 +88,6 @@ class Solution(object):
                     pre = cur.val
             cur = cur.right
         return True
-
-        
-    
-
 
 # @lc code=end
 

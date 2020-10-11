@@ -42,6 +42,26 @@ class Solution(object):
         :rtype: bool
         """
         return n%4!=0
+     
+    #     winMap = {}
+    #     return self.canIwin(n, winMap)
+    
+    # def canIwin(self, n, winMap):
+    #     if n== 0:
+    #         return False
+    #     if n < 4:
+    #         return True
+    #     if n in winMap:
+    #         return winMap[n]
+        
+    #     # I can get 1,2,3 stones
+    #     for i in range(1, 4):
+    #         if (self.canIwin(n-i-1, winMap) and self.canIwin(n-i-2, winMap) and self.canIwin(n-i-3, winMap)):
+    #             winMap[n] = True
+    #             return True
+    #         else:
+    #             winMap[n] = False
+    #             return False
         
 # @lc code=end
 

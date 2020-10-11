@@ -51,16 +51,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: TreeNode
         """
-        return self.getTree(nums, 0, len(nums))
-
-    def getTree(self, nums, start, end):    # end is not included
+        return self.getTree(nums, 0, len(nums)) 
+        # the end is not inclusive
+    
+    def getTree(self, nums, start, end):
         if start == end:
             return None
-        mid = start + (end-start)//2
-        node = TreeNode(nums[mid])
-        node.left = self.getTree(nums, start, mid)
-        node.right = self.getTree(nums, mid+1, end)
-        return node
+        mid = (start+end)//2
+        root = TreeNode(nums[mid])
+        root.left = self.getTree(nums, start, mid)
+        root.right = self.getTree(nums, mid+1, end)
+        return root
 
         
 # @lc code=end

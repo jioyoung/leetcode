@@ -48,9 +48,11 @@ class Solution(object):
         length = len(nums)
         dp_increase = [None]*length
         dp_len = 0
+        # dp[i] 表示长度为 i + 1 的所有上升子序列的末尾的最小值。
         for i in range(length):
             left = 0
             right = dp_len-1
+            # 寻找 dp 中第一个大于等于新来的数的位置
             while left<=right:
                 mid = (left+right)//2
                 if dp_increase[mid]>=nums[i]:

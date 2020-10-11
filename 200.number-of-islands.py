@@ -62,12 +62,8 @@ class Solution(object):
             for j in range(ncol):
                 if grid[i][j]=='1':
                     count+=1
-                    self.mark_one_BFS(i, j, nrow, ncol, grid)
-                    '''
-                    bfs dfs 都可以
-                    # self.mark_one_DFS(i, j, nrow, ncol, grid) bfs
-                    '''
-        
+                    self.mark_one_DFS(i, j, nrow, ncol, grid) bfs
+                   
         return count
         
     def mark_one_DFS(self, iRow, iCol, nRow, nCol, matrix):
@@ -78,27 +74,5 @@ class Solution(object):
         self.mark_one_DFS(iRow+1, iCol, nRow, nCol, matrix)
         self.mark_one_DFS(iRow, iCol-1, nRow, nCol, matrix)
         self.mark_one_DFS(iRow, iCol+1, nRow, nCol, matrix)
-    
-    def mark_one_BFS(self, iR, iC, nR, nC, matrix):
-        queue = []
-        queue.append(iR*nC + iC)
-        while queue:
-            cur = queue.pop(0)
-            row = cur // nC
-            col = cur % nC
-            if matrix[row][col]=='2':
-                #visited
-                continue
-            matrix[row][col]='2'
-            if row > 0 and matrix[row-1][col]=='1':
-                queue.append((row-1)*nC+col)
-            if row < nR-1 and matrix[row+1][col]=='1':
-                queue.append((row+1)*nC+col)
-            if col > 0 and matrix[row][col-1]=='1':
-                queue.append((row)*nC+col-1)
-            if col < nC-1 and matrix[row][col+1]=='1':
-                queue.append((row)*nC+col+1)
-
-
 # @lc code=end
 

@@ -33,50 +33,41 @@ class Solution(object):
         :rtype: List[str]
         """
         res = []
-        temp = []
-        self.generateRes(0, s, res, temp, 0)
-        #self.dfs(s, 0, "", res)
+        self.getIpAddresses(s, 0, res, [], 0)
         return res
         
-    def generateRes(self, start, s, res, temp, count):
-        if len(s)-start > (4-count)*3:
+    def getIpAddresses(self, s, index, res, rec_res, count):
+        if index == len(s):
+            if count == 4:
+                res.append(''.join(rec_res)[:-1])
             return
+        
+        # stopping condition 2
+        if len(s) - index > (4-count)*3:
+            return 
+        
+        # stopping condition 3
+        if count > 4:
+            return 
+        
+        
+        rec_res.append(s[index]+'.')
+        self.getIpAddresses(s, index+1, res, rec_res, count+1)
+        rec_res.pop()
+        
+        if s[index] == '0':
+            return # 0 can not be used as a head of a string
+        
+        if index + 1 < len(s):
+            rec_res.append(s[index:index+2]+'.')
+            self.getIpAddresses(s, index+2, res, rec_res, count+1)
+            rec_res.pop()
+        
+        if index +2 < len(s) and int(s[index:index+3])<=255:
+            rec_res.append(s[index:index+3]+'.')
+            self.getIpAddresses(s, index+3, res, rec_res, count+1)
+            rec_res.pop()            
             
-        if start == len(s):
-            if count==4:
-                res.append(''.join(temp[0:-1]))
-            return
-            
-        if start > len(s) or count == 4: 
-            return
-
-        # add one 
-        temp.append(s[start])
-        temp.append('.')
-        self.generateRes(start+1, s, res, temp, count+1)
-        temp.pop()
-        temp.pop()
-
-        if s[start]=='0':
-            return
-
-        if start + 2 <= len(s):
-            temp.append(s[start:start+2])
-            temp.append('.')
-            self.generateRes(start+2, s, res, temp, count+1)
-            temp.pop()
-            temp.pop()
-        
-        if start + 3 <= len(s) and int(s[start:start+3])<=255:
-            temp.append(s[start:start+3])
-            temp.append('.')
-            self.generateRes(start+3, s, res, temp, count+1)
-            temp.pop()
-            temp.pop()
-
-
-        
-
-        
+        return   
 # @lc code=end
 

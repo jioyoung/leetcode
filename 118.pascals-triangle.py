@@ -56,6 +56,5 @@ class Solution(object):
             for j in range(1, i-1):
                 temp[j] = res[-1][j]+res[-1][j-1]
             res.append(temp)
-        return res
-print(Solution().generate(5))       
+        return res    
 

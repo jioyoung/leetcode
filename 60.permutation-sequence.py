@@ -82,34 +82,5 @@ class Solution(object):
             k = (k-1) % fact_arr[numsL-2] + 1 # 1 needs to be added since k starts from 1
             self.getRes(nums, k, res, fact_arr)
 
-
-
-    #     # if n == 1 then [0]*(n-1) bug; seperately consider it
-    #     if n==1:
-    #         return '1'
-    #     fact_arr = [0]*(n-1)
-    #     fact_arr[0]=1
-    #     for i in range(1, n-1):
-    #         fact_arr[i]=(i+1)*fact_arr[i-1]
-    #     nums = list(range(1,n+1))
-    #     res = []
-    #     # int list to string: every time append a str(int) then at last ''.join(list)
-    #     self.getRes(nums, k, res,fact_arr)
-    #     return ''.join(res)
-    
-    # def getRes(self, nums, k, res,fact_arr):
-    #     numsL = len(nums)
-    #     if numsL==1:
-    #         res.append(str(nums[0]))
-    #         return
-    #     group = (k-1)//fact_arr[numsL-2] # the corresponding index numsL-2
-    #     res.append(str(nums.pop(group)))
-    #     remain = (k-1) % fact_arr[numsL-2]
-    #     k = remain + 1
-    #     self.getRes(nums, k, res, fact_arr)
-        
-        
-        
-        
 # @lc code=end
 

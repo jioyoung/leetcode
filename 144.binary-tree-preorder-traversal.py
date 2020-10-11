@@ -49,15 +49,28 @@ class Solution(object):
         '''
         preorder: root left right
         '''
-        ret = []
-        stack = [root]
-        while stack:
-            node = stack.pop()
-            if node:
-                ret.append(node.val)
-                stack.append(node.right)
-                stack.append(node.left)
-        return ret
+        # ret = []
+        # stack = [root]
+        # while stack:
+        #     node = stack.pop()
+        #     if node:
+        #         ret.append(node.val)
+        #         stack.append(node.right)
+        #         stack.append(node.left)
+        # return ret
+
+        if not root:
+            return []
+        nodeStack = [root]
+        res = []
+        while nodeStack:
+            node = nodeStack.pop()
+            if not node:
+                continue
+            res.append(node.val)
+            nodeStack.append(node.right)
+            nodeStack.append(node.left)
+        return res
 
 
         

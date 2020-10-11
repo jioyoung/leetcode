@@ -60,27 +60,26 @@ class Solution(object):
         """
         if not root:
             return []
+        nodeQueue = [root]
+        sumQueue = [root.val]
+        visitQueue = [[root.val]]
         res = []
-        queue = [root]
-        queueS = [root.val]
-        visit = [[root.val]]
-        while queue:
-            level_n = len(queue)
-            for i in range(level_n):
-                node=queue.pop(0)
-                currentS = queueS.pop(0)
-                temp = visit.pop(0)
-                if node.left is not None:
-                    queue.append(node.left)
-                    queueS.append(node.left.val + currentS)
-                    visit.append(temp+[node.left.val])
-                if node.right is not None:
-                    queue.append(node.right)
-                    queueS.append(node.right.val + currentS)
-                    visit.append(temp+[node.right.val])
-                    continue
-                if node.left is None and node.right is None and currentS == sum:
-                    res.append(temp)
+        while nodeQueue:
+            levelLen = len(nodeQueue)
+            for i in range(levelLen):
+                node = nodeQueue.pop(0)
+                currentSum = sumQueue.pop(0)
+                tempPath = visitQueue.pop(0)
+                if node.left:
+                    nodeQueue.append(node.left)
+                    sumQueue.append(node.left.val+currentSum)
+                    visitQueue.append(tempPath+[node.left.val])
+                if node.right:
+                    nodeQueue.append(node.right)
+                    sumQueue.append(node.right.val+currentSum)
+                    visitQueue.append(tempPath+[node.right.val])
+                if node.left is None and node.right is None and currentSum == sum:
+                    res.append(tempPath)
         return res
 
 # @lc code=end

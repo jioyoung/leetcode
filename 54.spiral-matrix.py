@@ -75,33 +75,3 @@ class Solution(object):
                 c_low+=1
                 direct = 0
         return result
-
-# print(Solution().spiralOrder([[1,2,3],[4,5,6],[7,8,9]]))
-
-    #     if not matrix:
-    #         return
-    #     result = []
-    #     self.one_loop(matrix, 0, len(matrix)-1, 0, len(matrix[0])-1, result)
-    #     return result
-
-    # def one_loop(self, matrix, r_l, r_h, c_l, c_h, result):
-    #     if r_l > r_h or c_l > c_h:
-    #         return
-    #     #------>
-    #     for i in range(c_l, c_h+1):
-    #         result.append(matrix[r_l][i])
-    #     #----- down
-    #     for i in range(r_l+1, r_h+1):
-    #         result.append(matrix[i][c_h])
-    #     #----- left
-    #     if r_l < r_h:
-    #         for i in range(c_h-1, c_l-1, -1):
-    #             result.append(matrix[r_h][i])
-    #     #----- up
-    #     if c_l < c_h:        
-    #         for i in range(r_h-1, r_l,-1):
-    #             result.append(matrix[i][c_l])
-    #     self.one_loop(matrix, r_l+1, r_h-1,c_l+1,c_h-1, result)  
-
-        
-

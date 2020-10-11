@@ -64,18 +64,14 @@ class Solution(object):
         return self.getRes(root.left, root.right)
 
     def getRes(self, node1, node2):
-        if ((node1 is None) and (node2 is not None)):
-            return False
-        if ((node2 is None) and (node1 is not None)):
-            return False
-
-        if ((node2 is None) and (node1 is None)):
+        if node1 is None and node2 is None:
             return True
-
-        if node1.val!=node2.val:
+        elif node1 is None or node2 is None:
             return False
         else:
-            return self.getRes(node1.left, node2.right) and self.getRes(node1.right, node2.left)
+            return node1.val==node2.val and \
+                    self.getRes(node1.left, node2.right) and \
+                    self.getRes(node1.right, node2.left)
             
         
         

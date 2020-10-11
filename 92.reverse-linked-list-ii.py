@@ -41,37 +41,35 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        if m==n:
-            return head
-        dummy = ListNode(0)
-        dummy.next = head
-        pre = dummy
-        count = 0
+        count = 1
+        dummyHead = ListNode(0)
+        dummyHead.next = head
+        slow = dummyHead
+        if m == n:
+            return dummyHead.next
         while head:
-            count+=1
-            if count == m:
-                left = pre
+            if count < m:
+                head = head.next
+                slow = slow.next
+                count += 1
+            elif count == m:
+                left = slow
                 right = head
-            
-            if m<count<n:
+                count+=1
+                head = head.next
+                slow = slow.next
+            elif count > m and count < n:
                 temp = head.next
-                head.next=pre
-                pre = head
+                head.next = slow
+                slow = head
                 head = temp
-                continue                
-
-            
-            if count == n:
-                right.next=head.next
-                head.next=pre
-                left.next=head
+                count+=1
+            elif count == n:
+                right.next = head.next
+                left.next = head
+                head.next = slow
                 break
-            pre=pre.next
-            head=head.next
-        return dummy.next
+        return dummyHead.next
 
-                
-
-        
 # @lc code=end
 

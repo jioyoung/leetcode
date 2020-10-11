@@ -53,22 +53,21 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        if not root:
+            return []
+        nodeQueue = [root]
         res = []
-        if root is None:
-            return res
-        queue = []
-        queue.append(root)
-        while queue:
-            sublist = []
-            level_len = len(queue)
+        while nodeQueue:
+            level_len = len(nodeQueue)
+            subList = []
             for i in range(level_len):
-                node = queue.pop(0)
-                if node is not None:
-                    sublist.append(node.val)
-                    queue.append(node.left)
-                    queue.append(node.right)
-            if sublist:        
-                res.append(sublist)
+                node = nodeQueue.pop(0)
+                subList.append(node.val)
+                if node.left is not None:
+                    nodeQueue.append(node.left)
+                if node.right is not None:
+                    nodeQueue.append(node.right)
+            res.append(subList)
         return res
 
 # @lc code=end

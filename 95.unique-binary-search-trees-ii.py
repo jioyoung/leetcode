@@ -59,6 +59,7 @@ class Solution(object):
         if n == 0:
             return res
         dp = [None]*(n+1)
+        # dp[i] means the BST for length == i
         dp[0] = []
         dp[0].append(None)
         for i in range(1, n+1):
@@ -82,41 +83,6 @@ class Solution(object):
         newnode.left = self.clone(node.left, diff)
         newnode.right = self.clone(node.right, diff)
         return newnode
-    
-
-    # def generateTrees(self, n):
-    #     """
-    #     :type n: int
-    #     :rtype: List[TreeNode]
-    #     """ 
-    #     res = []
-    #     if n == 0:
-    #         return res
-    #     return self.getRes(1, n)
-
-    # def getRes(self, start, end):
-    #     res = []
-    #     if start > end:
-    #         res.append(None)
-    #         return res
-        
-    #     if start==end:
-    #         treenode = TreeNode(start)
-    #         res.append(treenode)
-    #         return res
-
-    #     for i in range(start, end+1):
-    #         lefttrees = self.getRes(start, i-1)
-    #         righttrees = self.getRes(i+1, end)
-    #         for left in lefttrees:
-    #             for right in righttrees:
-    #                 treenode = TreeNode(i)
-    #                 treenode.left = left
-    #                 treenode.right = right
-    #                 res.append(treenode)
-
-    #     return res
-
         
 # @lc code=end
 

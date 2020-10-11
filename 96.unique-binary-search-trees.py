@@ -50,6 +50,5 @@ class Solution(object):
                 n_right = i - root
                 dp[i]+=dp[n_left]*dp[n_right]
         return dp[n]
-        
 # @lc code=end
 

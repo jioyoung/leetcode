@@ -49,6 +49,8 @@ class Solution(object):
         # for i in range(len(nums)):
         #     result = result ^ i ^ nums[i]
         # return result
+
+        # Solution 2
         # return (len(nums)+1)*len(nums)/2 - sum(nums)
 
         res = len(nums)

@@ -45,38 +45,15 @@ class Solution(object):
         """
 
         # first sort and then merge 
-        if len(intervals)<=1:
-            return intervals
-        intervals.sort(key = lambda x:x[0])
-        result = [intervals[0]]
+        if not intervals:
+            return []
+        intervals.sort(key= lambda x: x[0])
+        res = [intervals[0]]
         for i in range(1, len(intervals)):
-            if intervals[i][0] <= result[-1][1]:
-                if result[-1][1]<=intervals[i][1]:
-                    result[-1][1] = intervals[i][1]
+            if intervals[i][0] > res[-1][1]:
+                res.append(intervals[i])
             else:
-                result.append(intervals[i])
-        return result
-    
-
-
-
-        # if len(intervals)<=1:
-        #     return intervals
-        # intervals.sort(key = lambda x:x[0])
-        # i = 1
-        # while 1:
-        #     if intervals[i][0] <= intervals[i-1][1]:
-        #         if intervals[i][1]>intervals[i-1][1]:
-        #             intervals[i-1][1] = intervals[i][1]
-        #         del intervals[i]
-        #     else:
-        #         i+=1
-        #     if i == len(intervals):
-        #         return intervals
-
-
-
-
-        
+                res[-1][1] = max(res[-1][1], intervals[i][1])
+        return res
 # @lc code=end
 

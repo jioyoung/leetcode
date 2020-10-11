@@ -51,20 +51,19 @@ class Solution(object):
         """
         if not root:
             return 0
-        count = 0
-        queue = []
-        queue.append(root)
-        while queue:
-            level_num = len(queue)
-            for i in range(level_num):
-                node = queue.pop(0)
-                if node is not None:
-                    if node.left is not None:
-                        queue.append(node.left)
-                    if node.right is not None:
-                        queue.append(node.right)
-            count+=1
-        return count 
+        nodeQueue = [root]
+        depth = 0
+        while nodeQueue:
+            level_len = len(nodeQueue)
+            for i in range(level_len):
+                node = nodeQueue.pop(0)
+                if node.left:
+                    nodeQueue.append(node.left)
+                if node.right:
+                    nodeQueue.append(node.right)
+            
+            depth+=1
+        return depth
         
 # @lc code=end
 

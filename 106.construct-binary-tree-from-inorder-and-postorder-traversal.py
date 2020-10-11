@@ -49,12 +49,16 @@ class Solution(object):
         :type postorder: List[int]
         :rtype: TreeNode
         """
-        if not inorder:
-            return None
-        index = inorder.index(postorder.pop())
-        root = TreeNode(inorder[index])
-        root.right = self.buildTree(inorder[index+1:],postorder)        
-        root.left = self.buildTree(inorder[:index], postorder)
-
+        root = self.getTree(inorder, postorder)
         return root
+    
+    def getTree(self, inorder, postorder):
+        if inorder:
+            index = inorder.index(postorder.pop())
+            root = TreeNode(inorder[index])
+            root.right = self.getTree(inorder[index+1:], postorder)
+            root.left = self.getTree(inorder[:index], postorder)
+            return root
+        else:
+            return None
 

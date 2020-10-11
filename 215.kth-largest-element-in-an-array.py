@@ -88,7 +88,5 @@ class Solution(object):
                 heapq.heappush(h, smallest)
         return heapq.heappop(h)
 
-
-        
 # @lc code=end
 
