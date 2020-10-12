@@ -43,4 +43,45 @@ class Solution:
                 else:
                     obstacleGrid[i][j] = (obstacleGrid[i-1][j] + obstacleGrid[i][j-1])
         return obstacleGrid[-1][-1]
+
+'''
+    nRow = len(obstacleGrid)
+        if nRow == 0:
+            return 0
+        nCol = len(obstacleGrid[0])
+        if nCol==0:
+            return 0
+        
+        if obstacleGrid[0][0] ==1:
+            return 0
+        
+        if nRow == 1 or nCol == 1:
+            tot_sum = sum([sum(oneList) for oneList in obstacleGrid])
+            if tot_sum > 0:
+                return 0
+        
+        first_row = [0]*nCol
+        for i in range(nCol):
+            if obstacleGrid[0][i] == 0:
+                first_row[i] = 1
+            else:
+                break
+        dp_row = [0]*nRow
+        for i in range(nRow):
+            if obstacleGrid[i][0] == 0:
+                dp_row[i] = 1
+            else:
+                break
+        
+        for j in range(1, nCol):
+            for i in range(1, nRow):
+                if obstacleGrid[i][j] == 1:
+                    dp_row[i] = 0
+                else:
+                    if i == 1:
+                        dp_row[i]+=first_row[j]
+                    else:
+                        dp_row[i]+=dp_row[i-1]
+        return dp_row[-1]
+'''
                     

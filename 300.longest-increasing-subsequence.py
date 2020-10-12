@@ -43,6 +43,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # dp_increase[i] 表示长度为 i + 1 的所有上升子序列的末尾的最小值。
+        # the minimum value of the last position for all increasing
+        # subsequences that have length == i+1
+        # 复杂度 O(nlog(n))
         if not nums:
             return 0
         length = len(nums)
