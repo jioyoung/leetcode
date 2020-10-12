@@ -57,17 +57,13 @@ class Solution(object):
         """
         :type n: int
         :rtype: str
-        26进制 但是是从1到26 不是0到25 所以如果余数等于0 要处理一哈
         """
-        res =''
-        while n>0:
-            r = n%26
-            if r == 0:
-                r = 26
-                n = n-1
-            res = chr(ord('A')+r-1)+res
-            n = n//26
-        return res
+        res = []
+        while n > 0:
+            remain = (n-1)%26
+            res.append(chr(ord('A') + remain))
+            n = (n-1)//26
+        return ''.join(res[::-1])
         
 # @lc code=end
 

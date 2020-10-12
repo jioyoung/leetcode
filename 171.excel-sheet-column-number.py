@@ -62,7 +62,8 @@ class Solution(object):
         """
         res = 0
         for i in range(len(s)):
-            res = 26 * res + (ord(s[i])-ord('A')+1)
+            val = ord(s[i])-ord('A')+1
+            res = res*26+val
         return res
 
 

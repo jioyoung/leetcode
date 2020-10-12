@@ -51,6 +51,26 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        '''
+        用 dp[i][k] 表示前i天最多交易k次的最高收益，那么 dp[i][k] 怎么通过之前的解求出来呢？
+
+        首先第 i 天可以什么都不操作，今天的最高收益就等于昨天的最高收益
+
+        dp[i][k] = dp[i-1][k]
+
+        此外，为了获得更大收益我们第 i 天也可以选择卖出，既然选择卖出，那么在0到 i-1 天就要选择一天买入。多选择了一次买入，那在买入之前已经进行了 k-1 次买卖。
+
+        在第 0 天买入，收益就是 prices[i] - prices[0]
+
+        在第 1 天买入，收益就是 prices[i] - prices[1] + dp[0][k-1]，多加了前一天的最大收益
+
+        在第 2 天买入，收益就是 prices[i] - prices[2] + dp[1][k-1]，多加了前一天的最大收益
+
+        ...
+
+        在第 j 天买入，收益就是 prices[i] - prices[j] + dp[j-1][k-1]，多加了前一天的最大收益
+
+        '''
         length = len(prices)
         if length<=1 or k == 0:
             return 0

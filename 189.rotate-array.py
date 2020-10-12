@@ -54,17 +54,21 @@ class Solution(object):
         :type k: int
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        if k % len(nums)==0:
-            return nums
+        if not nums:
+            return
+        length = len(nums)
+        if k%length == 0:
+            return
+        start = index = 0
         cur = nums[0]
-        index = start = 0
-        for i in range(len(nums)):
-            index = (index + k)%len(nums)
+        k = k%length
+        for i in range(length):
+            index = (index + k)%length
             cur, nums[index] = nums[index], cur
             if index == start:
                 start+=1
                 index = start
-                cur = nums[index]
+                cur = nums[start]
 
         
 # @lc code=end

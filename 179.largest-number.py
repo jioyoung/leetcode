@@ -7,27 +7,31 @@
 # @lc code=start
 class Solution:
     def largestNumber(self, nums: List[int]) -> str:
+        # sort the array based on a scheme
+        # bubble sort with flag
+        
         for i in range(len(nums)):
             nums[i] = str(nums[i])
-        pos = len(nums)
-        while pos > 0:
-            k = pos
-            pos = 0
-            for j in range(1, k):
-                if self.compare2nums(nums[j-1], nums[j]):
-                    nums[j-1], nums[j] = nums[j], nums[j-1]
-                    pos = j
-        res = ''.join(nums)
-        if res[0] == '0':
+        
+        end = len(nums)
+        
+        while end:
+            oldEnd = end
+            end = 0
+            for i in range(1, oldEnd):
+                if self.compareTwoStrs(nums[i-1], nums[i]):
+                    nums[i-1], nums[i] = nums[i], nums[i-1]
+                    end = i
+        if int(nums[0]) == 0:
             return '0'
         else:
-            return res
-        
-
-    def compare2nums(self, strNum1, strNum2):
-        string1 = strNum1 + strNum2
-        string2 = strNum2 + strNum1
-        if string1 < string2:
+            return ''.join(nums)
+                
+                   
+    def compareTwoStrs(self, s1, s2):
+        combineS_1 = s1+s2
+        combineS_2 = s2+s1
+        if combineS_1 < combineS_2:
             return 1
         else:
             return 0

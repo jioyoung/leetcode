@@ -6,33 +6,6 @@
 #
 
 # @lc code=start
-
-'''
-牛逼
-异或运算的几个相关公式：
-
-1. a ^ a = 0
-2. a ^ b = b ^ a
-3. a ^ b ^ c = a ^ (b ^ c) = (a ^ b) ^ c
-4. d = a ^ b ^ c 可以推出 a = d ^ b ^ c
-5. a ^ b ^ a = b
- 
-本题可以抽象成：数组里有x1, x2 ... xn（每个出现2次），和y（只出现一次），得出y的值。
-由公式2可知，数组里面所有数异或的结果等于 x1^x1^x2^x2^...^xn^xn^y
-由公式3可知，上式等于(x1^x1)^(x2^x2)^...^(xn^xn)^y
-由公式1可知，上式等于(0)^(0)^...(0)^y = y
-————————————————
-版权声明：本文为CSDN博主「隐之狐」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
-原文链接：https://blog.csdn.net/hf81970/article/details/13630769
-'''
-
-class Solution:
-    def singleNumber(self, nums):
-        for i in range(1, len(nums)):
-            nums[i] ^=nums[i-1]
-    
-        return nums[-1]
-=======
 # @lc app=leetcode id=136 lang=python
 #
 # [136] Single Number
@@ -78,6 +51,27 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+
+        '''
+        牛逼
+        异或运算的几个相关公式：
+
+        1. a ^ a = 0
+        2. a ^ b = b ^ a
+        3. a ^ b ^ c = a ^ (b ^ c) = (a ^ b) ^ c
+        4. d = a ^ b ^ c 可以推出 a = d ^ b ^ c
+        5. a ^ b ^ a = b
+         
+        本题可以抽象成：数组里有x1, x2 ... xn（每个出现2次），和y（只出现一次），得出y的值。
+        由公式2可知，数组里面所有数异或的结果等于 x1^x1^x2^x2^...^xn^xn^y
+        由公式3可知，上式等于(x1^x1)^(x2^x2)^...^(xn^xn)^y
+        由公式1可知，上式等于(0)^(0)^...(0)^y = y
+        ————————————————
+        版权声明：本文为CSDN博主「隐之狐」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。
+        原文链接：https://blog.csdn.net/hf81970/article/details/13630769
+        '''
+
+
         answer = nums[0]
         for i in range(1, len(nums)):
             answer ^=nums[i]

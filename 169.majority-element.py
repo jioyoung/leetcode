@@ -37,12 +37,31 @@
 # @lc code=start
 class Solution(object):
     def majorityElement(self, nums):
+
+        '''
+        投票法。。就是省空间而已 
+        遇到自己数量就加一 不然就减一
+        数量变成零 就新的一组
+        '''
+        major = nums[0]
+        count = 1
+        for i in range(1, len(nums)):
+            if nums[i] == major:
+                count+=1
+            else:
+                if count == 0:
+                    major = nums[i]
+                    count=1
+                else:
+                    count-=1
+        return major
+
         """
         :type nums: List[int]
         :rtype: int
         hashMap最简单，，
         投票法 group转换
-        """
+
         if len(nums)==1:
             return nums[0]
         numDic = {}
@@ -55,29 +74,7 @@ class Solution(object):
                     return oneNum
             else:
                 numDic[oneNum]=1
-            
-        
-
-
-
-        '''
-        投票法。。就是省空间而已 
-        遇到自己数量就加一 不然就减一
-        数量变成零 就新的一组
-        group = nums[0]
-        count = 1
-        for i in range(1, len(nums)):
-            if count == 0:
-                group = nums[i]
-                count = 1
-                continue
-            if nums[i] == group:
-                count+=1
-            else:
-                count-=1
-        return group
-        '''
-
+        """
         
 # @lc code=end
 
