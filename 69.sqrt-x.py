@@ -50,17 +50,14 @@ class Solution(object):
         right = x
         if x > 4:
             right = x//2
-        while left <=right:
+        while left <= right:
             mid = (left+right)//2
             square = mid*mid
-            if square == x:
-                return mid
-            elif square < x:
-                left = mid+1
+            if square <= x:
+                left = mid + 1
             else:
-                right = mid - 1
-
-        return left-1
+                right = mid -1 
+        return right
 
         
 # @lc code=end
