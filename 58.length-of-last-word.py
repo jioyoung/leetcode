@@ -39,17 +39,15 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        s = s.rstrip()
-        if not s:
+
+        newS = s.rstrip()
+        if not newS:
             return 0
+        i = len(newS) -1 
         count = 0
-        loc = len(s)-1
-        while loc >= 0:
-            if s[loc]!=' ':
-                count+=1
-                loc-=1
-            else:
-                return count
+        while i >= 0 and newS[i].isalpha():
+            i-=1
+            count+=1
         return count
 
         # word_start = 0

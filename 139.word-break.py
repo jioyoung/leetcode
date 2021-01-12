@@ -63,13 +63,14 @@ class Solution(object):
         """
         
         validEnd = set([0])
+        # end is not included
         for i in range(len(s)):
             if i in validEnd:
                 for end in range(i+1, len(s)+1):
                     if s[i:end] in wordDict:
-                        validEnd.add(end)
                         if end == len(s):
                             return True
+                        validEnd.add(end)
         return False
 # @lc code=end
 

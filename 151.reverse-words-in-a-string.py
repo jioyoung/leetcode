@@ -69,6 +69,6 @@ class Solution(object):
         :rtype: str
         """
         sentence = s.split()
-        return ' '.join(sentence[::-1]) 
+        return ' '.join(sentence[::-1])
 # @lc code=end
 

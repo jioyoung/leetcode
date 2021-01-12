@@ -39,35 +39,28 @@ class Solution(object):
         :type b: str
         :rtype: str
         """
-        res = []
-        id_a = len(a)-1
-        id_b = len(b)-1
+        idx_a = len(a)-1
+        idx_b = len(b)-1
+        value = 0
         carry = 0
-        while id_a>=0 or id_b>=0:
-            if id_a >=0:
-                c_a = int(a[id_a])
-            else:
-                c_a = 0 
-            if id_b >=0:
-                c_b = int(b[id_b])
-            else:
-                c_b = 0 
-            sum_c_ab = c_a+c_b+carry
-            if sum_c_ab > 1:
+        res = ''
+        while idx_a >= 0 or idx_b >=0:
+            value = carry # value = carry, iniliaze it to zero + carry
+            if idx_a>=0:
+                value+=int(a[idx_a])
+                idx_a-=1
+            if idx_b>=0:
+                value+=int(b[idx_b])
+                idx_b-=1
+            if value > 1:
+                value -= 2
                 carry = 1
             else:
                 carry = 0
-            res.append(str(sum_c_ab % 2))
-            id_a-=1
-            id_b-=1
-        if carry == 1:
-            res.append('1')
-        res.reverse()
-        return ''.join(res)
-        # 不可以直接 ''.join(res.reverse())
-        # res.reverse() 改变的是 res本身
-            
-            
+            res = str(value) + res
+        if carry:
+            res = '1' + res
+        return res
         
 # @lc code=end
 

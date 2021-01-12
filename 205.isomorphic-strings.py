@@ -53,31 +53,22 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
+
         if len(s)!=len(t):
             return False
-        if len(s)==0:
-            return True
-        nums1 = self.convert(s)
-        nums2 = self.convert(t)
-        if nums1 == nums2:
-            return True
-        else:
-            return False
-    
-    def convert(self, strs):
-        nums = []
-        visit = {}
-        i = 0
-        for c in strs:
-            if c not in visit:
-                visit[c] = str(i)
-                nums.append(str(i))
-                i+=1
+        charDict = {}
+        for i in range(len(s)):
+            if s[i] in charDict:
+                if t[i] != charDict[s[i]]:
+                    return False
+                else:
+                    continue
             else:
-                nums.append(str(visit[c]))
-        return int(''.join(nums))
-
-
+                if t[i] in charDict.values():
+                    return False
+                else:
+                    charDict[s[i]] = t[i]
+        return True
 
         
 # @lc code=end

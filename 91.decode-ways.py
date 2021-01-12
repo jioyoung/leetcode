@@ -51,26 +51,22 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        visit = dict()
-        return self.countDecodings(0, s, len(s), visit)
-        
-    
-    def countDecodings(self, index, s, sLen, visit):
-        if index == sLen:
+        visit = {}
+        return self.countDecodings(s, len(s), visit, 0)
+
+    def countDecodings(self, s, sLen, visit, idx):
+        if idx == sLen:
             return 1
-        if s[index]=='0':
+        if s[idx] == '0':
             return 0
-        # select index
-        if index in visit:
-            return visit[index] 
-        a = self.countDecodings(index+1, s, sLen, visit)
-        b = 0
-        if index < sLen-1:
-            if 10*(ord(s[index])-ord('0'))+(ord(s[index+1])-ord('0'))<=26:
-                b = self.countDecodings(index+2, s, sLen, visit)
-        
-        visit[index] = a+b
-        return a+b
+        if idx in visit:
+            return visit[idx]
+        count1 = self.countDecodings(s, sLen, visit, idx+1)
+        count2 = 0
+        if idx < sLen-1 and int(s[idx:idx+2])<=26:
+            count2 = self.countDecodings(s, sLen, visit, idx+2)
+        visit[idx] = count1+count2
+        return visit[idx]
 
             
         

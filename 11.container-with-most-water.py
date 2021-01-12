@@ -49,7 +49,7 @@ class Solution(object):
         maxArea = 0
         left, right = 0, len(height)-1
         while left < right:
-            if height[left] < height[right]:
+            if height[left] <= height[right]:
                 value = (right-left)*height[left]
                 maxArea = max(maxArea, value)
                 left+=1
@@ -57,5 +57,5 @@ class Solution(object):
                 value = (right-left)*height[right]
                 maxArea = max(maxArea, value)
                 right-=1
-        return maxArea 
-
+                
+        return maxArea

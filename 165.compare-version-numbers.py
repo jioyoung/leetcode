@@ -9,9 +9,9 @@ class Solution:
     def compareVersion(self, version1: str, version2: str) -> int:
         arr1 = version1.split('.')
         arr2 = version2.split('.')
-        len1 = len(arr1)
-        len2 = len(arr2)
-        minL = min(len1, len2)
+        arr1_len = len(arr1)
+        arr2_len = len(arr2)
+        minL = min(arr1_len, arr2_len)
         for i in range(minL):
             if int(arr1[i]) == int(arr2[i]):
                 continue
@@ -19,21 +19,22 @@ class Solution:
                 return 1
             else:
                 return -1
-        if len1 == len2:
+        if arr1_len == arr2_len:
             return 0
-        elif len1 > len2:
-            for i in range(minL, len1):
-                if int(arr1[i]) == 0:
-                    continue
+        if arr1_len < arr2_len:
+            for i in range(minL, arr2_len):
+                if int(arr2[i])>0:
+                    return -1
                 else:
-                    return 1
+                    continue
             return 0
         else:
-            for i in range(minL, len2):
-                if int(arr2[i]) == 0:
-                    continue
+            for i in range(minL, arr1_len):
+                if int(arr1[i]) > 0:
+                    return 1
+
                 else:
-                    return -1
+                    continue
             return 0
             
         

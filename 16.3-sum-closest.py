@@ -35,18 +35,19 @@ class Solution(object):
         """
         # sort, iteration and then two pointer
         nums.sort()
+        minDiff = abs(sum(nums[0:3])-target)
         res = sum(nums[0:3])
-        min_diff = abs(sum(nums[0:3]) - target)
         for i in range(len(nums)-2):
-            left, right = i+1, len(nums)-1
+            left = i+1
+            right = len(nums)-1
             while left < right:
-                threeSum = nums[i] + nums[left] + nums[right]
-                diff = abs(threeSum - target)
+                threeSum = nums[i]+nums[left] + nums[right]
                 if threeSum == target:
-                    return threeSum
-                if diff < min_diff:
+                    return target
+                diff = abs(threeSum-target)
+                if diff<minDiff:
+                    minDiff = diff
                     res = threeSum
-                    min_diff = diff
                 if threeSum > target:
                     right-=1
                 else:

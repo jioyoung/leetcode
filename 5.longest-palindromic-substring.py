@@ -33,21 +33,29 @@ class Solution:
         #             start = j
         # return s[start:start+maxLen]
         sLen = len(s)
-        res = ""
+        res = ''
+        maxL = 0
         for i in range(sLen):
-            temp = self.outputPalindrome(s, sLen, i, i)
-            if len(temp) > len(res):
+            temp = self.outputPalindrome(i, i, s, sLen)
+            if len(temp) > maxL:
                 res = temp
-            temp = self.outputPalindrome(s, sLen, i, i+1)
-            if len(temp) > len(res):
+                maxL = len(temp)
+            temp = self.outputPalindrome(i, i+1, s, sLen)
+            if len(temp) > maxL:
                 res = temp
+                maxL = len(temp)
         return res
 
-    def outputPalindrome(self, s, sLen, l, r):
-        while l>=0 and r<sLen and s[l]==s[r]:
-            l-=1
-            r+=1
-        return s[l+1:r]
+    def outputPalindrome(self, left, right, s, sLen):
+        while left >= 0 and right < sLen and s[left] == s[right]:
+            left-=1
+            right+=1
+        return s[left+1:right]
+        
+
+
+
+    
 
 
 

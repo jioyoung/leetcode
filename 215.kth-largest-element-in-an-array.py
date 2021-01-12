@@ -79,14 +79,15 @@ class Solution(object):
 
         h = []
         for i in range(k):
-            heapq.heappush(h, nums[i])
-        for j in range(k, len(nums)):
+            heapq.heappush(h,nums[i])
+        for i in range(k, len(nums)):
             smallest = heapq.heappop(h)
-            if nums[j] > smallest:
-                heapq.heappush(h, nums[j])
+            if nums[i] > smallest:
+                heapq.heappush(h, nums[i])
             else:
                 heapq.heappush(h, smallest)
         return heapq.heappop(h)
+
 
 # @lc code=end
 

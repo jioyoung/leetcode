@@ -41,21 +41,22 @@ class Solution(object):
         """
     # Method 2 # backtracking
         res = []
-        self.getPermute(nums, res, [])
+        self.getPermute(nums, res, [], len(nums))
         return res
-    
-    def getPermute(self, nums, res, rec_res):
-        if len(rec_res) == len(nums):
-            res.append(list(rec_res))
-        for i in range(len(nums)):
-            if nums[i] in rec_res:
-                continue
-            else:
-                rec_res.append(nums[i])
-                self.getPermute(nums, res, rec_res)
-                rec_res.pop()        
-        return
 
+
+
+    def getPermute(self, nums, res, res_rec, len_nums):
+        if len_nums == len(res_rec):
+            res.append(list(res_rec))
+            return
+        for i in range(len_nums):
+            if nums[i] in res_rec:
+                continue
+            res_rec.append(nums[i])
+            self.getPermute(nums, res, res_rec, len_nums)
+            res_rec.pop()
+        return
 
     # method 1: recursive swap
     # https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/

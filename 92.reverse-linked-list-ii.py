@@ -41,23 +41,23 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
+        if m==n:
+            return head
+        dummy = ListNode(0)
+        dummy.next = head
+        slow = dummy
         count = 1
-        dummyHead = ListNode(0)
-        dummyHead.next = head
-        slow = dummyHead
-        if m == n:
-            return dummyHead.next
         while head:
             if count < m:
                 head = head.next
                 slow = slow.next
-                count += 1
+                count+=1
             elif count == m:
                 left = slow
                 right = head
-                count+=1
                 head = head.next
                 slow = slow.next
+                count+=1
             elif count > m and count < n:
                 temp = head.next
                 head.next = slow
@@ -65,11 +65,11 @@ class Solution(object):
                 head = temp
                 count+=1
             elif count == n:
-                right.next = head.next
                 left.next = head
+                right.next = head.next
                 head.next = slow
                 break
-        return dummyHead.next
+        return dummy.next 
 
 # @lc code=end
 

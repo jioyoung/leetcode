@@ -42,38 +42,33 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
-        n_r = len(board)
-        if n_r == 0:
+        nRow = len(board)
+        if nRow == 0:
             return False
-        n_c = len(board[0])
-        if n_c == 0:
+        nCol = len(board[0])
+        if nCol == 0:
             return False
-        visit = [None]*n_r
-        for i in range(n_r):
-            visit[i] = [0]*n_c
-        
-        for i in range(n_r):
-            for j in range(n_c):
-                if self.dfs(board, n_r, n_c,word, visit, 0, i, j):
+        visit = [[False for j in range(nCol)] for i in range(nRow)]
+        for i in range(nRow):
+            for j in range(nCol):
+                res = self.searchWord(board, word, i, j, nRow, nCol, visit, 0)
+                if res == True:
                     return True
         return False
-        
-    def dfs(self, board, nr, nc, word, visit, index, i_r, i_c):
+
+    def searchWord(self, board, word, iRow, iCol, nRow, nCol, visit, index):
         if index == len(word):
             return True
-        if i_r < 0 or i_c < 0 or i_r >=nr or i_c >=nc:
+        if iRow < 0 or iRow == nRow or iCol == nCol or iCol < 0:
             return False
-        if visit[i_r][i_c]==1:
+        if visit[iRow][iCol] == True:
             return False
-        if board[i_r][i_c]!=word[index]:
+        if board[iRow][iCol]!=word[index]:
             return False
-        else:
-            visit[i_r][i_c]=1
-            res = 0
-            res = (self.dfs(board, nr, nc, word, visit, index+1, i_r+1, i_c) or \
-                    self.dfs(board, nr, nc, word, visit, index+1, i_r, i_c+1) or \
-                    self.dfs(board, nr, nc, word, visit, index+1, i_r-1, i_c) or \
-                    self.dfs(board, nr, nc, word, visit, index+1, i_r, i_c-1))
-            visit[i_r][i_c]=0
-            return res
-
+        visit[iRow][iCol] = True
+        res = self.searchWord(board, word, iRow-1, iCol, nRow, nCol, visit, index+1) or \
+            self.searchWord(board, word, iRow+1, iCol, nRow, nCol, visit, index+1) or \
+            self.searchWord(board, word, iRow, iCol-1, nRow, nCol, visit, index+1) or \
+            self.searchWord(board, word, iRow, iCol+1, nRow, nCol, visit, index+1)
+        visit[iRow][iCol]= False
+        return res

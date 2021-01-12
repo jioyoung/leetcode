@@ -59,11 +59,12 @@ class Solution(object):
         :rtype: str
         """
         res = []
-        while n > 0:
-            remain = (n-1)%26
-            res.append(chr(ord('A') + remain))
+        while n:
+            val = (n-1)%26
+            res.append(chr(ord('A')+val))
             n = (n-1)//26
         return ''.join(res[::-1])
-        
+
+
 # @lc code=end
 

@@ -50,16 +50,20 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n==1:
+        if n == 1:
             return 1
-        if n==2:
+        if n == 2:
             return 2
-        ways_left = 1
-        ways_right = 2
-        for i in range(3,n+1):
-            ways_new = ways_left+ways_right
-            ways_left = ways_right
-            ways_right = ways_new
-        return ways_new
+        lag1 = 2
+        lag2 = 1
+        count = 0
+        for _ in range(3, n+1):
+            count = lag1 + lag2
+            lag2 = lag1
+            lag1 = count
+        return count
+
+
+
 # @lc code=end
 

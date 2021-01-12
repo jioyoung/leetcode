@@ -51,10 +51,9 @@ class Solution(object):
         res = list(num_map[digits[0]])
         for i in range(1, len(digits)):
             temp = []
-            for string in res:
+            for oneStr in res:
                 for c in num_map[digits[i]]:
-                    temp.append(string + c)
-            res = list(temp)
+                    temp.append(oneStr+c)
+            res = temp
         return res
-
 

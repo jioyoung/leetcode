@@ -36,27 +36,19 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        length = len(s)
-        valid = [[False for i in range(length)] for j in range(length)]
-        for one_len in range(length):
-            for i in range(length-one_len):
-                j = i+one_len
-                valid[i][j] = s[i]==s[j] and (one_len<=2 or valid[i+1][j-1])
-        
-        '''
-        https://zxi.mytechroad.com/blog/dynamic-programming/leetcode-132-palindrome-partitioning-ii/
-        subproblem + palindrome
-        '''
-        # valid[i][j] is Boolean whether s[i:j+1] is pal
-        cut = [length-1]*length
-        for i in range(length):
-            if valid[0][i]:
-                cut[i]=0
+        valid_dp = [[False for j in range(len(s))] for i in range(len(s))]
+        for length in range(len(s)):
+            for i in range(len(s)-length):
+                j = i+length
+                valid_dp[i][j]=(s[i]==s[j]) and (length<=2 or valid_dp[i+1][j-1])
+        min_cut = [len(s)-1] * len(s)
+        for j in range(len(s)):
+            if valid_dp[0][j]:
+                min_cut[j] = 0
                 continue
-            for j in range(i):
-                if valid[j+1][i]:
-                    cut[i] = min(cut[i], cut[j]+1)
-        return cut[-1]
-        
+            for i in range(j):
+                if valid_dp[i+1][j]:
+                    min_cut[j] = min(min_cut[j], min_cut[i]+1)
+        return min_cut[-1]
 # @lc code=end
 

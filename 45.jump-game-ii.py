@@ -42,17 +42,17 @@ class Solution(object):
         """
         if len(nums)<=1:
             return 0
-        step_left = 1
-        step_right = nums[0]
-        nstep = 1
-        while step_left<=step_right:
-            if step_right>=len(nums)-1:
-                return nstep
-            else:
-                nstep+=1
-                old_right = step_right
-                for i in range(step_left, old_right+1):
-                    step_right = max(step_right, nums[i]+i)
-                step_left = old_right+1
+        stepLeft = 0
+        stepRight = nums[0]
+        nStep = 1
+        while stepLeft <= stepRight:
+            if stepRight >= len(nums)-1:
+                return nStep
+            oldRight= stepRight
+            nStep+=1
+            for j in range(stepLeft, oldRight+1):
+                stepRight = max(nums[j]+j, stepRight)
+            stepLeft = oldRight+1
+        
 
 

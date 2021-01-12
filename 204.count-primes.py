@@ -34,17 +34,19 @@ class Solution(object):
         """
         if n<=2:
             return 0
+        noPrime=set()
         count = 0
-        noprime = set()
         for i in range(2, n):
-            if i in noprime:
+            if i in noPrime:
                 continue
             else:
-                count += 1
+                count+=1
                 j = 2
-                while (j*i) < n:
-                    noprime.add(j*i)
-                    j+=1
+                value = j*i
+                while value < n:
+                    noPrime.add(value)
+                    j += 1
+                    value = j * i
         return count
 # @lc code=end
 

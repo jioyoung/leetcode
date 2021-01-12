@@ -84,21 +84,19 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
-        if sum(gas)<sum(cost):
+        if sum(gas) < sum(cost):
             return -1
-        '''
-        if sum(gas)>=sum(cost): 一定有解
-        如果从i start最多到j， i+1 到 j包括j都不可能 否则
-        i也能回到i 矛盾
-        '''
-        remain = 0 
-        location = 0
-        
-        for i in range(len(gas)):
-            remain+=(gas[i]-cost[i])
+        remain = gas[0]-cost[0]
+        loc = 0
+        for i in range(1, len(gas)):
             if remain < 0:
-                location = i+1
-                remain=0
-        return location
+                loc=i
+                remain = gas[i]-cost[i]
+            else:
+                remain += (gas[i]-cost[i])
+        return loc
+
+
+
 # @lc code=end
 

@@ -45,18 +45,17 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head:
-            return head
-        
         slow = dummy = ListNode(0)
-        while head and head.next:
-            if head.val!=head.next.val:
-                slow.next=head
-                head=head.next
-                slow=slow.next
+        fast = head
+        while fast and fast.next:
+            if fast.val == fast.next.val:
+                fast = fast.next
             else:
-                head=head.next
-        slow.next = head
+                slow.next = fast
+                slow = slow.next
+                fast=fast.next
+        slow.next = fast
         return dummy.next
+        
 # @lc code=end
 

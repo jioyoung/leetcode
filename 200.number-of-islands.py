@@ -62,7 +62,7 @@ class Solution(object):
             for j in range(ncol):
                 if grid[i][j]=='1':
                     count+=1
-                    self.mark_one_DFS(i, j, nrow, ncol, grid) bfs
+                    self.mark_one_DFS(i, j, nrow, ncol, grid)
                    
         return count
         

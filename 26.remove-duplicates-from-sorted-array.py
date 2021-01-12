@@ -67,11 +67,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        slow = 0
+        if not nums:
+            return 0
+        slow = 1
         for fast in range(1, len(nums)):
             if nums[fast] == nums[fast-1]:
                 continue
             else:
-                slow+=1
                 nums[slow] = nums[fast]
-        return slow+1
+                slow+=1
+        return slow
+
+

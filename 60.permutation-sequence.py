@@ -62,25 +62,21 @@ class Solution(object):
         """
         if n == 1:
             return '1'
-        fact_arr = [None for i in range(n-1)]
-        fact_arr[0] = 1
+        factArr = [None]*(n-1)
+        factArr[0] = 1
         for i in range(1, n-1):
-            fact_arr[i] = (i+1)*fact_arr[i-1]
-        nums = list(range(1,n+1))
-        res = []
-        self.getRes(nums, k, res, fact_arr)
-        return ''.join(res)
-
-    def getRes(self, nums, k, res, fact_arr):
-        numsL = len(nums)
-        if numsL == 1:
-            res.append(str(nums[0]))
-            return
-        else:
-            nGroup = (k-1)//fact_arr[numsL-2]
-            res.append(str(nums.pop(nGroup)))
-            k = (k-1) % fact_arr[numsL-2] + 1 # 1 needs to be added since k starts from 1
-            self.getRes(nums, k, res, fact_arr)
-
+            factArr[i] = (i+1)*factArr[i-1]
+        factIdx = n-2
+        numArr = list(range(1, n+1))
+        res = ''
+        while 1:
+            if factIdx < 0:
+                res+=str(numArr[0])
+                return res
+            nGroup = (k-1)//factArr[factIdx]
+            value = numArr.pop(nGroup)
+            res+=str(value)
+            k = k%factArr[factIdx]
+            factIdx-=1
 # @lc code=end
 

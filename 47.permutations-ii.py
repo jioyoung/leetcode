@@ -42,23 +42,25 @@ class Solution(object):
         res = []
         self.getPermuteUnique(nums, res, [], [])
         return res
+
         
-    def getPermuteUnique(self, nums, res, rec_res, rec_index):
-        if len(rec_res) == len(nums):
-            res.append(list(rec_res))
+    def getPermuteUnique(self, nums, res, res_rec, index_rec):
+        if len(res_rec) == len(nums):
+            res.append(list(res_rec))
             return
-        
+
         for i in range(len(nums)):
-            if i in rec_index:
+            if i in index_rec:
                 continue
-            if i > 0 and i-1 not in rec_index and nums[i] == nums[i-1]:
+            if i > 0 and i-1 not in index_rec and nums[i] == nums[i-1]:
                 continue
-            rec_res.append(nums[i])
-            rec_index.append(i)
-            self.getPermuteUnique(nums, res, rec_res, rec_index)
-            rec_res.pop()
-            rec_index.pop()
-        return
+            index_rec.append(i)
+            res_rec.append(nums[i])
+            self.getPermuteUnique(nums, res, res_rec, index_rec)
+            res_rec.pop()
+            index_rec.pop()
+        return 
+
 
     #     res = []
     #     self.getPer(nums, res, 0)

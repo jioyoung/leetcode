@@ -97,14 +97,14 @@ class Solution(object):
         for i in range(9):
             for j in range(9):
                 c = board[i][j]
-                if c=='.':
+                if c == '.':
                     continue
-                str_row = '(' + str(i) + ')' + c
-                str_col = c+ '(' + str(j) + ')'
-                str_square = '(' + str(i//3) + ')' + '(' + str(j//3) + ')' +c
-                if (str_row in visit) or (str_col in visit) or (str_square in visit):
+                rowStr = '(' + str(i) + ')' + c
+                colStr = c +  '(' + str(j) + ')'
+                squareStr = '(' + str(i//3) + ')' + '(' + str(j//3) + ')' + c
+                if rowStr in visit or colStr in visit or squareStr in visit:
                     return False
-                visit.update({str_row, str_col, str_square})
+                visit.update([rowStr, colStr, squareStr])
         return True
         
         

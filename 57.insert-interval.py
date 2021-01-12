@@ -9,12 +9,13 @@ class Solution:
             return [newInterval]
         if not newInterval:
             return intervals
-        res = []
         i = 0
         j = 0
+        candidate = []
+        res = []
         while i < len(intervals) or j < 1:
             if i < len(intervals) and j < 1:
-                if intervals[i][0] <= newInterval[0]:
+                if intervals[i][0]<=newInterval[0]:
                     candidate = intervals[i]
                     i+=1
                 else:

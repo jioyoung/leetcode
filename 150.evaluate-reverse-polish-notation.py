@@ -8,15 +8,15 @@
 class Solution:
     def evalRPN(self, tokens):
         numStack = []
-        opSet = set(["+", "-" , "*" , "/"])
+        symbolSet = set(['+', '-', '*','/'])
         for token in tokens:
-            if token not in opSet:
+            if token not in symbolSet:
                 numStack.append(int(token))
             else:
                 val2 = numStack.pop()
                 val1 = numStack.pop()
                 if token == '+':
-                    numStack.append(val1+val2)
+                    numStack.append(val2+val1)
                 elif token == '-':
                     numStack.append(val1-val2)
                 elif token == '*':
@@ -24,6 +24,5 @@ class Solution:
                 else:
                     numStack.append(int(val1/val2))
         return numStack[-1]
-
 # @lc code=end
 

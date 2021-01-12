@@ -43,7 +43,7 @@ class Solution(object):
         分解multiplier就是看有几个5 一个5 就有一个零 2的个数肯定比5多很多 只要考虑5
         """
         count = 0
-        while n > 0:
+        while n:
             count += (n//5)
             n = n//5
         return count

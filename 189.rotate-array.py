@@ -55,20 +55,22 @@ class Solution(object):
         :rtype: None Do not return anything, modify nums in-place instead.
         """
         if not nums:
-            return
+            return 
         length = len(nums)
-        if k%length == 0:
+        if k % length == 0:
             return
-        start = index = 0
-        cur = nums[0]
         k = k%length
-        for i in range(length):
-            index = (index + k)%length
+        start = 0
+        cur = nums[0]
+        index = 0
+        for _ in range(length):
+            index = (index+k)%length
             cur, nums[index] = nums[index], cur
             if index == start:
-                start+=1
+                start+= 1
                 index = start
                 cur = nums[start]
+        return
 
         
 # @lc code=end

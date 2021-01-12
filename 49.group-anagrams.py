@@ -44,14 +44,13 @@ class Solution(object):
         """
         # sort string as a key in the dictionary
         wordDict = {}
-        for word in strs:
-            s = ''.join(sorted(word))
-            if s not in wordDict:
-                wordDict[s] = [word]
+        for oneStr in strs:
+            tempStr = ''.join(sorted(oneStr))
+            if tempStr in wordDict:
+                wordDict[tempStr].append(oneStr)
             else:
-                wordDict[s].append(word)
+                wordDict[tempStr] = [oneStr]
         return wordDict.values()
-    
 
 # @lc code=end
 

@@ -12,17 +12,16 @@ class Solution:
         n = len(matrix[0])
         if n == 0:
             return False
-        left = 0
-        right = m*n-1
+        left, right = 0, m*n-1
         while left <= right:
             mid = (left+right)//2
-            # mid = iRow*n+iCol
             iRow = mid//n
             iCol = mid%n
             if matrix[iRow][iCol] == target:
                 return True
-            elif matrix[iRow][iCol] < target:
-                left = mid+1
-            else:
+            elif matrix[iRow][iCol] > target:
                 right = mid-1
+            else:
+                left = mid + 1
         return False
+

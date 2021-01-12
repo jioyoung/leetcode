@@ -42,25 +42,23 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         res = []
-        self.getCombine(n, k, 1, res, [])
+        self.getCombination(n,k,1,res,[])
         return res
-        
-    def getCombine(self, n, k, start, res, rec_res):
-        if len(rec_res) == k:
-            res.append(list(rec_res))
+
+    def getCombination(self, n, k, start, res, res_rec):
+        if len(res_rec) == k:
+            res.append(list(res_rec))
             return
-        
-        if len(rec_res) + n - start + 1 < k:
-            return 
-        
-        if len(rec_res) + n - start + 1 == k:
-            res.append(rec_res + list(range(start, n+1)))
+        if len(res_rec) + n - start + 1 < k:
             return
-        
+        if len(res_rec) + n - start + 1== k:
+            res.append(res_rec + list(range(start, n+1)))
+            return
         for i in range(start, n+1):
-            rec_res.append(i)
-            self.getCombine(n, k, i+1, res, rec_res)
-            rec_res.pop()
+            res_rec.append(i)
+            self.getCombination(n,k,i+1,res,res_rec)
+            res_rec.pop()
+        
         return
 
 

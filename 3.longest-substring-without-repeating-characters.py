@@ -55,16 +55,16 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        start_idx = 0
-        maxL = 0
+        startIdx = 0
         charDict = {}
-        # key = char, value = index 
+        maxL = 0
         for i in range(len(s)):
             c = s[i]
-            if c in charDict and charDict[c]>=start_idx:
-                start_idx = charDict[c] + 1
+            if c in charDict and charDict[c] >= startIdx:
+                startIdx = charDict[c] + 1
+                # update startIdx no need to update the maxL since maxL will not be changed
             else:
-                maxL = max(maxL, i-start_idx+1)
-            charDict[c] = i
-        return maxL
+                maxL = max(maxL, i-startIdx+1)
+            charDict[c] = i # update the charDict
+        return maxL 
 

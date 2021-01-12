@@ -37,12 +37,12 @@ class Solution(object):
         :rtype: int
         """
         # curMax is 以current element 结尾的子数组的元素的最大的和
-        cur_max = all_max = nums[0]
-        for i in range(1,len(nums)):
-            if cur_max < 0:
-                cur_max = nums[i]
+        curMax = allMax = nums[0]
+        for i in range(1, len(nums)):
+            if curMax < 0:
+                curMax = nums[i]
             else:
-                cur_max += nums[i]
-            all_max = max(cur_max, all_max)
-        return all_max
+                curMax += nums[i]
+            allMax = max(curMax, allMax)
+        return allMax
 

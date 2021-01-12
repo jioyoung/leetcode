@@ -58,11 +58,9 @@ class Solution(object):
         #         stack.append(node.right)
         #         stack.append(node.left)
         # return ret
-
-        if not root:
-            return []
-        nodeStack = [root]
+        
         res = []
+        nodeStack = [root]
         while nodeStack:
             node = nodeStack.pop()
             if not node:
@@ -72,7 +70,5 @@ class Solution(object):
             nodeStack.append(node.left)
         return res
 
-
-        
 # @lc code=end
 

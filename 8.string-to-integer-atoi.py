@@ -91,27 +91,26 @@ class Solution(object):
         :type str: str
         :rtype: int
         """
-        str = str.lstrip()
-        if not str:
-            return 0
+        temp = str.lstrip()
         i = 0
+        tempL = len(temp)
+        if tempL == 0:
+            return 0
+        isNegative = 0
+        if temp[0] == '+':
+            i+=1
+        elif temp[0] == '-':
+            i+=1
+            isNegative = 1
         numL = 0
-        isNegative = False
-        if str[i] == '+':
-            i+=1
-        elif str[i] == '-':
-            i+=1
-            isNegative = True
-        
-        for j in range(i, len(str)):
-            if str[j].isdigit():
+        for j in range(i, tempL):
+            if temp[j].isdigit():
                 numL+=1
             else:
                 break
         if numL == 0:
             return 0
-        
-        value = int(str[i:i+numL])
+        value = int(temp[i:i+numL])
         if isNegative:
             if value > 2**31:
                 return -2**31
@@ -122,5 +121,6 @@ class Solution(object):
                 return 2**31-1
             else:
                 return value
+            
 
 

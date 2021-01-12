@@ -44,14 +44,11 @@ class Solution(object):
         :type strs: List[str]
         :rtype: str
         """
-        # use zip(* )
-        if not strs:
-            return ""
-        char_tuple = zip(*strs)
-        res = ""
-        for tup in char_tuple:
-            if len(set(tup)) == 1:
-                res+=tup[0]
+        # use zip(*)
+        res = ''
+        for item in zip(*strs):
+            if len(set(item)) == 1:
+                res += item[0]
             else:
                 break
         return res

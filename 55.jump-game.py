@@ -53,19 +53,18 @@ class Solution(object):
         # pay attention to the last element:
         # no need to let the current max be greater than last index
         # just let he current max be equal or greater than last index
-        if len(nums)<=1:
+        if len(nums) <= 1:
             return True
         stepMax = nums[0]
-        
         for i in range(len(nums)-1):
-            if nums[i] == 0:
+            if nums[i]==0:
                 if stepMax <= i:
                     return False
-                else:
-                    continue
             else:
-                stepMax = max(i+nums[i], stepMax)
+                stepMax = max(stepMax, i+nums[i])
         if stepMax >= len(nums)-1:
             return True
         else:
             return False
+
+

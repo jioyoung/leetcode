@@ -52,25 +52,25 @@ class Solution(object):
         # check if the sum is greater than 9
         # iterate until one list is empty
         remain = 0
-        val = 0
-        dummy = cur = ListNode(0)
+        value = 0
+        head = dummy = ListNode(0)
         while l1 or l2:
-            val = remain
+            value = remain # this update is important 
             if l1:
-                val+=l1.val
-                l1 = l1.next
+                value+=l1.val
+                l1=l1.next
             if l2:
-                val+=l2.val
-                l2 = l2.next
-            if val >=10:
+                value+=l2.val
+                l2=l2.next
+            if value > 9:
                 remain = 1
-                val -= 10
+                value-=10
             else:
                 remain = 0
-            cur.next = ListNode(val)
-            cur = cur.next
+            head.next = ListNode(value)
+            head = head.next
         if remain == 1:
-            cur.next = ListNode(1)
+            head.next = ListNode(1)
         return dummy.next
 
                 

@@ -63,16 +63,16 @@ class Solution(object):
         res = []
         self.getCombination(0, candidates, target, res, [])
         return res
-    
-    def getCombination(self, start, candidates, target, res, rec_res):
+
+    def getCombination(self, start, candidates, target, res, res_rec):
         if target == 0:
-            res.append(list(rec_res))
+            res.append(list(res_rec))
             return
         if target < 0:
-            return
+            return 
         for i in range(start, len(candidates)):
-            rec_res.append(candidates[i])
-            self.getCombination(i, candidates, target-candidates[i], res, rec_res)
-            rec_res.pop()
-        return
+            res_rec.append(candidates[i])
+            self.getCombination(i, candidates, target-candidates[i], res, res_rec)
+            res_rec.pop()
+        return 
 

@@ -72,49 +72,42 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: List[str]
         """
-        canBreak = self.canBreak(s, wordDict)
-        if canBreak == False:
+        if not self.canBreak(s, wordDict):
             return []
-        
         validEnd = {}
         validEnd[0] = [[0]]
-        
-        # [0,1,2,3,4,5]
-        
-        for start in range(len(s)):
-            if start in validEnd:
-                for end in range(start+1, len(s)+1):
-                    if s[start:end] in wordDict:
+        for i in range(len(s)):
+            if i in validEnd:
+                for end in range(i+1, len(s)+1):
+                    if s[i:end] in wordDict:
                         if end in validEnd:
-                            for oneList in validEnd[start]:
+                            for oneList in validEnd[i]:
                                 validEnd[end].append(oneList+[end])
                         else:
                             validEnd[end] = []
-                            for oneList in validEnd[start]:
+                            for oneList in validEnd[i]:
                                 validEnd[end].append(oneList+[end])
-                del validEnd[start]
-        
+                del validEnd[i]
+
         res = []
-        
         for oneList in validEnd[len(s)]:
             temp = []
             for i in range(1, len(oneList)):
                 start = oneList[i-1]
                 end = oneList[i]
                 temp.append(s[start:end])
-
             res.append(' '.join(temp))
         return res
-    
+
     def canBreak(self, s, wordDict):
-        validEnd= set([0])
-        for start in range(len(s)):
-            if start in validEnd:
-                for end in range(start+1, len(s)+1):
-                    if s[start:end] in wordDict:
-                        validEnd.add(end)
+        validEnd = set([0])
+        for i in range(len(s)):
+            if i in validEnd:
+                for end in range(i+1, len(s)+1):
+                    if s[i:end] in wordDict:
                         if end == len(s):
                             return True
+                        validEnd.add(end)
         return False
 
 

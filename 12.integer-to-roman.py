@@ -98,11 +98,14 @@ class Solution(object):
         # C can be placed before D (500) and M (1000) to make 400 and 900.      
         Roman_arr = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L', 'XC', 'C', 'CD', 'D', 'CM', 'M']
         num_arr = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
-        result = ''
+        res = ''
         i = len(num_arr)-1
-        while i>=0:
-            result+= (num//num_arr[i])*Roman_arr[i]
-            num %= num_arr[i]
+        while i >=0:
+            if num >= num_arr[i]:
+                res+=(num//num_arr[i])*Roman_arr[i]
+                num = num%num_arr[i]
+                if num == 0:
+                    break
             i-=1
-        return result
+        return res
 

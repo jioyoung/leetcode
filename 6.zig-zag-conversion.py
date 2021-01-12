@@ -61,19 +61,17 @@ class Solution(object):
         # this is to find the rules 
         # pay attention to 2nd to (largest-1)th row; there will be an extra element
         # nCycle = 2* numRows - 2
-        sLen = len(s)
-        if sLen <= numRows or numRows == 1:
+        nCycle = 2*(numRows-1)
+        if len(s)<=numRows or numRows == 1: # numRows == 1 needs to be checked
+            # if numRows == 1, nCycle = 0 and the loop will have errors
             return s
-        res = ''
-        nCycle = numRows*2 - 2
+        res = []
         for i in range(numRows):
-            for j in range(i, sLen, nCycle):
-                res += s[j]
-                if i > 0 and i < numRows-1:
-                    idx = j + nCycle - 2*i
-                    if idx < sLen:
-                        res+= s[idx]
-        return res
+            for j in range(i, len(s), nCycle):
+                res.append(s[j])
+                if i > 0 and i < numRows-1 and j + 2*(numRows-i-1) < len(s):
+                    res.append(s[j + 2*(numRows-i-1)])
+        return ''.join(res)
 
 
 

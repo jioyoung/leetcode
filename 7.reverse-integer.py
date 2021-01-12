@@ -55,19 +55,21 @@ class Solution(object):
         if x < 0:
             isNegative = 1
             x = -x
-        reverse = 0
+        res = 0
         while x:
-            reverse = 10*reverse+(x%10)
-            x = x//10
+            res = 10*res + x%10
+            x=x//10
         if isNegative:
-            if reverse > 2**31:
+            if res > 2**31:
                 return 0
             else:
-                return -reverse
+                return -res
         else:
-            if reverse > 2**31-1:
+            if res > 2**31-1:
                 return 0
             else:
-                return reverse
+                return res
+        
+
 
 

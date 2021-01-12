@@ -5,23 +5,24 @@
 #
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
-        length = len(nums)
-        if length <=2:
-            return length
-        i,j=1,1
-        dup_num=1
-        for i in range(1, length):
-            if nums[i]==nums[i-1]:
-                if dup_num==2:
-                    continue
+        slow = 0
+        dupCount = 1
+        for fast in range(1, len(nums)):
+            if nums[fast] == nums[fast-1]:
+                if dupCount == 1:
+                    dupCount = 2
+                    slow+=1
+                    nums[slow] = nums[fast]
                 else:
-                    nums[j]=nums[i]
-                    j+=1
-                    dup_num+=1
+                    # dupcount == 2
+                    continue
             else:
-                nums[j]=nums[i]
-                j+=1
-                dup_num=1
-        return j
+                dupCount = 1
+                slow+=1
+                nums[slow] = nums[fast]
+        return slow+1
+
+
+
 
 

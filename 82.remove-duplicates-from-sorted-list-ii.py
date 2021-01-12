@@ -45,22 +45,22 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        slow = ListNode(0)
-        dummy = slow
-        slow.next = head
+        slow = dummy = ListNode(0)
+        isEqual = False
         fast = head
-        eqFlag = 0
         while fast and fast.next:
-            if fast.val!=fast.next.val:
-                if eqFlag == 0:
+            if fast.val == fast.next.val:
+                isEqual = True
+                fast = fast.next
+            else:
+                if isEqual:
+                    isEqual = False
+                    fast = fast.next
+                else:
                     slow.next = fast
                     slow = slow.next
-                fast = fast.next    
-                eqFlag = 0
-            else:
-                eqFlag = 1
-                fast=fast.next
-        if eqFlag == 1:
+                    fast = fast.next
+        if isEqual:
             slow.next = None
         else:
             slow.next = fast

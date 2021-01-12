@@ -49,7 +49,6 @@ class Solution(object):
             tail = head
             head = temp
         return tail
-
         
 # @lc code=end
 

@@ -53,24 +53,24 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        # get the length of the list and get the tail node
         if not head:
             return head
         tail = head
-        cur = head
         length = 1
         while tail.next:
             length+=1
             tail=tail.next
-        # tail is now the tail node
-        nstep = k % length
-        if nstep == 0:
+        k = k%length
+        if k == 0: # check if k == 0
             return head
-        for i in range(length-nstep-1):
+        cur = head
+        for _ in range(length-k-1):
             cur = cur.next
         newHead = cur.next
-        tail.next= head
         cur.next = None
+        tail.next = head
         return newHead
+
+
 # @lc code=end
 

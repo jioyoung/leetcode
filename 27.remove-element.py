@@ -75,8 +75,8 @@ class Solution(object):
         """
 
         slow = 0
-        for fast in range(0, len(nums)):
-            if nums[fast]==val:
+        for fast in range(len(nums)):
+            if nums[fast] == val:
                 continue
             else:
                 nums[slow] = nums[fast]

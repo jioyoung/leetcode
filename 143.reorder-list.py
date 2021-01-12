@@ -48,19 +48,18 @@ class Solution(object):
         if head is None or head.next is None or head.next.next is None:
             return
         fast = slow = head
-        while fast.next is not None and fast.next.next is not None:
-            fast=fast.next.next
+        while fast.next and fast.next.next:
             slow = slow.next
+            fast = fast.next.next
         secondHead = self.reverseList(slow.next)
         slow.next = None
-
-        while secondHead is not None:
-            temp = secondHead.next
-            secondHead.next = head.next
+        while secondHead:
+            temp1 = head.next
+            temp2 = secondHead.next
             head.next = secondHead
-            head= secondHead.next
-            secondHead = temp
-            
+            secondHead.next=temp1
+            head = temp1
+            secondHead=temp2
 
     def reverseList(self, head):
         tail = None

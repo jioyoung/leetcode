@@ -8,24 +8,20 @@
 class Solution:
     def minSubArrayLen(self, s: int, nums: List[int]) -> int:
         # Solution one two pointer O(n)
-        left = right = 0
-        subsum = 0
-        length = len(nums)
-        res = length + 1
-        while right < length:
-            subsum += nums[right]
-
-            while subsum >= s:
-                res = min(res, right-left+1)
-                subsum-=nums[left]
+        left, right = 0, 0
+        subSum = 0
+        res = len(nums)+1
+        while right < len(nums):
+            subSum += nums[right]
+            while subSum >= s:
+                res = min(right-left+1, res)
+                subSum-=nums[left]
                 left+=1
-                
             right+=1
-        if res == length+1:
+        if res == len(nums)+1:
             return 0
         else:
             return res
-
         # solution two: O(nlogn)
         # length = len(nums)
         # if length == 0:

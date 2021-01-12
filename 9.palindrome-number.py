@@ -54,10 +54,10 @@ class Solution(object):
         # get the reverse and then compare
         if x < 0:
             return False
-        xReverse = 0
-        xValue = x
-        while x:
-            xReverse = 10*xReverse + (x%10)
-            x = x//10
-        return xValue == xReverse    
+        number = x
+        reverse = 0
+        while number:
+            reverse = 10*reverse+ number%10
+            number = number // 10
+        return reverse == x 
 

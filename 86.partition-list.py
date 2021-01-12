@@ -42,19 +42,19 @@ class Solution(object):
         :type x: int
         :rtype: ListNode
         """
-        small = dummyS = ListNode(0)
-        large = dummyL = ListNode(0)
+        small = dummySmall = ListNode(0)
+        large = dummyLarge = ListNode(0)
         while head:
-            if head.val<x:
-                small.next=head
-                small = small.next
+            if head.val < x:
+                small.next = head
+                small=small.next
             else:
-                large.next=head
-                large=large.next
-            head=head.next
+                large.next = head
+                large= large.next
+            head = head.next
+        small.next = dummyLarge.next
         large.next = None
-        small.next=dummyL.next
-        return dummyS.next
-        
+        return dummySmall.next
+
 # @lc code=end
 
