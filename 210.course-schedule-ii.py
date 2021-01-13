@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def findOrder(self, numCourses, prerequisites):
+        # 上课
         courseCount = {}
         coursePre = {}
         for oneCourse in prerequisites:

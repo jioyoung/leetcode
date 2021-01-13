@@ -13,24 +13,17 @@
 
 class Solution:
     def removeElements(self, head, val):
-        dummy = ListNode(0)
+        pre = dummy = ListNode(0)
         dummy.next = head
-        pre = dummy
-        if head is None:
-            return None
-        while head.next is not None:
-            if head.val != val:
+        while head:
+            if head.val!=val:
                 pre.next = head
-                pre = pre.next
-                head = head.next
+                head=head.next
+                pre= pre.next
             else:
-                head = head.next
-        
-        if head.val==val:
+                head=head.next
+        if pre.next:
             pre.next = None
-        else:
-            pre.next=head
-        
         return dummy.next
                 
 

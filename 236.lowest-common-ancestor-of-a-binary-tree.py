@@ -14,6 +14,7 @@
 
 class Solution:
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        # 祖先 共同祖先
         if root in (None, p, q):
             return root
         # if root is none , it means p and q do not exist in the child nodes of root

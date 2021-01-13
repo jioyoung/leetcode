@@ -35,6 +35,7 @@
 # @lc code=start
 class Solution:
     def majorityElement(self, nums):
+        # 众数 
         group1 = 0
         group2 = 1
         count1 = 0

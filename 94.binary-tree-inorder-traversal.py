@@ -45,6 +45,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
+        # 中序遍历
         cur = root
         nodeStack = []
         res = []

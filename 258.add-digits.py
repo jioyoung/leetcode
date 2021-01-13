@@ -36,11 +36,13 @@ class Solution(object):
         :type num: int
         :rtype: int
         """
-        while num >= 10:
+        if num<10:
+            return num
+        while num >=10:
             newNum = 0
-            while num > 0:
-                newNum+=num%10
-                num=num//10
+            while num:
+                newNum += num%10
+                num = num//10
             num = newNum
         return num
         

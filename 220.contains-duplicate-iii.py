@@ -56,6 +56,7 @@ class Solution(object):
         :rtype: bool
         """
         # seperate the num into different bucket
+        # 分桶 bucket 有条件重复
         if t< 0:
             return False
         width = t+1

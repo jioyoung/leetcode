@@ -32,21 +32,24 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        if n<=2:
+        # 素数 质数 数量
+        if n <= 2:
             return 0
-        noPrime=set()
+        noPrime = set()
         count = 0
         for i in range(2, n):
             if i in noPrime:
                 continue
             else:
-                count+=1
+                count +=1
                 j = 2
                 value = j*i
                 while value < n:
                     noPrime.add(value)
-                    j += 1
-                    value = j * i
-        return count
+                    j+=1
+                    value = i*j
+        return count        
+
+
 # @lc code=end
 

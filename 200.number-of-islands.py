@@ -53,6 +53,7 @@ class Solution(object):
         :type grid: List[List[str]]
         :rtype: int
         """
+        # 岛屿 岛 bfs
         count = 0
         nrow = len(grid)
         if nrow == 0:
@@ -74,5 +75,8 @@ class Solution(object):
         self.mark_one_DFS(iRow+1, iCol, nRow, nCol, matrix)
         self.mark_one_DFS(iRow, iCol-1, nRow, nCol, matrix)
         self.mark_one_DFS(iRow, iCol+1, nRow, nCol, matrix)
+        return
+
+        
 # @lc code=end
 

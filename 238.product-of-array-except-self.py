@@ -42,19 +42,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
+        # 积 除了自己
         # firstly get the product till i-1 and assign 
         # it to res[i]
         # then calculate right half product step by step
         # update the res simultaneously
         length = len(nums)
-        res = [None]*length
+        res = [None for _ in range(length)]
         res[0] = 1
-        for i in range(1, length):
+        for i in range(1, len(nums)):
             res[i] = res[i-1]*nums[i-1]
         right = 1
-        for i in range(length-2, -1, -1):
-            right *=nums[i+1]
-            res[i] *=right
+        for i in range(len(nums)-2, -1, -1):
+            right*=nums[i+1]
+            res[i]*=right
         return res
 # @lc code=end
 

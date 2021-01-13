@@ -42,6 +42,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        # 倒装 链表
         tail = None
         while head:
             temp = head.next

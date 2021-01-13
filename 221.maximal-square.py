@@ -37,6 +37,7 @@ class Solution(object):
         :type matrix: List[List[str]]
         :rtype: int
         """
+        # 最大面积 用 dp[i][j] 表示以 matrix[i][j] 为右下角正方形的最大边长
         # dynamic programming
         # if max_edge[i][j]==1:
         # max_edge[i][j] = min(max_edge[i-1][j-1],max_edge[i-1][j],max_edge[i][j-1]) + 1
@@ -55,6 +56,7 @@ class Solution(object):
                     return 1
             return 0
         pre_top_left = 0
+        # 下边是空间复杂度优化的代码，最关键的是用 pre_top_left 保存了左上角的值
         max_edge = 0
         row_dp = [0]*(nCol+1)
         for i in range(1, nRow+1):
@@ -67,6 +69,28 @@ class Solution(object):
                     max_edge = max(max_edge, row_dp[j])
                 pre_top_left = temp
         return max_edge**2
+
+    # 代码的话，使用个技巧，那就是行和列多申请一行，这样的话第一行和第一列的情况就不需要单独考虑了。
+    # int rows = matrix.length;
+    # if (rows == 0) {
+    #     return 0;
+    # }
+    # int cols = matrix[0].length;
+    # int[][] dp = new int[rows + 1][cols + 1];
+    # int maxSide = 0;
+    # for (int i = 1; i <= rows; i++) {
+    #     for (int j = 1; j <= cols; j++) {
+    #         //因为多申请了一行一列，所以这里下标要减 1
+    #         if (matrix[i - 1][j - 1] == '0') {
+    #             dp[i][j] = 0;
+    #         } else {
+    #             dp[i][j] = Math.min(dp[i - 1][j], Math.min(dp[i][j - 1], dp[i - 1][j - 1])) + 1;
+    #             maxSide = Math.max(dp[i][j], maxSide);
+    #         }
+    #     }
+    # }
+    # return maxSide * maxSide;
+
 
 # @lc code=end
 

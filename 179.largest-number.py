@@ -9,6 +9,7 @@ class Solution:
     def largestNumber(self, nums: List[int]) -> str:
         # sort the array based on a scheme
         # bubble sort with flag
+        # 冒泡法 组成 最大 数 字符串 组合 最大数
         for i in range(len(nums)):
            nums[i] = str(nums[i])
         

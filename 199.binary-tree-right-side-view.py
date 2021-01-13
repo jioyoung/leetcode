@@ -13,10 +13,11 @@
 #         self.right = right
 class Solution:
     def rightSideView(self, root: TreeNode) -> List[int]:
-        res = []
+        # 最右 树
         if not root:
-            return res
-        nodeQueue = [root]
+            return root
+        res = []
+        nodeQueue=[root]
         while nodeQueue:
             level_len = len(nodeQueue)
             for i in range(level_len):
@@ -28,7 +29,6 @@ class Solution:
                 if node.right:
                     nodeQueue.append(node.right)
         return res
-        
         
         
 # @lc code=end

@@ -8,6 +8,7 @@
 class Solution:
     def calculate(self, s: str) -> int:
         # delete the space at the begining and end
+        # 计算器
         s = s.strip()
         if not s:
             return 0

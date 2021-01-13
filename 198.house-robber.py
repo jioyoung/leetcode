@@ -56,14 +56,20 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 抢劫
         if not nums:
             return 0
-        ret_lag2 = 0
-        ret_lag1 = nums[0]
-        res = nums[0]
-        for i in range(1, len(nums)):
-            res = max(ret_lag2+nums[i], ret_lag1)
-            ret_lag2, ret_lag1 = ret_lag1, res
+        # yazzha nums is empty
+        return self.getRob(nums, 0, len(nums)-1)
+    
+
+    def getRob(self, nums, start, end):
+        lag2 = 0
+        lag1 = res = nums[start]
+        for i in range(start+1, end+1):
+            res = max(lag2+nums[i], lag1)
+            lag2 = lag1
+            lag1 = res
         return res
 
         

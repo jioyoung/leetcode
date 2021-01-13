@@ -59,7 +59,7 @@ class Solution(object):
         :rtype: bool
         [1] index 1 position is the required
         """
-
+        # 上课
         nList = len(prerequisites)
         if nList == 0:
             return True

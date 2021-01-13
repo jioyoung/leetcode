@@ -77,6 +77,7 @@ class Solution(object):
         :type board: List[List[int]]
         :rtype: None Do not return anything, modify board in-place instead.
         """
+        # 细胞生存 
         nRow = len(board)
         nCol = len(board[0])
         count = 0

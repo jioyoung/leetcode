@@ -41,23 +41,26 @@ class Solution(object):
         :rtype: int
         """
         # three pointers
-        ugly = [None] * n
-        id2, id3, id5 = 0,0,0
-        ugly[0] = 1
+        # 丑数
+        if n == 1:
+            return 1
+        uglyArr = [None]*n
+        uglyArr[0] = 1
+        idx_2, idx_3, idx_5 = 0, 0, 0
         for i in range(1, n):
-            candidate2 = ugly[id2] * 2
-            candidate3 = ugly[id3] * 3
-            candidate5 = ugly[id5] * 5
-            minVal = min(candidate2, candidate3, candidate5)
-            if minVal == candidate2:
-                id2+=1
-            if minVal == candidate3:
-                id3+=1
-            if minVal == candidate5:
-                id5+=1
-            ugly[i] = minVal
-
-        return ugly[-1]
+            value2 = uglyArr[idx_2]*2
+            value3 = uglyArr[idx_3]*3
+            value5 = uglyArr[idx_5]*5
+            minValue = min(value2, value3, value5)
+            # 并列关系 yazzha
+            if value2 == minValue:
+                idx_2+=1
+            if value3 == minValue:
+                idx_3+=1
+            if value5 ==minValue:
+                idx_5+=1
+            uglyArr[i] = minValue
+        return uglyArr[-1]
 
 
 # @lc code=end

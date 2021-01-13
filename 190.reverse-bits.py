@@ -6,6 +6,7 @@
 
 # @lc code=start
 class Solution:
+    # 倒装 二进制
     def reverseBits(self, n: int) -> int:
         string =bin(n)[2:]
         length = len(string)

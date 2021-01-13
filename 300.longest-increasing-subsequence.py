@@ -43,6 +43,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 最长递增子序列 子数组
         # dp_increase[i] 表示长度为 i + 1 的所有上升子序列的末尾的最小值。
         # the minimum value of the last position for all increasing
         # subsequences that have length == i+1

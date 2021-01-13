@@ -61,18 +61,18 @@ class Solution(object):
 
         # backtracking
         res = []
-        self.getCombination(0, candidates, target, res, [])
+        self.getCombination(candidates, target, 0, res, [])
         return res
-
-    def getCombination(self, start, candidates, target, res, res_rec):
+    
+    def getCombination(self, candidates, target, start, res, rec_res):
         if target == 0:
-            res.append(list(res_rec))
-            return
+            res.append(list(rec_res))
+            return 
         if target < 0:
             return 
         for i in range(start, len(candidates)):
-            res_rec.append(candidates[i])
-            self.getCombination(i, candidates, target-candidates[i], res, res_rec)
-            res_rec.pop()
-        return 
+            rec_res.append(candidates[i])
+            self.getCombination(candidates, target - candidates[i], i, res, rec_res)
+            rec_res.pop()
+        return
 

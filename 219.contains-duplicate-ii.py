@@ -54,6 +54,7 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
+        # 有条件重复
         nums_dict = dict()
         for i in range(len(nums)):
             if nums[i] in nums_dict:

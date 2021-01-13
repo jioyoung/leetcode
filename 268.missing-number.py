@@ -42,6 +42,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 缺失的数 
         # Solution 1
         # since in the range(len(nums)) the largest one that is 
         # len(nums) is not included

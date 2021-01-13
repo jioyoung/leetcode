@@ -51,6 +51,7 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # 股票 最多k次 有限次数
         '''
         用 dp[i][k] 表示前i天最多交易k次的最高收益，那么 dp[i][k] 怎么通过之前的解求出来呢？
 

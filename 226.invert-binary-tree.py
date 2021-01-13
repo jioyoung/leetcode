@@ -17,14 +17,13 @@ class Solution:
         #     return root
         # root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
         # return root
-        
+        # 倒装树
         nodeStack = []
         nodeStack.append(root)
         while nodeStack:
             cur = nodeStack.pop()
             if not cur:
                 continue
-            
             cur.left, cur.right = cur.right,cur.left
             nodeStack.append(cur.left)
             nodeStack.append(cur.right)

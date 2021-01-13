@@ -8,9 +8,10 @@
 class Solution:
     def minSubArrayLen(self, s: int, nums: List[int]) -> int:
         # Solution one two pointer O(n)
+        # 最短子数组
         left, right = 0, 0
-        subSum = 0
         res = len(nums)+1
+        subSum = 0
         while right < len(nums):
             subSum += nums[right]
             while subSum >= s:

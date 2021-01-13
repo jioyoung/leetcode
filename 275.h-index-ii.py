@@ -55,6 +55,7 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
+        # H指数
         # h_index: sort from high to low, the last one that
         # the rank <= citations[i], rank is the h_index
         

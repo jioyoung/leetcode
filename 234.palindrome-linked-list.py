@@ -44,6 +44,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        # 回文链表
         # use slow and fast pointers to reach  the n//2+1
         slow = fast = head
         while fast and fast.next:
@@ -60,6 +61,8 @@ class Solution(object):
         return True
 
     def reverseListNode(self, head):
+        # reverse
+        # 链表倒装 倒装
         if not head:
             return head
         tail = None

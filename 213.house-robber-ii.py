@@ -54,6 +54,7 @@ class Solution(object):
         """
         # seperate the whole array into two arrays
         # array[0: len -1] array[1:len]
+        # rob 抢劫
         if not nums:
             return 0
         length = len(nums)
@@ -66,9 +67,9 @@ class Solution(object):
         lag2 = 0
         lag1 = res = nums[start]
         for i in range(start+1, end+1):
-            res = max(lag2+nums[i], lag1)
-            lag2, lag1 = lag1, res
-        return res 
-        
+            res = max(lag1, lag2+nums[i])
+            lag2 = lag1
+            lag1 = res
+        return res
 # @lc code=end
 

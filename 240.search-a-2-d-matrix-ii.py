@@ -49,15 +49,19 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        if not target:
+        nRow = len(matrix)
+        if nRow == 0:
             return False
-        ir = 0
-        ic = len(matrix[0])-1
-        while ir < len(matrix) and ic >= 0:
-            if matrix[ir][ic]>target:
-                ic-=1
-            elif matrix[ir][ic]<target:
-                ir+=1
+        nCol = len(matrix[0])
+        if nCol == 0:
+            return False
+        iRow = 0
+        iCol = nCol-1
+        while iRow<nRow and iCol>=0:
+            if matrix[iRow][iCol] > target:
+                iCol-=1
+            elif matrix[iRow][iCol]<target:
+                iRow+=1
             else:
                 return True
         return False

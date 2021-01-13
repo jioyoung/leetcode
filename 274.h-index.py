@@ -44,19 +44,20 @@ class Solution(object):
         :type citations: List[int]
         :rtype: int
         """
+        # H指数 论文
         # sort by cite from high to low
         # find the index that index > cite[index]
         # h-index = index-1
 
 
 
-        # citations.sort(reverse = True)
-        # i = 1
-        # while i <= len(citations):
-        #     if i > citations[i-1]:
-        #         break
-        #     i+=1
-        # return i -1  
+        citations.sort(reverse = True)
+        i = 1
+        while i <= len(citations):
+            if i > citations[i-1]:
+                break
+            i+=1
+        return i -1  
 
 
         # sort from high to low
@@ -73,16 +74,16 @@ class Solution(object):
         # f(index) = index+1-cite(index)
         # find the largest index that f(index) <=0 
 
-        length = len(citations)
-        citations.sort()
-        left, right = 0, length-1
-        while left <= right:
-            mid = (left+right)//2
-            if (mid+citations[mid])>=length:
-                right = mid -1
-            else:
-                left = mid +1 
-        return length-left
+        # length = len(citations)
+        # citations.sort()
+        # left, right = 0, length-1
+        # while left <= right:
+        #     mid = (left+right)//2
+        #     if (mid+citations[mid])>=length:
+        #         right = mid -1
+        #     else:
+        #         left = mid +1 
+        # return length-left
         
 
 

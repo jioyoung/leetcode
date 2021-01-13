@@ -73,6 +73,7 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # 数 1 二进制
         # return bin(n).count('1')
         count = 0
         while n>0:

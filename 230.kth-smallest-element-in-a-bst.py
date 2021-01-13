@@ -13,19 +13,19 @@
 #         self.right = right
 class Solution:
     def kthSmallest(self, root: TreeNode, k: int) -> int:
+        # 中序遍历
         cur = root
         nodeStack = []
-        count = 0
+        count=0
         while cur or nodeStack:
             while cur:
                 nodeStack.append(cur)
                 cur = cur.left
             cur = nodeStack.pop()
             count+=1
-            if count==k:
+            if count == k:
                 return cur.val
-            cur = cur.right
-            
+            cur=cur.right
         
 # @lc code=end
 

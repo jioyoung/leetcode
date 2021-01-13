@@ -20,7 +20,7 @@ class Solution:
         while nodeQueue:
             level_len = len(nodeQueue)
             for i in range(level_len):
-                node = nodeQueue.pop()
+                node = nodeQueue.pop(0)
                 count+=1
                 if node.left:
                     nodeQueue.append(node.left)

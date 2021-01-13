@@ -17,23 +17,23 @@ class Solution:
         if not root:
             return []
         nodeQueue = [root]
-        path = [[str(root.val)]]
+        pathQueue = [[str(root.val)]]
+        #yazzha each element in the pathQueue is a list: [['1', '2']... ]
         res = []
         while nodeQueue:
-            level_len = len(nodeQueue)
-            for i in range(level_len):
+            length = len(nodeQueue)
+            for _ in range(length):
                 node = nodeQueue.pop(0)
-                pathNode = path.pop(0)
+                path = pathQueue.pop(0)
                 if node.left:
                     nodeQueue.append(node.left)
-                    path.append(pathNode+[str(node.left.val)])
+                    pathQueue.append(path+[str(node.left.val)])
                 if node.right:
-                    nodeQueue.append(node.right)
-                    path.append(pathNode+[str(node.right.val)])
-                if node.left is None and node.right is None:
-                    res.append("->".join(pathNode))
+                    nodeQueue.append(node.right) # yazzha append node not node.val
+                    pathQueue.append(path+[str(node.right.val)])
+                if not node.left and not node.right:
+                    res.append('->'.join(path))                     
         return res
-
     #     result = []
     #     if root is None:
     #         return result

@@ -59,22 +59,20 @@ class Solution(object):
         word_array = str.split()
         if len(pattern) != len(word_array):
             return False
-        num1 = self.convert(pattern)
-        num2 = self.convert(word_array)
-        return num1 == num2
-
-    def convert(self, list):
-        nums = []
-        num_dict = {}
-        i = 0
-        for element in list:
-            if element not in num_dict:
-                num_dict[element] = i
-                i+=1
-                nums.append(i)
+        char_dict = {}
+        for i in range(len(pattern)):
+            c = pattern[i]
+            if c in char_dict:
+                if word_array[i] == char_dict[c]:
+                    continue
+                else:
+                    return False
             else:
-                nums.append(num_dict[element])
-        return nums
+                if word_array[i] in char_dict.values():
+                    return False
+                char_dict[c] = word_array[i]
+        return True
+
         
 # @lc code=end
 

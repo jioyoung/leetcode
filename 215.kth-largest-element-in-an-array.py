@@ -45,6 +45,22 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+    
+        # priority heap 优先 堆 heap
+        h = []
+        for i in range(k):
+            heapq.heappush(h, nums[i])
+        for i in range(k, len(nums)):
+            smallest = heapq.heappop(h)
+            if nums[i] > smallest:
+                heapq.heappush(h, nums[i])
+            else:
+                heapq.heappush(h, smallest)
+        return heapq.heappop(h)
+
+
+
+
     #     nums.sort(reverse = True)
     #     return nums[k-1]
     #     #return self.getKthLargest(nums, 0, len(nums)-1, k)
@@ -76,18 +92,6 @@ class Solution(object):
     #     else:
     #         # 在左边 ith idx is pivot it can be ignored
     #         return self.getKthLargest(nums, start, i-1, k)
-
-        h = []
-        for i in range(k):
-            heapq.heappush(h,nums[i])
-        for i in range(k, len(nums)):
-            smallest = heapq.heappop(h)
-            if nums[i] > smallest:
-                heapq.heappush(h, nums[i])
-            else:
-                heapq.heappush(h, smallest)
-        return heapq.heappop(h)
-
 
 # @lc code=end
 

@@ -55,13 +55,15 @@ class Solution(object):
         :type num: int
         :rtype: bool
         """
+        # 丑数
         if num == 0:
             return False
-        factors = [2 ,3, 5]
-        for i in range(len(factors)):
-            value = factors[i]
-            while num % value == 0:
-                num = num//value
-        return num == 1
+        fact_Arr = [2, 3, 5]
+        for i in range(len(fact_Arr)):
+            while num%fact_Arr[i] == 0:
+                num=num//fact_Arr[i]
+        return num==1
+
+
 # @lc code=end
 

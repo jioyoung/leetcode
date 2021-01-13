@@ -41,6 +41,7 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
+        # 扔石头
         return n%4!=0
      
     #     winMap = {}

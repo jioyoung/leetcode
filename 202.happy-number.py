@@ -39,20 +39,20 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        visit = set()
-        sum = 0
+        # 快乐数字 happy number
         if n == 0:
             return False
-        while n != 1:
-            sum = 0
+        visit = set()
+        while n > 1:
+            newSum = 0
             while n > 0:
-                num = n % 10
-                n = n // 10
-                sum+= (num*num)
-            if sum in visit:
+                value = n%10
+                n=n//10
+                newSum += value**2
+            if newSum in visit:
                 return False
             else:
-                visit.add(sum)
-            n = sum
+                visit.add(newSum)
+            n = newSum
         return True
 
