@@ -42,6 +42,7 @@ class Solution(object):
         :type strs: List[str]
         :rtype: List[List[str]]
         """
+        # 字谜
         # sort string as a key in the dictionary
         wordDict = {}
         for oneStr in strs:

@@ -60,6 +60,7 @@ class Solution(object):
         :type k: int
         :rtype: str
         """
+        # 排列 第k大的排列 排列
         if n == 1:
             return '1'
         factArr = [None]*(n-1)

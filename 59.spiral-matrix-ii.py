@@ -5,6 +5,7 @@
 #
 class Solution:
     def generateMatrix(self, n):
+        # 构建矩阵 产生矩阵 旋转 扭曲
         matrix = [[None for j in range(n)] for i in range(n)]
         value = 1
         count = n*n

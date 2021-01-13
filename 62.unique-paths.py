@@ -8,6 +8,7 @@ class Solution:
         '''
         return int(math.factorial(m+n-2)/math.factorial(m-1)/math.factorial(n-1))
         '''
+        # 几种 路径 爬格子 矩阵
         dp = m*[1]
         for j in range(1, n):
             for i in range(1, m):

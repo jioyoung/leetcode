@@ -51,6 +51,7 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
+        # 回文数
         # get the reverse and then compare
         if x < 0:
             return False

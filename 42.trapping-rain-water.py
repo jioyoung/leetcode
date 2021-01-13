@@ -30,6 +30,7 @@
 #
 class Solution(object):
     def trap(self, height):
+        # 雨水 
         if not height or len(height) < 3:
             return 0
 

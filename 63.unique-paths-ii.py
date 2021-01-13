@@ -5,6 +5,7 @@
 #
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        # 矩阵 几种 路径 爬格子 
         nRow = len(obstacleGrid)
         if nRow == 0:
             return 0

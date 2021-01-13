@@ -49,6 +49,7 @@ class Solution(object):
         :type x: int
         :rtype: int
         """
+        # 倒装数
         if x == 0:
             return x
         isNegative = 0

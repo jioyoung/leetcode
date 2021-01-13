@@ -40,6 +40,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # 3sum 3 sum three sum
         # sort, iteration and two pointers
         nums.sort()
         res = []

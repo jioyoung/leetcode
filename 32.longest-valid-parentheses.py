@@ -40,7 +40,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-
+        # 最长有效括号 parenthesis 括号
         #dp: dp[i] is the max length that ends with the i-th character
         # if dp[i] == '(' then dp[i]=0
         # if dp[i] == ')' then check dp[i-1] seperate the two situations that 

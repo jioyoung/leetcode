@@ -33,6 +33,7 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
+        # 3sum threesum 接近
         # sort, iteration and then two pointer
         nums.sort()
         minDiff = abs(sum(nums[0:3])-target)

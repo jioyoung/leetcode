@@ -93,6 +93,7 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: bool
         """
+        #数独 游戏
         visit = set()
         for i in range(9):
             for j in range(9):

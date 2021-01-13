@@ -54,7 +54,7 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: None Do not return anything, modify board in-place instead.
         """
-        # 类似小岛 岛屿 细胞
+        # 类似小岛 岛屿 细胞 
         nrow = len(board)
         if nrow == 0:
             return 

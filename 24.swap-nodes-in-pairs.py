@@ -39,7 +39,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-
+        #链表 swap 交换 
         #exchange cur.next and cur.next.next
         dummy = ListNode(0)
         dummy.next = head

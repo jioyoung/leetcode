@@ -58,6 +58,7 @@ class Solution(object):
         :type numRows: int
         :rtype: str
         """
+        # zigzag
         # this is to find the rules 
         # pay attention to 2nd to (largest-1)th row; there will be an extra element
         # nCycle = 2* numRows - 2

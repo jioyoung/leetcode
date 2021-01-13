@@ -15,6 +15,7 @@
 '''
 
 class Solution:
+    # 最长 回文 最长回文
     def longestPalindrome(self, s):
         # maxLen = 1
         # start = 0

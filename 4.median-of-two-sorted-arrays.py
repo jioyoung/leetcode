@@ -46,6 +46,7 @@ class Solution(object):
         :type nums2: List[int]
         :rtype: float
         """
+        # 中位数
         # divide and conqur
         # do not forget the situation that one list is empty in the recursion
         totalN = len(nums1) + len(nums2)

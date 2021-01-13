@@ -47,6 +47,7 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
+        # 删除 链表
         # fast and slow pointers
         # at least the list has n nodes
         slow = fast = head

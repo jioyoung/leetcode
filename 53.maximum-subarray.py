@@ -36,6 +36,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 最大子数组 子 子集 
         # curMax is 以current element 结尾的子数组的元素的最大的和
         curMax = allMax = nums[0]
         for i in range(1, len(nums)):

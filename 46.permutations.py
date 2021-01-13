@@ -40,6 +40,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
     # Method 2 # backtracking
+    # 排列 没有重复
         res = []
         self.getPermute(nums, res, [], len(nums))
         return res

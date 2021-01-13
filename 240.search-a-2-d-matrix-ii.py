@@ -49,6 +49,7 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
+        # 寻找 矩阵 
         nRow = len(matrix)
         if nRow == 0:
             return False

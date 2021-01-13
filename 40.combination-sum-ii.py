@@ -53,6 +53,7 @@
 #
 class Solution(object):
     def combinationSum2(self, candidates, target):
+        # 组合 和 一次
         """
         :type candidates: List[int]
         :type target: int

@@ -42,7 +42,7 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
-        # 找单词 寻找单词
+        # 找单词 寻找单词 DFS
         nRow = len(board)
         if nRow == 0:
             return False

@@ -46,7 +46,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        
+        # 跳跃 游戏
         # find the current maximum range and then find 
         # 0 element; if maximum is beyond the 0, then skip
         # if not return False

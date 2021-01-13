@@ -45,6 +45,7 @@ class Solution(object):
         :rtype: str
         """
         # use zip(*)
+        # 最长 prefix 前缀 共同前缀
         res = ''
         for item in zip(*strs):
             if len(set(item)) == 1:

@@ -67,6 +67,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 删除 重复
         if not nums:
             return 0
         slow = 1

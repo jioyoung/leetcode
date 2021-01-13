@@ -54,7 +54,7 @@ class Solution(object):
         :type k: int
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        # 移动数组 rotate 旋转 move 错位 移位 移动位置
+        # 移动数组 扭曲 移动 rotate 旋转 move 错位 移位 移动位置
         if not nums:
             return 
         length = len(nums)

@@ -40,6 +40,7 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
+        # 第一个 最后一个 二分法
         # 找左边界 相等也要 right = mid-1 最后左边界是有效的left
         # 找右边界 相等也要往右 left = mid+1 最后右边界是right
         first = self.searchFirst(nums, target)

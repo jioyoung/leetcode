@@ -55,6 +55,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # 最长无重复字母
         startIdx = 0
         charDict = {}
         maxL = 0

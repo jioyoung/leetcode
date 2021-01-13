@@ -38,6 +38,7 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # sort nums  
+        # 排列 有重复
         nums.sort()
         res = []
         self.getPermuteUnique(nums, res, [], [])

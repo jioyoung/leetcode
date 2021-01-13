@@ -39,7 +39,7 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-
+        # 构建 构造 括号 parenthesis
         #backtrack
         res = []
         self.getRes(0,0,n,res, [])

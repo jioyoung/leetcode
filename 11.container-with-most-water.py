@@ -44,7 +44,7 @@ class Solution(object):
         :rtype: int
         """
         # move the lower pointer until the two pointers meet
-        
+        # 下雨
         value = 0
         maxArea = 0
         left, right = 0, len(height)-1

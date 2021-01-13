@@ -39,6 +39,7 @@ class Solution(object):
         :type b: str
         :rtype: str
         """
+        # 二进制 binary 相加
         idx_a = len(a)-1
         idx_b = len(b)-1
         value = 0

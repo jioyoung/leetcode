@@ -6,6 +6,7 @@
 class Solution:
     def searchMatrix(self, matrix, target):
         # binary search regard the matrix as an array
+        # 寻找 矩阵
         m = len(matrix)
         if m == 0:
             return False

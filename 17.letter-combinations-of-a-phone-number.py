@@ -40,7 +40,7 @@ class Solution(object):
         :type digits: str
         :rtype: List[str]
         """
-
+        # 电话
         # the new char needs to be added to the each element in the result array, 
         if not digits:
             return []

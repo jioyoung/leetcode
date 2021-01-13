@@ -35,6 +35,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
+        # 下一个 排列
         # from the end of the list, find the first value that is less than the one before it
         # 1 2 3 6 5 1 will have a result: 1 2 5 6 3 1; this is wrong
         # the reason is that 1 2 5 1 3 6 is the smallest one that is greater than the original number
@@ -56,25 +57,4 @@ class Solution(object):
         nums[i+1:] = nums[i+1:][::-1]
         return 
         
-
-
-
-
-
-
-        
-        
-        # #firstly, from the last num, find the first number that is not ascending
-        # i = len(nums)-1
-        # while i > 0 and nums[i-1]>=nums[i]:
-        #     i-=1
-        # if i == 0:
-        #     return nums.reverse()
-        # j = len(nums)-1
-        # i = i-1
-        # while nums[j] <= nums[i]:
-        #     j -=1
-        # nums[i], nums[j] = nums[j], nums[i]
-        # # reverse the part between after i so that the result num is least one that is larger than the original
-        # nums[i+1:] = nums[:i:-1]
 

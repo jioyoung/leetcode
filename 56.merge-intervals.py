@@ -43,7 +43,7 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-
+        # 合并 区间
         # first sort and then merge 
         if not intervals:
             return []

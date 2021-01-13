@@ -40,6 +40,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 跳跃 游戏 最少
         if len(nums)<=1:
             return 0
         stepLeft = 0

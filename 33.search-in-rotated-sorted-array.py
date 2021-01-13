@@ -49,7 +49,7 @@ class Solution(object):
         # get the mid num. judge if target is in the sorted part
         # if in, drop the other part
         # if not in, drop this part
-        
+        # 寻找 扭曲数组
         
         left, right = 0, len(nums) -1 
         while left <= right:

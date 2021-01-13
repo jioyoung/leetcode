@@ -5,6 +5,7 @@
 #
 class Solution:
     def insert(self, intervals, newInterval):
+        # 区间 合并 插入
         if not intervals:
             return [newInterval]
         if not newInterval:

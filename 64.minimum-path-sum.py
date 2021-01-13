@@ -38,6 +38,7 @@ class Solution(object):
         :type grid: List[List[int]]
         :rtype: int
         """
+        # 最小路径
         nRow = len(grid)
         if nRow == 0:
             return 0

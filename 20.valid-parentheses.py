@@ -67,6 +67,7 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+        # 有效 括号 
         parenDict={')':'(', '}':'{', ']':'['}
         tokens = []
         for c in s:

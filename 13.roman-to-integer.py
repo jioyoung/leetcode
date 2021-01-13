@@ -78,6 +78,7 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # 罗马数字 到 整数
         # replace the confused strings with clear ones
         s = s.replace('IV', 'IIII').replace('IX', 'VIIII')
         s = s.replace('XL', 'XXXX').replace('XC', 'LXXXX')

@@ -47,7 +47,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-
+        # 缺少的数
         # if nums[i] > 0 and <= len(nums) nums[i] should be equal to i+1
         length = len(nums)
         for i in range(length):

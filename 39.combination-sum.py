@@ -58,7 +58,7 @@ class Solution(object):
         :type target: int
         :rtype: List[List[int]]
         """
-
+        # 组合 和 无限次
         # backtracking
         res = []
         self.getCombination(candidates, target, 0, res, [])
