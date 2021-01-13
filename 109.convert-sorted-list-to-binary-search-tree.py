@@ -57,6 +57,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: TreeNode
         """
+        # 构建 BST 树 binary search tree
         if not head:
             return
         if head.next is None:

@@ -6,6 +6,7 @@
 
 # @lc code=start
 class Solution:
+    #分数变小数 分数 变 小数
     def fractionToDecimal(self, numerator: int, denominator: int) -> str:
         isNeg = 0
         if numerator == 0:

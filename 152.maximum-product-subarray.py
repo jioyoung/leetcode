@@ -40,14 +40,15 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        curMin, curMax = nums[0], nums[0]
-        ret = nums[0]
-        for i in range(1,len(nums)):
+        curMin = curMax = nums[0]
+        ret = curMax
+        for i in range(1, len(nums)):
             value = nums[i]
-            temp = curMin
+            preMin = curMin
             curMin = min(curMin*value, curMax*value, value)
-            curMax = max(temp*value, curMax*value, value)
-            ret = max(ret, curMax)
+            curMax = max(preMin*value, curMax*value, value)
+            if curMax > ret:
+                ret = curMax
         return ret
 # @lc code=end
 

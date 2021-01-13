@@ -41,6 +41,7 @@ class Solution(object):
         :type numRows: int
         :rtype: List[List[int]]
         """
+        # 三角
         n=numRows
         if n == 0:
             return []

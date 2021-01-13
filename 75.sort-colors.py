@@ -8,6 +8,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        # 颜色排列 012 排序
         rightZero = 0
         leftTwo = len(nums)-1
         i = 0

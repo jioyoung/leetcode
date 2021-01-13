@@ -62,6 +62,7 @@
 #         self.right = None
 
 class Solution(object):
+    # 树 balance 左边 右边 深度 差1
     def isBalanced(self, root):
         """
         :type root: TreeNode

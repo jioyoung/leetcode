@@ -48,6 +48,7 @@ class Solution(object):
         :type inorder: List[int]
         :rtype: TreeNode
         """
+        # 前序 中序 构造 树
         root = self.getTree(preorder, inorder)
         return root
         

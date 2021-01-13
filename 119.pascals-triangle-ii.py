@@ -40,6 +40,7 @@ class Solution(object):
         :type rowIndex: int
         :rtype: List[int]
         """
+        # 三角
         if rowIndex <= 1:
             if rowIndex == 0:
                 return [1]

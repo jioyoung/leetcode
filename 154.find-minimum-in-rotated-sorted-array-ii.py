@@ -48,6 +48,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 寻找扭曲数组 最小值 有重复 
         left, right = 0, len(nums)-1        
         while left < right:
             mid = (left+right)//2

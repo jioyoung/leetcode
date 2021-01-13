@@ -42,6 +42,7 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
+        # 回文 判断
         if not s:
             return True
         s = s.lower()

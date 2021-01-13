@@ -84,14 +84,28 @@ class Solution(object):
         :type cost: List[int]
         :rtype: int
         """
+        #加油站
+        '''
+        加油站
+        当考虑 i 能到达的最远的时候，假设是 j。
+        那么 i + 1 到 j 之间的节点是不是就都不可能绕一圈了？
+        假设 i + 1 的节点能绕一圈，那么就意味着从 i + 1 开始一定能到达 j + 1。
+        又因为从 i 能到达 i + 1，所以从 i 也能到达 j + 1。
+        但事实上，i 最远到达 j 。产生矛盾，所以 i + 1 的节点一定不能绕一圈。同理，其他的也是一样的证明。
+        所以下一次的 i 我们不需要从 i + 1 开始考虑，直接从 j + 1 开始考虑即可。
+        还有一种情况，就是因为到达末尾的时候，会回到 0。
+
+        如果对于下边的情况。
+
+        '''
         if sum(gas) < sum(cost):
             return -1
-        remain = gas[0]-cost[0]
+        remain = gas[0] - cost[0]
         loc = 0
-        for i in range(1, len(gas)):
+        for i in range(1, len(cost)):
             if remain < 0:
-                loc=i
-                remain = gas[i]-cost[i]
+                remain = gas[i] - cost[i]
+                loc = i
             else:
                 remain += (gas[i]-cost[i])
         return loc

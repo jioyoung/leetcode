@@ -45,6 +45,7 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
+        # 合并 数组 合并数组
         i = m-1
         j = n-1
         for k in range(m+n-1, -1, -1):

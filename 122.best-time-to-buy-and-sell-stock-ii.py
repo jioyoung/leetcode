@@ -61,6 +61,7 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # 股票 无数次
         length = len(prices)
         if length <=1:
             return 0

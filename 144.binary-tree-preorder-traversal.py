@@ -58,7 +58,7 @@ class Solution(object):
         #         stack.append(node.right)
         #         stack.append(node.left)
         # return ret
-        
+        # 前序遍历 
         res = []
         nodeStack = [root]
         while nodeStack:
@@ -69,6 +69,19 @@ class Solution(object):
             nodeStack.append(node.right)
             nodeStack.append(node.left)
         return res
+
+
+    #     ret = []
+    #     self.preorderHelp(root, ret)
+    #     return ret
+
+    # def preorderHelp(self, root, retList):
+    #     if root is None:
+    #         return
+    #     retList.append(root.val)
+    #     self.preorderHelp(root.left, retList)
+    #     self.preorderHelp(root.right, retList)
+        
 
 # @lc code=end
 

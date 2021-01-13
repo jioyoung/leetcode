@@ -42,6 +42,7 @@ class Solution(object):
         :type word: str
         :rtype: bool
         """
+        # 找单词 寻找单词
         nRow = len(board)
         if nRow == 0:
             return False

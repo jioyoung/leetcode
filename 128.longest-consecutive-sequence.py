@@ -36,6 +36,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 最长连续数组
         numSet = set()
         ret = 0
         for i in range(len(nums)):

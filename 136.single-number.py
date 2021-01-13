@@ -71,7 +71,7 @@ class Solution(object):
         原文链接：https://blog.csdn.net/hf81970/article/details/13630769
         '''
 
-
+        # 位操作 xor 唯一 出现一次
         answer = nums[0]
         for i in range(1, len(nums)):
             answer ^=nums[i]

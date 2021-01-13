@@ -54,6 +54,7 @@
 #         self.right = None
 
 class Solution(object):
+    # 对称 树 对称数 symmetric
     def isSymmetric(self, root):
         """
         :type root: TreeNode

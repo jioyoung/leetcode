@@ -51,13 +51,16 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # 密码 字母对应 数字 excel 数量
         visit = {}
         return self.countDecodings(s, len(s), visit, 0)
+        # 从 index 开始到结束的数量
 
     def countDecodings(self, s, sLen, visit, idx):
         if idx == sLen:
             return 1
         if s[idx] == '0':
+            # 0 不能开头
             return 0
         if idx in visit:
             return visit[idx]

@@ -4,6 +4,7 @@
 # [81] Search in Rotated Sorted Array II
 #
 class Solution:
+    # 寻找扭曲 数组 寻找
     def search(self, nums: List[int], target: int) -> bool:
         left, right = 0, len(nums)-1
         while left <= right:

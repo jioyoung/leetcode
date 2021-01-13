@@ -5,6 +5,7 @@
 #
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
+        # 删除 重复数组 有两个
         slow = 0
         dupCount = 1
         for fast in range(1, len(nums)):

@@ -36,6 +36,9 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
+        # 回文 切割
+        # valid_dp 表示 s[i:j+1] 是否是回文
+        # min_cut[j]表示 s[0:j+1]要几刀才都是回文
         valid_dp = [[False for j in range(len(s))] for i in range(len(s))]
         for length in range(len(s)):
             for i in range(len(s)-length):

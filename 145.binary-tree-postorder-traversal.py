@@ -49,6 +49,7 @@ class Solution(object):
         '''
         postorder: left right middle
         '''
+        # 后序遍历 左右中
     #     ret = []
     #     self.postorderHelp(root, ret)
     #     return ret

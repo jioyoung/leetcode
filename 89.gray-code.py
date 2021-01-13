@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def grayCode(self, n: int) -> List[int]:
+        # 灰色 密码
         res = [0]
         if n == 0:
             return res

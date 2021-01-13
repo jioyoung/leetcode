@@ -40,6 +40,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # 所有子集 所有 子集 有重复
         res = []
         nums.sort()
         self.getSubsetsWithDup(nums, 0, res, [])

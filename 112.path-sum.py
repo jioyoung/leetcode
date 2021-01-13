@@ -51,6 +51,7 @@ class Solution(object):
         :type sum: int
         :rtype: bool
         """
+        # 树 分层 路径 和
         if not root:
             return False
         nodeQueue= [root]

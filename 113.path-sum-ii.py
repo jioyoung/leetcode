@@ -58,6 +58,7 @@ class Solution(object):
         :type sum: int
         :rtype: List[List[int]]
         """
+        # 树 分层 路径 和 目标
         if not root:
             return []
         nodeQueue = [root]
@@ -79,7 +80,7 @@ class Solution(object):
                     sumQueue.append(node.right.val+currentSum)
                     visitQueue.append(tempPath+[node.right.val])
                 if node.left is None and node.right is None and currentSum == sum:
-                    res.append(tempPath)
+                    res.append(list(tempPath))
         return res
 
 # @lc code=end

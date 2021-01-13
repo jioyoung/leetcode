@@ -46,6 +46,7 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
+        # 最大面积
         stack = []
         i, length = 0, len(heights)
         area = 0

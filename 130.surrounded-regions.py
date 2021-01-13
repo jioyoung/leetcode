@@ -54,6 +54,7 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: None Do not return anything, modify board in-place instead.
         """
+        # 类似小岛 岛屿 细胞
         nrow = len(board)
         if nrow == 0:
             return 
@@ -81,6 +82,7 @@ class Solution(object):
         self.mark_O_side(iRow-1, iCol, nRow, nCol, board)
         self.mark_O_side(iRow, iCol+1, nRow, nCol, board)
         self.mark_O_side(iRow, iCol-1, nRow, nCol, board)
+        return
 
         
 # @lc code=end

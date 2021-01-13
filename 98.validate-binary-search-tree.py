@@ -69,6 +69,7 @@ class Solution(object):
         :rtype: bool
         """
         # inorder of the BST is ascending
+        # 验证 BST 中序遍历 递增 stack 栈 树
         if not root:
             return True
         pre = None

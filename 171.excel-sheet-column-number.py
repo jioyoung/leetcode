@@ -60,10 +60,10 @@ class Solution(object):
 
         感觉就是换成26进制
         """
+        # excel 26 进制 字母变数
         res = 0
-        for i in range(len(s)):
-            val = ord(s[i])-ord('A') + 1
-            res = 26*res+val
+        for c in s:
+            res = 26*res + ord(c)-ord('A')+1
         return res
 
 

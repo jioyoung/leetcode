@@ -49,6 +49,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # 树 分层 最小深度
         if not root:
             return 0
         depth = 0

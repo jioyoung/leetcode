@@ -58,10 +58,11 @@ class Solution(object):
         :type n: int
         :rtype: str
         """
+        # excel 数变字母
         res = []
         while n:
-            val = (n-1)%26
-            res.append(chr(ord('A')+val))
+            value = (n-1)%26
+            res.append(chr(ord('A')+value))
             n = (n-1)//26
         return ''.join(res[::-1])
 

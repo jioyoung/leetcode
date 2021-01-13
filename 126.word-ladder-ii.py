@@ -76,6 +76,7 @@ class Solution(object):
         :type wordList: List[str]
         :rtype: List[List[str]]
         """
+        # word ladder 变形
         dictionary = set(wordList)
         result, cur, visited, found, trace = [], [beginWord], set([beginWord]), False, defaultdict(list)
 

@@ -49,6 +49,7 @@ class Solution(object):
         :type postorder: List[int]
         :rtype: TreeNode
         """
+        # 中序 后序 构建 构造 树
         root = self.getTree(inorder, postorder)
         return root
     

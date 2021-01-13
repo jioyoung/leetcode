@@ -66,6 +66,7 @@
 #         self.right = None
 
 class Solution(object):
+    # 树 相同 相等 树
     def isSameTree(self, p, q):
         """
         :type p: TreeNode

@@ -45,6 +45,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: None Do not return anything, modify head in-place instead.
         """
+        # 链表 重新排序 旋转 倒装 链表
         if head is None or head.next is None or head.next.next is None:
             return
         fast = slow = head

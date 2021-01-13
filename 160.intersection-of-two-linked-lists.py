@@ -94,27 +94,27 @@ class Solution(object):
         :type head1, head1: ListNode
         :rtype: ListNode
         """
+        # 链表 相交
         dummyA = headA
         dummyB = headB
         lenA = self.getListLen(dummyA)
         lenB = self.getListLen(dummyB)
         if lenA > lenB:
-            diff = lenA-lenB
-            for i in range(diff):
+            diff = lenA - lenB
+            for _ in range(diff):
                 headA = headA.next
         elif lenA < lenB:
-            diff = lenB-lenA
-            for i in range(diff):
+            diff = lenB - lenA
+            for _ in range(diff):
                 headB = headB.next
-        
         while headA is not headB:
             headA = headA.next
-            headB=headB.next
+            headB = headB.next
         return headA
     
     def getListLen(self, head):
         length = 0
-        while head is not None:
+        while head:
             length+=1
             head=head.next
         return length

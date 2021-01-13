@@ -67,6 +67,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # 树 叶节点和  分层
         if not root:
             return 0
         nodeQueue = [root]

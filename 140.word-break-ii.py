@@ -72,6 +72,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: List[str]
         """
+        # word break
         if not self.canBreak(s, wordDict):
             return []
         validEnd = {}

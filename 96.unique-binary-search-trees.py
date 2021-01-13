@@ -40,6 +40,8 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
+        # BST 数量 binary search tree 构建 BST
+        # dp[i] 表示 节点个数为i的bst数量
         if n== 0:
             return 0
         dp = [0]*(n+1)

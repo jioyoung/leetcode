@@ -54,6 +54,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        # 分层 树 遍历 zigzag 交叉
         level_index = 0
         if not root:
             return []

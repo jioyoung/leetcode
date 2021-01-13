@@ -74,6 +74,7 @@ class Solution(object):
         :type root: Node
         :rtype: Node
         """
+        # 树 分层 next
         cur = root
         while cur:
             dummy = Node(0)

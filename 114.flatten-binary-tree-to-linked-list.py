@@ -57,6 +57,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: None Do not return anything, modify root in-place instead.
         """
+        # 树 变成一条线 右边
         while root:
             if root.left is None:
                 root = root.right

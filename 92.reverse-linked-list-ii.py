@@ -41,6 +41,7 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
+        # 倒装 链表 链表 部分 倒装
         if m==n:
             return head
         dummy = ListNode(0)

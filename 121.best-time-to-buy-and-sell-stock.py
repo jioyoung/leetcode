@@ -47,6 +47,7 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # 股票 一次
         if len(prices)<=1:
             return 0
         curMin = prices[0]

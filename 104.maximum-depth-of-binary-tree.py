@@ -49,6 +49,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        # 分层 树 最大 深度
         if not root:
             return 0
         nodeQueue = [root]

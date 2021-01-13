@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def findPeakElement(self, nums: List[int]) -> int:
+        # 山峰 峰值 peak
         left, right = 0, len(nums)-1
         while left < right:
             mid = (left+right)//2

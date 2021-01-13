@@ -27,6 +27,7 @@
 
 # @lc code=start
 class Solution(object):
+    # ip 地址 ip地址 
     def restoreIpAddresses(self, s):
         """
         :type s: str
@@ -56,7 +57,7 @@ class Solution(object):
         rec_res.pop()
         
         if s[index] == '0':
-            return # 0 can not be used as a head of a string
+            return # 0 can not be used as a head of a string longer than 1
         
         if index + 1 < len(s):
             rec_res.append(s[index:index+2]+'.')

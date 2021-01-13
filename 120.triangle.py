@@ -41,6 +41,7 @@ class Solution(object):
         :type triangle: List[List[int]]
         :rtype: int
         """
+        # 三角 和
         height = len(triangle)
         if height == 0:
             return 0

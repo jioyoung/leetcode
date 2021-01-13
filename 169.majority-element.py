@@ -42,6 +42,7 @@ class Solution(object):
         投票法。。就是省空间而已 
         遇到自己数量就加一 不然就减一
         数量变成零 就新的一组
+        众数
         '''
         major = nums[0]
         count = 1

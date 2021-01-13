@@ -42,6 +42,7 @@ class Solution(object):
         :type x: int
         :rtype: ListNode
         """
+        # 分治 切割 链表
         small = dummySmall = ListNode(0)
         large = dummyLarge = ListNode(0)
         while head:

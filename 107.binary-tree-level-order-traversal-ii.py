@@ -53,6 +53,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[List[int]]
         """
+        # 树 分层
         if not root:
             return []
         nodeQueue = [root]

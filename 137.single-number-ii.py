@@ -43,6 +43,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 出现一次
         nums_dict = {}
         for i in nums:
             nums_dict[i] = nums_dict.get(i, 0)+1

@@ -13,7 +13,7 @@
 #         self.right = right
 class Solution:
     def binaryTreePaths(self, root: TreeNode) -> List[str]:
-
+        #分层 树 路径
         if not root:
             return []
         nodeQueue = [root]

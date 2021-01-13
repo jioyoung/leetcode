@@ -50,6 +50,7 @@
 
 class Solution(object):
     # Solution 1 
+    # 构建 BST 数量 不同
     def generateTrees(self, n):
         """
         :type n: int

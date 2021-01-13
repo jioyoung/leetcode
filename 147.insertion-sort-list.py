@@ -69,6 +69,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        # 链表 排序 插入 sort insert 
         if head is None:
             return head
         helper = dummy = ListNode(0)

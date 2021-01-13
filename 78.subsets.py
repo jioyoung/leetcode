@@ -41,6 +41,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
+        # 子集 所有子集 无重复
         res = []
         self.getSubsets(nums, 0, res, [])
         return res

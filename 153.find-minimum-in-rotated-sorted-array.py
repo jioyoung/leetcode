@@ -43,6 +43,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        # 寻找扭曲数组 扭曲 最小值 rotate 旋转 
         left, right = 0, len(nums)-1
         if nums[left] <= nums[right]:
             return nums[left]

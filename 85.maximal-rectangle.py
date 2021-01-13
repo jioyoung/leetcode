@@ -36,6 +36,7 @@ class Solution(object):
         :type matrix: List[List[str]]
         :rtype: int
         """
+        # 最大面积
         n_r = len(matrix)
         if n_r==0:
             return 0

@@ -7,6 +7,7 @@
 # @lc code=start
 class Solution:
     def compareVersion(self, version1: str, version2: str) -> int:
+        # 比较 版本
         arr1 = version1.split('.')
         arr2 = version2.split('.')
         arr1_len = len(arr1)

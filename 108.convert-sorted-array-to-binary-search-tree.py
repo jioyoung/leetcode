@@ -51,6 +51,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: TreeNode
         """
+        # 构建binary search tree bst 树 BST
         return self.getTree(nums, 0, len(nums)) 
         # the end is not inclusive
     

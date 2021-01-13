@@ -61,7 +61,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
-        
+        # word break 有效的end
         validEnd = set([0])
         # end is not included
         for i in range(len(s)):

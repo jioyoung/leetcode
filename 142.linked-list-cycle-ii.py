@@ -76,7 +76,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        count = 0
+        # 循环 圈圈 cycle
         if head is None:
             return None
         nodeSet = set()

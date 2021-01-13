@@ -38,7 +38,9 @@ class Solution(object):
         :type s: str
         :rtype: List[List[str]]
         """
+        # 回文 切割
         #分治的思想
+        # valid_dp 表示 s[i:j+1] 是否是回文
         dp = [[None for i in range(len(s))] for j in range(len(s))]
         for length in range(0, len(s)):
             for i in range(0, len(s)-length):

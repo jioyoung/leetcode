@@ -38,6 +38,7 @@
 #         self.next = None
 
 class Solution(object):
+    #链表排序 merge sort mergesort
     def sortList(self, head):
         """
         :type head: ListNode

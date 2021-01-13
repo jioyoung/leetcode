@@ -59,6 +59,9 @@ class Solution(object):
         :type prices: List[int]
         :rtype: int
         """
+        # 股票 两次
+        # preprofit[i] 又买有卖到i最大利润
+        # postprofit[i] 从i开始 买卖 最大利润
         length = len(prices)
         if length <= 1:
             return 0

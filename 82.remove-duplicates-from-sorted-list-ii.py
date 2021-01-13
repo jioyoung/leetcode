@@ -45,6 +45,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        # 删除 重复 链表 有序
         slow = dummy = ListNode(0)
         isEqual = False
         fast = head

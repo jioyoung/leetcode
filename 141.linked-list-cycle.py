@@ -80,6 +80,7 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        # 圈圈 循环
         if not head:
             return False
         while head and head.val is not None:

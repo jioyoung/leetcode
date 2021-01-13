@@ -41,6 +41,7 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
+        # 组合 部分 所有
         res = []
         self.getCombination(n,k,1,res,[])
         return res

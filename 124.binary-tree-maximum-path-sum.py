@@ -63,7 +63,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        
+        # 树 最大三角 三角
         max_all = [root.val]
         self.getRes(root, max_all)
         return max_all[0]
@@ -75,7 +75,8 @@ class Solution(object):
         right = max(self.getRes(root.right, max_all), 0)
         max_cur = root.val + left + right
         if max_cur > max_all[0]:
-            max_all[0] = max_cur # max_all is always a list and have only one value
+            max_all[0] = max_cur 
+        # max_all is always a list and have only one value
         # max_all is the current max including the current root
         # the reason to set max_all as a list is that this setting can
         # treat it as a global variable
