@@ -92,35 +92,35 @@ END
 #### 178. Rank Scores
 Write a SQL query to rank scores. If there is a tie between two scores, both should have the same ranking. Note that after a tie, the next ranking number should be the next consecutive integer value. In other words, there should be no "holes" between ranks.
 
-+----+-------+
+|----|-------|
 | Id | Score |
-+----+-------+
+|----|-------|
 | 1  | 3.50  |
 | 2  | 3.65  |
 | 3  | 4.00  |
 | 4  | 3.85  |
 | 5  | 4.00  |
 | 6  | 3.65  |
-+----+-------+
+|----|-------|
 For example, given the above Scores table, your query should generate the following report (order by highest score):
 
-+-------+---------+
+|-------|---------|
 | score | Rank    |
-+-------+---------+
+|-------|---------|
 | 4.00  | 1       |
 | 4.00  | 1       |
 | 3.85  | 2       |
 | 3.65  | 3       |
 | 3.65  | 3       |
 | 3.50  | 4       |
-+-------+---------+
+|-------|---------|
 Important Note: For MySQL solutions, to escape reserved words used as column names, you can use an apostrophe before and after the keyword. For example `Rank`.
 ```sql
 /* Write your T-SQL query statement below */
 
 SELECT tb1.Score score, (SELECT COUNT(DISTINCT tb2.Score)
                          FROM Scores tb2
-                         WHERE tb2.Score > tb1.Score)+1 Rank
+                         WHERE tb2.Score > tb1.Score)|1 Rank
 FROM Scores tb1
 ORDER BY tb1.Score DESC;
 ```
@@ -128,32 +128,32 @@ ORDER BY tb1.Score DESC;
 #### 184. Department Highest Salary
 The Employee table holds all employees. Every employee has an Id, a salary, and there is also a column for the department Id.
 
-+----+-------+--------+--------------+
+|----|-------|--------|--------------|
 | Id | Name  | Salary | DepartmentId |
-+----+-------+--------+--------------+
+|----|-------|--------|--------------|
 | 1  | Joe   | 70000  | 1            |
 | 2  | Jim   | 90000  | 1            |
 | 3  | Henry | 80000  | 2            |
 | 4  | Sam   | 60000  | 2            |
 | 5  | Max   | 90000  | 1            |
-+----+-------+--------+--------------+
+|----|-------|--------|--------------|
 The Department table holds all departments of the company.
 
-+----+----------+
+|----|----------|
 | Id | Name     |
-+----+----------+
+|----|----------|
 | 1  | IT       |
 | 2  | Sales    |
-+----+----------+
+|----|----------|
 Write a SQL query to find employees who have the highest salary in each of the departments. For the above tables, your SQL query should return the following rows (order of rows does not matter).
 
-+------------+----------+--------+
+|------------|----------|--------|
 | Department | Employee | Salary |
-+------------+----------+--------+
+|------------|----------|--------|
 | IT         | Max      | 90000  |
 | IT         | Jim      | 90000  |
 | Sales      | Henry    | 80000  |
-+------------+----------+--------+
+|------------|----------|--------|
 Explanation:
 
 Max and Jim both have the highest salary in the IT department and Henry has the highest salary in the Sales department.
@@ -330,22 +330,22 @@ Please write a SQL query to output movies with an odd numbered ID and a descript
 
 For example, table cinema:
 
-+---------+-----------+--------------+-----------+
+|---------|-----------|--------------|-----------|
 |   id    | movie     |  description |  rating   |
-+---------+-----------+--------------+-----------+
+|---------|-----------|--------------|-----------|
 |   1     | War       |   great 3D   |   8.9     |
 |   2     | Science   |   fiction    |   8.5     |
 |   3     | irish     |   boring     |   6.2     |
 |   4     | Ice song  |   Fantacy    |   8.6     |
 |   5     | House card|   Interesting|   9.1     |
-+---------+-----------+--------------+-----------+
+|---------|-----------|--------------|-----------|
 For the example above, the output should be:
-+---------+-----------+--------------+-----------+
+|---------|-----------|--------------|-----------|
 |   id    | movie     |  description |  rating   |
-+---------+-----------+--------------+-----------+
+|---------|-----------|--------------|-----------|
 |   5     | House card|   Interesting|   9.1     |
 |   1     | War       |   great 3D   |   8.9     |
-+---------+-----------+--------------+-----------+
+|---------|-----------|--------------|-----------|
 
 ```sql
 # Write your MySQL query statement below
@@ -366,33 +366,33 @@ Can you write a SQL query to output the result for Mary?
 
  
 
-+---------+---------+
+|---------|---------|
 |    id   | student |
-+---------+---------+
+|---------|---------|
 |    1    | Abbot   |
 |    2    | Doris   |
 |    3    | Emerson |
 |    4    | Green   |
 |    5    | Jeames  |
-+---------+---------+
+|---------|---------|
 For the sample input, the output is:
 
-+---------+---------+
+|---------|---------|
 |    id   | student |
-+---------+---------+
+|---------|---------|
 |    1    | Doris   |
 |    2    | Abbot   |
 |    3    | Green   |
 |    4    | Emerson |
 |    5    | Jeames  |
-+---------+---------+
+|---------|---------|
 Note:
 
 If the number of students is odd, there is no need to change the last one's seat.
 ```sql
 # Write your MySQL query statement below
 SELECT (CASE
-            WHEN mod(tb1.id,2)=1 AND tb1.id < tb2.seatCount THEN tb1.id+1
+            WHEN mod(tb1.id,2)=1 AND tb1.id < tb2.seatCount THEN tb1.id|1
             WHEN mod(tb1.id,2)=0 THEN tb1.id-1
             ELSE tb1.id
         END) id, tb1.student
@@ -406,13 +406,13 @@ ORDER BY id;
 #### 601. Human Traffic of Stadium
 Table: Stadium
 
-+---------------+---------+
+|---------------|---------|
 | Column Name   | Type    |
-+---------------+---------+
+|---------------|---------|
 | id            | int     |
 | visit_date    | date    |
 | people        | int     |
-+---------------+---------+
+|---------------|---------|
 visit_date is the primary key for this table.
 Each row of this table contains the visit date and visit id to the stadium with the number of people during the visit.
 No two rows will have the same visit_date, and as the id increases, the dates increase as well.
@@ -427,9 +427,9 @@ The query result format is in the following example.
  
 
 Stadium table:
-+------+------------+-----------+
+|------|------------|-----------|
 | id   | visit_date | people    |
-+------+------------+-----------+
+|------|------------|-----------|
 | 1    | 2017-01-01 | 10        |
 | 2    | 2017-01-02 | 109       |
 | 3    | 2017-01-03 | 150       |
@@ -438,17 +438,17 @@ Stadium table:
 | 6    | 2017-01-06 | 1455      |
 | 7    | 2017-01-07 | 199       |
 | 8    | 2017-01-09 | 188       |
-+------+------------+-----------+
+|------|------------|-----------|
 
 Result table:
-+------+------------+-----------+
+|------|------------|-----------|
 | id   | visit_date | people    |
-+------+------------+-----------+
+|------|------------|-----------|
 | 5    | 2017-01-05 | 145       |
 | 6    | 2017-01-06 | 1455      |
 | 7    | 2017-01-07 | 199       |
 | 8    | 2017-01-09 | 188       |
-+------+------------+-----------+
+|------|------------|-----------|
 The four rows with ids 5, 6, 7, and 8 have consecutive ids and each of them has >= 100 people attended. Note that row 8 was included even though the visit_date was not the next day after row 7.
 The rows with ids 2 and 3 are not included because we need at least three consecutive ids.
 
@@ -458,7 +458,7 @@ SELECT DISTINCT tb1.id, tb1.visit_date, tb1.people
 FROM Stadium tb1, Stadium tb2, Stadium tb3
 WHERE tb1.people >= 100 AND tb2.people >=100 AND tb3.people>=100
     AND ((tb1.id = tb2.id-1 AND tb2.id = tb3.id-1) OR
-    (tb1.id = tb2.id+1 AND tb1.id = tb3.id-1) OR
-    (tb1.id = tb2.id+1 AND tb2.id = tb3.id+1))
+    (tb1.id = tb2.id|1 AND tb1.id = tb3.id-1) OR
+    (tb1.id = tb2.id|1 AND tb2.id = tb3.id|1))
 ORDER BY tb1.visit_date;
 ```
