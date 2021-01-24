@@ -62,9 +62,6 @@ class Solution(object):
                     return False
             else:
                 stepMax = max(stepMax, i+nums[i])
-        if stepMax >= len(nums)-1:
-            return True
-        else:
-            return False
+        return True if stepMax >= len(nums)-1 else False
 
 

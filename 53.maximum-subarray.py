@@ -44,6 +44,7 @@ class Solution(object):
                 curMax = nums[i]
             else:
                 curMax += nums[i]
-            allMax = max(curMax, allMax)
+            if curMax > allMax:
+                allMax = curMax
         return allMax
 

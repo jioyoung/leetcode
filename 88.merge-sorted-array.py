@@ -59,6 +59,8 @@ class Solution(object):
             elif j >= 0:
                 nums1[k] = nums2[j]
                 j-=1
+        return
+
 
         
 

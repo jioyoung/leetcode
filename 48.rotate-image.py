@@ -73,13 +73,14 @@ class Solution(object):
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
         n = len(matrix)
-        if n == 0:
+        if n==0:
             return 
-        for i in range(1, n):
-            for j in range(0, i):
-                matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+        for i in range(n):
+            for j in range(i+1, n):
+                matrix[i][j], matrix[j][i] =  matrix[j][i], matrix[i][j]
         for i in range(n):
             matrix[i].reverse()
+        return
 
             
 

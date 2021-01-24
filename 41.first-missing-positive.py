@@ -47,7 +47,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        # 缺少的数
+        # 缺少的数 缺少的第一个 正数
         # if nums[i] > 0 and <= len(nums) nums[i] should be equal to i+1
         length = len(nums)
         for i in range(length):
@@ -58,16 +58,4 @@ class Solution(object):
             if nums[i]!=i+1:
                 return i+1
         return length + 1 
-
-        # length = len(nums)
-        # for i in range(length):
-        #     # zy: nums[i]!=nums[nums[i]-1]
-        #     while 0 < nums[i]<= length and nums[i]!=nums[nums[i]-1]:
-        #         temp = nums[i] - 1
-        #         nums[i], nums[temp] = nums[temp], nums[i]
-        
-        # for i in range(length):
-        #     if nums[i] != i+1:
-        #         return i+1
-        # return length+1
 

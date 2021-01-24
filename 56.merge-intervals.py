@@ -43,11 +43,11 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        # 合并 区间
+        # 合并 区间 interval
         # first sort and then merge 
-        if not intervals:
-            return []
-        intervals.sort(key=lambda x: x[0])
+        if len(intervals)<=1:
+            return intervals
+        intervals.sort(key=lambda x:x[0])
         res = [intervals[0]]
         for i in range(1, len(intervals)):
             if intervals[i][0] > res[-1][1]:

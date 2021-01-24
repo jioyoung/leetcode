@@ -53,11 +53,14 @@ class Solution(object):
             while left < right:
                 twoSum = nums[left] + nums[right]
                 if twoSum > -nums[i]:
-                    right-=1
+                    right -=1
+                    while left < right and nums[right] == nums[right+1]:
+                        right-=1
                 elif twoSum < -nums[i]:
                     left+=1
+                    while left < right and nums[left] == nums[left-1]:
+                        left+=1
                 else:
-                    # found 
                     res.append([nums[i], nums[left], nums[right]])
                     left += 1
                     right -= 1
@@ -66,4 +69,5 @@ class Solution(object):
                     while left < right and nums[right] == nums[right+1]:
                         right-=1
         return res
+
 

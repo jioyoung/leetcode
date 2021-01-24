@@ -37,7 +37,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        # 0 放到最后
+        # 0 放到最后 two pointer
         i = j = 0
         # j is the pointer for the non-zero value
         for i in range(len(nums)):

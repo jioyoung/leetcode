@@ -65,7 +65,7 @@ class Solution(object):
         cur = nums[0]
         index = 0
         for _ in range(length):
-            index = (index+k)%length
+            index = (index+k)%length # update index
             cur, nums[index] = nums[index], cur
             if index == start:
                 start+= 1

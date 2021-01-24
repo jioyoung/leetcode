@@ -46,11 +46,11 @@ class Solution(object):
         self.getSubsets(nums, 0, res, [])
         return res
 
-    def getSubsets(self, nums, start, res, res_rec):
-        res.append(list(res_rec))
+    def getSubsets(self, nums, start, res, rec_res):
+        res.append(list(rec_res))
         for i in range(start, len(nums)):
-            res_rec.append(nums[i])
-            self.getSubsets(nums, i+1, res, res_rec)
-            res_rec.pop()
-        return 
+            rec_res.append(nums[i])
+            self.getSubsets(nums, i+1, res, rec_res)
+            rec_res.pop()
+        return
 

@@ -49,19 +49,21 @@ class Solution(object):
         # get the mid num. judge if target is in the sorted part
         # if in, drop the other part
         # if not in, drop this part
-        # 寻找 扭曲数组
+        # 寻找 扭曲数组 search
         
         left, right = 0, len(nums) -1 
         while left <= right:
             mid = (left+right)//2
-            if nums[mid] == target:
+            if nums[mid] == target: # do not forget this condition
                 return mid
             if nums[left]<=nums[mid]:
+                # left is sorted
                 if nums[left]<=target<nums[mid]:
                     right=mid-1
                 else:
                     left=mid+1
             else:
+                # right is sorted
                 if nums[mid] < target <= nums[right]:
                     left = mid+1
                 else:

@@ -13,15 +13,16 @@ class Solution:
         leftTwo = len(nums)-1
         i = 0
         while i <= leftTwo:
-            if nums[i] == 0:
-                nums[i], nums[rightZero] = nums[rightZero], nums[i]
+            if nums[i]==0:
+                nums[rightZero], nums[i] = nums[i], nums[rightZero]
                 rightZero+=1
                 i+=1
-            elif nums[i] == 2:
-                nums[i], nums[leftTwo] = nums[leftTwo], nums[i]
+            elif nums[i]==2:
+                nums[leftTwo], nums[i] = nums[i], nums[leftTwo]
                 leftTwo-=1
             else:
                 i+=1
+        return
     
 
 

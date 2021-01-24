@@ -51,7 +51,7 @@ class Solution(object):
         res = [None for _ in range(length)]
         res[0] = 1
         for i in range(1, len(nums)):
-            res[i] = res[i-1]*nums[i-1]
+            res[i] = res[i-1]*nums[i-1] # here nums[i-1]
         right = 1
         for i in range(len(nums)-2, -1, -1):
             right*=nums[i+1]

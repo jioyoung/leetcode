@@ -12,11 +12,13 @@ class Solution:
             if nums[mid] == target:
                 return True
             if nums[left] < nums[mid]:
+                #left is sorted
                 if nums[left]<=target<nums[mid]:
                     right = mid-1
                 else:
                     left = mid+1
             elif nums[left] > nums[mid]:
+                # right is sorted
                 if nums[mid]<target<=nums[right]:
                     left=mid+1
                 else:

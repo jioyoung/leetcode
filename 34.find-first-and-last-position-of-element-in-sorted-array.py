@@ -43,6 +43,7 @@ class Solution(object):
         # 第一个 最后一个 二分法
         # 找左边界 相等也要 right = mid-1 最后左边界是有效的left
         # 找右边界 相等也要往右 left = mid+1 最后右边界是right
+        # 寻找 最左 最右
         first = self.searchFirst(nums, target)
         if first == -1:
             return [-1, -1]
@@ -71,6 +72,7 @@ class Solution(object):
                 left = mid+1
             else:
                 right = mid-1
+        # here compare right to leftLimit
         if right >= leftLimit and nums[right] == target:
             return right
         else:

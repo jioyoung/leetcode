@@ -51,7 +51,7 @@ class Solution(object):
                 return digits
             else:
                 digits[i]=0
-        if digits[0]==0:
+        if digits[0] == 0:
             return [1]+digits
 
         

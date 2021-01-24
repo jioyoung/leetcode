@@ -7,22 +7,22 @@ class Solution:
     def searchMatrix(self, matrix, target):
         # binary search regard the matrix as an array
         # 寻找 矩阵
-        m = len(matrix)
-        if m == 0:
+        nRow = len(matrix)
+        if nRow == 0:
             return False
-        n = len(matrix[0])
-        if n == 0:
+        nCol = len(matrix[0])
+        if nCol == 0:
             return False
-        left, right = 0, m*n-1
+        left, right = 0, nCol*nRow-1
         while left <= right:
             mid = (left+right)//2
-            iRow = mid//n
-            iCol = mid%n
-            if matrix[iRow][iCol] == target:
+            iRow = mid//nCol
+            iCol = mid%nCol
+            if matrix[iRow][iCol]==target:
                 return True
-            elif matrix[iRow][iCol] > target:
+            elif matrix[iRow][iCol]>target:
                 right = mid-1
             else:
-                left = mid + 1
+                left = mid+1
         return False
 

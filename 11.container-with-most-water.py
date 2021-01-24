@@ -45,17 +45,17 @@ class Solution(object):
         """
         # move the lower pointer until the two pointers meet
         # 下雨
-        value = 0
-        maxArea = 0
-        left, right = 0, len(height)-1
+        value, maxArea = 0, 0
+        left, right = 0, len(height) -1 
         while left < right:
             if height[left] <= height[right]:
                 value = (right-left)*height[left]
-                maxArea = max(maxArea, value)
+                if value > maxArea:
+                    maxArea = value
                 left+=1
             else:
                 value = (right-left)*height[right]
-                maxArea = max(maxArea, value)
+                if value > maxArea:
+                    maxArea = value
                 right-=1
-                
-        return maxArea
+        return maxArea 

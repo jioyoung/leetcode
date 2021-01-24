@@ -48,13 +48,13 @@ class Solution(object):
         :rtype: int
         """
         # 股票 一次
-        if len(prices)<=1:
+        if len(prices) <= 1:
             return 0
         curMin = prices[0]
         res = 0
         for i in range(1, len(prices)):
             if prices[i] > curMin:
-                res = max(prices[i]-curMin, res)
+                res = max(prices[i]- curMin, res)
             else:
                 curMin = prices[i]
         return res

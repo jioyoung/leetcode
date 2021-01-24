@@ -10,12 +10,12 @@ class Solution:
         # Solution one two pointer O(n)
         # 最短子数组
         left, right = 0, 0
-        res = len(nums)+1
         subSum = 0
+        res = len(nums) + 1
         while right < len(nums):
             subSum += nums[right]
-            while subSum >= s:
-                res = min(right-left+1, res)
+            while subSum >=s:
+                res = min(res, right-left+1)
                 subSum-=nums[left]
                 left+=1
             right+=1
@@ -23,6 +23,10 @@ class Solution:
             return 0
         else:
             return res
+
+
+
+
         # solution two: O(nlogn)
         # length = len(nums)
         # if length == 0:

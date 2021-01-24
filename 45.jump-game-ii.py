@@ -47,13 +47,14 @@ class Solution(object):
         stepRight = nums[0]
         nStep = 1
         while stepLeft <= stepRight:
-            if stepRight >= len(nums)-1:
+            if stepRight>=len(nums)-1:
                 return nStep
-            oldRight= stepRight
-            nStep+=1
-            for j in range(stepLeft, oldRight+1):
-                stepRight = max(nums[j]+j, stepRight)
-            stepLeft = oldRight+1
+            else:
+                oldRight = stepRight
+                nStep+=1 #do not forget update nstep
+                for i in range(stepLeft, oldRight+1):
+                    stepRight = max(stepRight, nums[i]+i)
+                stepLeft = oldRight+1
         
 
 

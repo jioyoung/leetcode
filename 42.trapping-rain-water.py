@@ -30,23 +30,23 @@
 #
 class Solution(object):
     def trap(self, height):
-        # 雨水 
-        if not height or len(height) < 3:
+        # 雨水 水
+        if len(height) < 3:
             return 0
-
         left, right = 0, len(height)-1
-        lmax, rmax = height[left], height[right]
-        vol = 0
+        lmax = height[left]
+        rmax = height[right]
+        volume = 0
         while left < right:
             if lmax <= rmax:
-                left += 1
+                left+=1
                 lmax = max(lmax, height[left])
-                vol+=lmax-height[left]
+                volume+= (lmax-height[left])
             else:
-                right -= 1
-                rmax = max(rmax, height[right])
-                vol+=rmax-height[right]
-        return vol
+                right-=1
+                rmax=max(rmax,height[right])
+                volume+=(rmax-height[right])
+        return volume
 
 
         # # stack  decreasing stack

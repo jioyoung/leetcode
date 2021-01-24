@@ -7,7 +7,7 @@
 # @lc code=start
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
-        # range 总结
+        # range 总结 "->"
         if not nums:
             return []
         if len(nums) == 1:

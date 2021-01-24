@@ -16,6 +16,7 @@ class Solution:
             else:
                 right = mid
         return left
+    
         
         
 # @lc code=end

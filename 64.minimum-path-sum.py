@@ -47,11 +47,10 @@ class Solution(object):
             return 0
         for j in range(1, nCol):
             grid[0][j]+=grid[0][j-1]
-        for i in range(1,nRow):
+        for i in range(1, nRow):
             grid[i][0]+=grid[i-1][0]
-        for i in range(1,nRow):
-            for j in range(1, nCol):
-                grid[i][j] += min(grid[i][j-1], grid[i-1][j])
+        for j in range(1, nCol):
+            for i in range(1, nRow):
+                grid[i][j]+=min(grid[i-1][j], grid[i][j-1])
         return grid[-1][-1]
-
 

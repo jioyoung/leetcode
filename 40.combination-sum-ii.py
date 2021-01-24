@@ -61,22 +61,21 @@ class Solution(object):
         """
         candidates.sort()
         res = []
-        self.getCombination(candidates, target, 0, res, [])
+        self.getTargetCombination(candidates, target, 0, res, [])
         return res
-    
-    def getCombination(self, candidates, target, start, res, rec_res):
+        
+    def getTargetCombination(self, candidates, target, start, res, rec_res):
         if target == 0:
             res.append(list(rec_res))
-            return 
+            return
         if target < 0:
-            return 
-        
+            return
         for i in range(start, len(candidates)):
-            if i > start and candidates[i-1] == candidates[i]:
+            if i > start and candidates[i] == candidates[i-1]:
                 continue
             rec_res.append(candidates[i])
-            self.getCombination(candidates, target - candidates[i], i+1, res, rec_res)
+            self.getTargetCombination(candidates, target-candidates[i], i+1, res, rec_res)
             rec_res.pop()
-        return 
+        return
 
  

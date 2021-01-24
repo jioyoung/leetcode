@@ -47,32 +47,43 @@ class Solution(object):
         """
         # 旋转 矩阵 扭曲
         result = []
-        if not matrix:
+        nRow = len(matrix)
+        if nRow == 0:
             return []
-        r_low, r_high = 0, len(matrix)-1
-        c_low, c_high = 0, len(matrix[0])-1
-        size = len(matrix)*len(matrix[0])
+        nCol = len(matrix[0])
+        if nCol == 0:
+            return []
+        size = 0
+        count = nRow * nCol
         direct = 0
-        while (len(result)<size):
+        lRow, uRow = 0, nRow-1
+        lCol, uCol = 0, nCol-1
+        while size < count:
             if direct == 0:
                 # right
-                result = result + matrix[r_low][c_low:c_high+1]
-                r_low+=1
+                result+=matrix[lRow][lCol:uCol+1]
+                size+=(uCol+1-lCol)
                 direct = 1
+                lRow+=1
             elif direct == 1:
                 # down
-                for i in range(r_low, r_high+1):
-                    result.append(matrix[i][c_high])
-                c_high-=1
-                direct =2
+                for i in range(lRow, uRow+1):
+                    result.append(matrix[i][uCol])
+                size+=(uRow+1-lRow)
+                direct=2
+                uCol-=1
             elif direct ==2:
-                result = result + matrix[r_high][c_low:c_high+1][::-1]
-                #left
-                r_high-=1
+                # left
+                result+=matrix[uRow][lCol:uCol+1][::-1]
+                size+=(uCol+1-lCol)
                 direct = 3
+                uRow-=1
             else:
-                for i in range(r_high, r_low-1, -1):
-                    result.append(matrix[i][c_low])
-                c_low+=1
+                #up
+                for i in range(uRow, lRow-1,-1):
+                    result.append(matrix[i][lCol])
+                size+=(uRow+1-lRow)
                 direct = 0
+                lCol+=1
         return result
+

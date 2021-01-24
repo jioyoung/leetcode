@@ -43,16 +43,17 @@ class Solution(object):
         # 所有子集 所有 子集 有重复
         res = []
         nums.sort()
-        self.getSubsetsWithDup(nums, 0, res, [])
+        self.getSubsets(nums, 0, res, [])
         return res
-        
-    def getSubsetsWithDup(self, nums, start, res, res_rec):
-        res.append(list(res_rec))
+
+
+    def getSubsets(self, nums, start, res, rec_res):
+        res.append(list(rec_res))
         for i in range(start, len(nums)):
             if i > start and nums[i] == nums[i-1]:
                 continue
-            res_rec.append(nums[i])
-            self.getSubsetsWithDup(nums, i+1, res, res_rec)
-            res_rec.pop()
+            rec_res.append(nums[i])
+            self.getSubsets(nums, i+1, res, rec_res)
+            rec_res.pop()
         return
 

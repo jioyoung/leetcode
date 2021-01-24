@@ -49,14 +49,15 @@ class Solution(object):
         :rtype: int
         """
         # 寻找扭曲数组 最小值 有重复 
-        left, right = 0, len(nums)-1        
+        left, right = 0, len(nums)-1
+        # cannot judge if nums[left] <= nums[right] 3,1,3
         while left < right:
             mid = (left+right)//2
             if nums[mid] > nums[right]:
                 left = mid+1
-            elif nums[mid]<nums[right]:
+            elif nums[mid] < nums[right]:
                 right = mid
             else:
-                right-=1
+                right -= 1
         return nums[left]
 

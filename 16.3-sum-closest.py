@@ -36,19 +36,20 @@ class Solution(object):
         # 3sum threesum 接近
         # sort, iteration and then two pointer
         nums.sort()
-        minDiff = abs(sum(nums[0:3])-target)
-        res = sum(nums[0:3])
+        minDiff = abs(sum(nums[:3])-target)
+        res = sum(nums[:3])
         for i in range(len(nums)-2):
-            left = i+1
-            right = len(nums)-1
+            left, right = i+1, len(nums)-1
             while left < right:
-                threeSum = nums[i]+nums[left] + nums[right]
-                if threeSum == target:
-                    return target
+                threeSum = nums[i] + nums[left] + nums[right]
                 diff = abs(threeSum-target)
-                if diff<minDiff:
+                if diff == 0:
+                    return threeSum
+                if diff < minDiff:
                     minDiff = diff
                     res = threeSum
+                # compare threeSum to target not diff > 0 or < 0 diff is absolute value it
+                # is always positive
                 if threeSum > target:
                     right-=1
                 else:

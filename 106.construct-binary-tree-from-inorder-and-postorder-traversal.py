@@ -52,7 +52,7 @@ class Solution(object):
         # 中序 后序 构建 构造 树
         root = self.getTree(inorder, postorder)
         return root
-    
+
     def getTree(self, inorder, postorder):
         if inorder:
             index = inorder.index(postorder.pop())

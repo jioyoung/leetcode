@@ -35,42 +35,38 @@
 # @lc code=start
 class Solution:
     def majorityElement(self, nums):
-        # 众数 
+        # 众数 1/3 三分之一
         group1 = 0
         group2 = 1
         count1 = 0
         count2 = 0
-        if not nums:
-            return []
-        for oneValue in nums:
-            if oneValue == group1:
+        for value in nums:
+            if value == group1:
                 count1+=1
-            elif oneValue == group2:
+            elif value == group2:
                 count2+=1
             elif count1 == 0:
-                group1 = oneValue
-                count1=1
+                group1 = value
+                count1 = 1
             elif count2 == 0:
-                group2 = oneValue
-                count2=1
+                group2 = value
+                count2 = 1
             else:
                 count1-=1
                 count2-=1
-                
-        count1, count2 = 0, 0
-        for oneValue in nums:
-            if oneValue == group1:
+        count1 = 0
+        count2 = 0
+        for value in nums:
+            if value == group1:
                 count1+=1
-            elif oneValue == group2:
+            elif value == group2:
                 count2+=1
         res = []
-        length = len(nums)
-        if count1 > length//3:
+        if count1 > len(nums)//3:
             res.append(group1)
-        if count2 > length//3:
+        if count2 > len(nums)//3:
             res.append(group2)
         return res
-            
         
 # @lc code=end
 

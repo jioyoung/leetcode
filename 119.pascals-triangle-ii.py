@@ -41,19 +41,20 @@ class Solution(object):
         :rtype: List[int]
         """
         # 三角
-        if rowIndex <= 1:
-            if rowIndex == 0:
-                return [1]
-            else:
-                return [1,1]
-        ret = [1]*(1+rowIndex)
-        temp = [None]*(rowIndex-1)
+        if rowIndex < 0:
+            return []
+        if rowIndex == 0:
+            return [1]
+        if rowIndex == 1:
+            return [1,1]
+        ret = [1, 1]
+        temp = [None]*(rowIndex+1)
+        temp[0] = 1
         for i in range(2, rowIndex+1):
-            temp[0:i-1] = ret[0:i-1]
+            temp[i]=1
             for j in range(1, i):
-                ret[j]+=temp[j-1]
+                temp[j] = ret[j-1] + ret[j]
+            ret = list(temp)
         return ret
 
-
-        
 

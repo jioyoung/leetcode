@@ -74,6 +74,8 @@ class Solution(object):
         :rtype: int
         """
         # 删除 某一个值
+        if not nums:
+            return 0
         slow = 0
         for fast in range(len(nums)):
             if nums[fast] == val:

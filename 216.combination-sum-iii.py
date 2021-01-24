@@ -50,41 +50,45 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # 组合的和 combination sum
-        if k ==1:
-            if n<=9:
+        if k == 1:
+            if n >=1 and n <= 9:
                 return [[n]]
             else:
                 return []
         if k > 9:
             return []
-        ret = []
-        small_sum = 0
+        maxSum = 0
+        for i in range(9,9-k,-1):
+            maxSum += i
+        if maxSum < n:
+            return []
+        res = []
+        minSum = 0
         for i in range(1, k):
-            small_sum += i
-        right = min(n- small_sum, 9)    
-        self.getResult(k, 1, right, n, [], ret)
-        return ret
+            minSum+=i
+        right = min(9, n-minSum)
+        self.getResult(k, n, 1, right, res, [])
+        return res
     
-    def getResult(self, k, left, right, n, recList, ret):
+    def getResult(self, k, n, left, right, res, rec_res):
         # k is the number of values remaining
         # left is the smallest value that can be used
         # right is the largest
         # for one combination, all values are increasing
         # n is the target sum
         # ret is the result
-        if k == 0 and n == 0:
-            ret.append(list(recList))
-            return 
-        if k == 0 or n==0:
+        if k == 0 and n ==0:
+            res.append(list(rec_res))
+            return
+        if k == 0 or n == 0:
             return
         if left > right:
             return
         for i in range(left, right+1):
-            recList.append(i)
-            self.getResult(k-1, i+1, right, n-i, recList, ret)
-            recList.pop()
-
-
+            rec_res.append(i)
+            self.getResult(k-1, n-i, i+1,right, res, rec_res)
+            rec_res.pop()
+        return 
 
 # @lc code=end
 

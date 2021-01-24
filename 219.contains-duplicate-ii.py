@@ -54,16 +54,16 @@ class Solution(object):
         :type k: int
         :rtype: bool
         """
-        # 有条件重复
-        nums_dict = dict()
+        # 有条件重复 是否有重复
+        numDict = dict()
         for i in range(len(nums)):
-            if nums[i] in nums_dict:
-                if i-nums_dict[nums[i]]<=k:
+            if nums[i] in numDict:
+                if i-numDict[nums[i]]<=k:
                     return True
                 else:
-                    nums_dict[nums[i]] = i
+                    numDict[nums[i]] = i
             else:
-                nums_dict[nums[i]] = i
+                numDict[nums[i]] = i
         return False
         
 # @lc code=end
