@@ -43,23 +43,25 @@ class Solution(object):
         """
         # 组合 部分 所有
         res = []
-        self.getCombination(n,k,1,res,[])
+        self.getCombine(n, k, 1, res, [])
         return res
 
-    def getCombination(self, n, k, start, res, res_rec):
-        if len(res_rec) == k:
-            res.append(list(res_rec))
+
+    def getCombine(self, n, k, start, res, rec_res):
+        if len(rec_res) == k:
+            res.append(list(rec_res))
             return
-        if len(res_rec) + n - start + 1 < k:
-            return
-        if len(res_rec) + n - start + 1== k:
-            res.append(res_rec + list(range(start, n+1)))
-            return
-        for i in range(start, n+1):
-            res_rec.append(i)
-            self.getCombination(n,k,i+1,res,res_rec)
-            res_rec.pop()
+        if len(rec_res) + n - start + 1 == k:
+            res.append(rec_res+list(range(start,n+1)))
+            return 
         
+        if len(rec_res) + n - start + 1 < k:
+            return
+        
+        for i in range(start, n+1):
+            rec_res.append(i)
+            self.getCombine(n, k, i+1, res, rec_res)
+            rec_res.pop()
         return
 
 

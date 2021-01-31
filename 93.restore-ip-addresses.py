@@ -48,7 +48,7 @@ class Solution(object):
             return 
         
         # stopping condition 3
-        if count > 4:
+        if count >= 4:
             return 
         
         

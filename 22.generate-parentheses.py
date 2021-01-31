@@ -42,21 +42,20 @@ class Solution(object):
         # 构建 构造 括号 parenthesis
         #backtrack
         res = []
-        self.getRes(0,0,n,res, [])
+        self.getParenthesis(n, 0, 0, res, [])
         return res
-        
-        
-    def getRes(self, nLeft, nRight, n, res, rec_res):
+
+    def getParenthesis(self, n, nLeft, nRight, res, rec_res):
         if len(rec_res) == 2*n:
             res.append(''.join(rec_res))
             return
         if nLeft < n:
-            rec_res.append('(')
-            self.getRes(nLeft+1, nRight, n, res, rec_res)
+            rec_res.append("(")
+            self.getParenthesis(n, nLeft+1, nRight, res, rec_res)
             rec_res.pop()
-        if nLeft > nRight:
-            rec_res.append(')')
-            self.getRes(nLeft, nRight+1, n, res, rec_res)
+        if nRight < nLeft:
+            rec_res.append(")")
+            self.getParenthesis(n, nLeft, nRight+1, res, rec_res)
             rec_res.pop()
         return
 

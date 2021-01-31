@@ -120,7 +120,7 @@ Important Note: For MySQL solutions, to escape reserved words used as column nam
 
 SELECT tb1.Score score, (SELECT COUNT(DISTINCT tb2.Score)
                          FROM Scores tb2
-                         WHERE tb2.Score > tb1.Score)|1 Rank
+                         WHERE tb2.Score > tb1.Score)+1 Rank
 FROM Scores tb1
 ORDER BY tb1.Score DESC;
 ```

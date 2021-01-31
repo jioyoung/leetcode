@@ -42,21 +42,20 @@ class Solution(object):
     # Method 2 # backtracking
     # 排列 没有重复
         res = []
-        self.getPermute(nums, res, [], len(nums))
+        self.getPermute(nums, res, [])
         return res
+        
 
-
-
-    def getPermute(self, nums, res, res_rec, len_nums):
-        if len_nums == len(res_rec):
-            res.append(list(res_rec))
-            return
-        for i in range(len_nums):
-            if nums[i] in res_rec:
+    def getPermute(self, nums, res, rec_res):
+        if len(rec_res) == len(nums):
+            res.append(list(rec_res))
+            return 
+        for i in range(len(nums)):
+            if nums[i] in rec_res:
                 continue
-            res_rec.append(nums[i])
-            self.getPermute(nums, res, res_rec, len_nums)
-            res_rec.pop()
+            rec_res.append(nums[i])
+            self.getPermute(nums, res, rec_res)
+            rec_res.pop()
         return
 
     # method 1: recursive swap

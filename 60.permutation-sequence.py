@@ -66,18 +66,20 @@ class Solution(object):
         factArr = [None]*(n-1)
         factArr[0] = 1
         for i in range(1, n-1):
-            factArr[i] = (i+1)*factArr[i-1]
+            factArr[i] = factArr[i-1]*(i+1)
+        res = ""
         factIdx = n-2
-        numArr = list(range(1, n+1))
-        res = ''
+        nums = list(range(1, n+1))
         while 1:
-            if factIdx < 0:
-                res+=str(numArr[0])
-                return res
+            if factIdx == -1:
+                res+=str(nums[0])
+                break
             nGroup = (k-1)//factArr[factIdx]
-            value = numArr.pop(nGroup)
-            res+=str(value)
+            res+=str(nums.pop(nGroup))
             k = k%factArr[factIdx]
             factIdx-=1
+        return res
+
+
 # @lc code=end
 

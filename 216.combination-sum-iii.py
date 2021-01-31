@@ -49,7 +49,7 @@ class Solution(object):
         :type n: int
         :rtype: List[List[int]]
         """
-        # 组合的和 combination sum
+        # 组合的和 combination sum 组合
         if k == 1:
             if n >=1 and n <= 9:
                 return [[n]]
