@@ -74,21 +74,22 @@ class Solution(object):
             return True
         pre = None
         cur = root
-        stacklist = []
-        while cur or stacklist:
+        nodeStack = []
+        while cur or nodeStack:
             while cur:
-                stacklist.append(cur)
+                nodeStack.append(cur)
                 cur = cur.left
-            cur = stacklist.pop()
-            if pre == None:
-                pre = cur.val
+            node = nodeStack.pop()
+            if pre is None:
+                pre = node.val
             else:
-                if pre >= cur.val:
+                if pre >= node.val:
                     return False
                 else:
-                    pre = cur.val
-            cur = cur.right
+                    pre = node.val
+            cur = node.right
         return True
+
 
 # @lc code=end
 

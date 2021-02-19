@@ -56,15 +56,14 @@ class Solution(object):
         nCol = len(matrix[0])
         if nCol == 0:
             return False
-        iRow = 0
-        iCol = nCol-1
-        while iRow<nRow and iCol>=0:
-            if matrix[iRow][iCol] > target:
-                iCol-=1
-            elif matrix[iRow][iCol]<target:
-                iRow+=1
-            else:
+        iRow, iCol = 0, nCol-1
+        while iRow < nRow and iCol >= 0:
+            if matrix[iRow][iCol] == target:
                 return True
+            elif matrix[iRow][iCol] > target:
+                iCol -= 1
+            else:
+                iRow+=1
         return False
 
 

@@ -16,16 +16,18 @@ class Solution:
         # 中序遍历
         cur = root
         nodeStack = []
-        count=0
+        count = 0
         while cur or nodeStack:
             while cur:
                 nodeStack.append(cur)
                 cur = cur.left
-            cur = nodeStack.pop()
+            node = nodeStack.pop()
             count+=1
             if count == k:
-                return cur.val
-            cur=cur.right
+                return node.val
+            cur = node.right
+        
+
         
 # @lc code=end
 

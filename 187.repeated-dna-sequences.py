@@ -7,14 +7,14 @@
 # @lc code=start
 class Solution:
     def findRepeatedDnaSequences(self, s: str) -> List[str]:
-        res = []
+        res = set()
         visitSet = set()
         for i in range(len(s)-9):
             if s[i:i+10] not in visitSet:
                 visitSet.add(s[i:i+10])
             else:
-                if s[i:i+10] not in res:
-                    res.append(s[i:i+10])
-        return res
+                res.add(s[i:i+10])
+        return list(res)
+            
 # @lc code=end
 

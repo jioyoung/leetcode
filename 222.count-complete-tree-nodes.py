@@ -19,13 +19,15 @@ class Solution:
         count = 0
         while nodeQueue:
             level_len = len(nodeQueue)
+            tempArr = []
+            count += level_len
             for i in range(level_len):
-                node = nodeQueue.pop(0)
-                count+=1
+                node = nodeQueue[i]
                 if node.left:
-                    nodeQueue.append(node.left)
+                    tempArr.append(node.left)
                 if node.right:
-                    nodeQueue.append(node.right)
+                    tempArr.append(node.right)
+            nodeQueue = tempArr
         return count
 
         
