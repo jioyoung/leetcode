@@ -392,7 +392,7 @@ If the number of students is odd, there is no need to change the last one's seat
 ```sql
 # Write your MySQL query statement below
 SELECT (CASE
-            WHEN mod(tb1.id,2)=1 AND tb1.id < tb2.seatCount THEN tb1.id|1
+            WHEN mod(tb1.id,2)=1 AND tb1.id < tb2.seatCount THEN tb1.id+1
             WHEN mod(tb1.id,2)=0 THEN tb1.id-1
             ELSE tb1.id
         END) id, tb1.student
