@@ -60,47 +60,31 @@ class Solution(object):
         [1] index 1 position is the required
         """
         # 上课
-        nList = len(prerequisites)
-        if nList == 0:
+        lenPre = len(prerequisites)
+        if lenPre == 0:
             return True
-        course = dict() # record the key = couse : value = number of prerequisites
-        coursePre = dict() # record the courses that are prerequisites 
-                           # key = pre course: value = child course
-        
+        courseCount = {}
+        coursePre = {}
+        for oneList in prerequisites:
+            courseCount[oneList[0]] = courseCount.get(oneList[0], 0) + 1
+            if oneList[1] not in coursePre:
+                coursePre[oneList[1]] = set([oneList[0]])
+            else:
+                coursePre[oneList[1]].add(oneList[0])
         courseTake = set()
-        
-        for Clist in prerequisites:
-            if Clist[0] not in course:
-                course[Clist[0]] =  1
-            else:
-                course[Clist[0]] += 1
-            
-            if Clist[1] not in coursePre:
-                coursePre[Clist[1]] = set([Clist[0]])
-            else:
-                coursePre[Clist[1]].add(Clist[0])
-        
         for i in range(numCourses):
-            if i not in course:
+            if i not in courseCount:
                 courseTake.add(i)
-        if not courseTake:
+        if len(courseTake) == 0:
             return False
-        
         while courseTake:
-            # pop out one course, take it
-            iPre = courseTake.pop()
-            if iPre in coursePre:
-                # it is a prerequestite
-                child = coursePre[iPre] 
-                for iChild in child:
-                    course[iChild]-=1
-                    if course[iChild] == 0:
-                        courseTake.add(iChild)
-        # check if there is any course that has >0 precourse
-        if sum(course.values())>0:
-            return False
-        
-        return True
+            courseLearn = courseTake.pop()
+            if courseLearn in coursePre:
+                for oneCourse in coursePre[courseLearn]:
+                    courseCount[oneCourse]-=1
+                    if courseCount[oneCourse] == 0:
+                        courseTake.add(oneCourse)
+        return False if sum(courseCount.values())>0 else True
 
             
 

@@ -62,31 +62,32 @@ class Solution(object):
         # 股票 两次
         # preprofit[i] 又买有卖到i最大利润
         # postprofit[i] 从i开始 买卖 最大利润
+        '''
+        dp[k][j] = max(dp[k][j-1], prices[j] + localMax)
+        localMax = max(dp[k-1][i]-prices[i]) i=0,1,....
+        '''
+        k = 2
         length = len(prices)
-        if length <= 1:
+        if length <= 1 or k == 0:
             return 0
-        else:
-            preprofit = [0]*length
-            postprofit = [0]*length
-            curmin = prices[0]
-            for i in range(1,length):
-                if prices[i]>curmin:
-                    preprofit[i]=max(preprofit[i-1], prices[i]-curmin)
-                else:
-                    curmin = prices[i]
-                    preprofit[i] = preprofit[i-1]
-            curmax = prices[-1]
-            ## record max
-            ## need to find the day to buy
-            for j in range(length-2,-1,-1):
-                if prices[j]<curmax:
-                    postprofit[j] = max(postprofit[j+1], curmax-prices[j])
-                else:
-                    curmax = prices[j]
-                    postprofit[j]=postprofit[j+1]
-            total_max = 0
-            for i in range(length):
-                total_max = max(total_max, preprofit[i]+postprofit[i])
-                        
-            return total_max
+        if k >= length//2:
+            return self.max_nolimit(prices)
+
+        dp = [[0 for j in range(length)] for i in range(2)]
+        for i in range(1, k+1):
+            localMax = dp[(i-1)%2][0] - prices[0]
+            for j in range(1, length):
+                localMax = max(localMax, dp[(i-1)%2][j] - prices[j])
+                dp[i%2][j] = max(localMax + prices[j], dp[i%2][j-1])
+        return max(dp[0][-1], dp[1][-1])
+
+    def max_nolimit(self, prices):
+        profit = 0
+        for i in range(1, len(prices)):
+            diff = prices[i] - prices[i-1]
+            if diff > 0:
+                profit+=diff
+        return profit
+
+
 
