@@ -45,45 +45,41 @@ class Solution(object):
         :rtype: int
         """
         # H指数 论文
-        # sort by cite from high to low
-        # find the index that index > cite[index]
-        # h-index = index-1
-
-
-
-        citations.sort(reverse = True)
-        i = 1
-        while i <= len(citations):
-            if i > citations[i-1]:
-                break
-            i+=1
-        return i -1  
-
-
         # sort from high to low
         # find the largest index that index+1 <= cite[index] 
+        # return index + 1
         # 让其按被引次数从高到低排列，往下核对，
         # 直到某篇论文的序号大于该论文被引次数，那个序号减去1就是h指数
+        # binary search
+        # f(index) = index+1-cite(index)
+        # find the largest index that f(index) <=0 
+
+        # citations.sort(reverse = True)
+        # left, right = 0, len(citations) - 1
+        # while left <= right:
+        #     mid = (left+right)//2
+        #     if mid+1-citations[mid]<=0:
+        #         left = mid + 1
+        #     else:
+        #         right = mid - 1
+        # return right+1
+
 
 
         # sort from low to high
         # find the first index that length - index <= cite[index]
         # first index that index + cite[index] >= length
+        # return length-index
 
-        # binary search
-        # f(index) = index+1-cite(index)
-        # find the largest index that f(index) <=0 
-
-        # length = len(citations)
-        # citations.sort()
-        # left, right = 0, length-1
-        # while left <= right:
-        #     mid = (left+right)//2
-        #     if (mid+citations[mid])>=length:
-        #         right = mid -1
-        #     else:
-        #         left = mid +1 
-        # return length-left
+        citations.sort()
+        left, right = 0, len(citations)-1
+        while left <= right:
+            mid = (left+right)//2
+            if mid + citations[mid] >= len(citations):
+                right = mid -1
+            else:
+                left = mid + 1
+        return len(citations) - left 
         
 
 
