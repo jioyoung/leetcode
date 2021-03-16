@@ -18,11 +18,10 @@ class Solution:
             if s[fast] in tCount:
                 tCount[s[fast]]-=1
                 if tCount[s[fast]] >= 0:
-                    # update tlen
-                    # if tLen == 0: no need to decrease it
-                    if tLen > 0:
-                        tLen -=1
+                    tLen -= 1
                 if tLen == 0:
+                    # when tLen is 0 it will never increase to positive
+                    # the move of slow pointer is guaranteed to cover t
                     while (s[slow] not in tCount) or (s[slow] in tCount and tCount[s[slow]] + 1 <= 0):
                         if s[slow] in tCount:
                             tCount[s[slow]] += 1
