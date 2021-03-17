@@ -38,19 +38,16 @@ class Solution(object):
         return res
         
     def getIpAddresses(self, s, index, res, rec_res, count):
-        if index == len(s):
-            if count == 4:
-                res.append(''.join(rec_res)[:-1])
+        if index == len(s) and count == 4:
+            res.append(''.join(rec_res)[:-1])
             return
+
+        if index == len(s) or count == 4:
+            return 
         
         # stopping condition 2
         if len(s) - index > (4-count)*3:
             return 
-        
-        # stopping condition 3
-        if count >= 4:
-            return 
-        
         
         rec_res.append(s[index]+'.')
         self.getIpAddresses(s, index+1, res, rec_res, count+1)
@@ -68,7 +65,7 @@ class Solution(object):
             rec_res.append(s[index:index+3]+'.')
             self.getIpAddresses(s, index+3, res, rec_res, count+1)
             rec_res.pop()            
-            
+
         return   
 # @lc code=end
 

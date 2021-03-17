@@ -68,6 +68,7 @@
 #
 
 # @lc code=start
+from string import ascii_lowercase
 class Solution(object):
     def ladderLength(self, beginWord, endWord, wordList):
         """
@@ -76,46 +77,28 @@ class Solution(object):
         :type wordList: List[str]
         :rtype: int
         """
-        if endWord not in wordList:
-            return 0
-        wordQueue = []
-        alphaString = 'abcdefghijklmnopqrstuvwxyz'
-        wordQueue.append(beginWord)
-        visited = set([beginWord])
-        isFound = False
-        length=0
-        while wordQueue:
-            size = len(wordQueue)
-            subVisit = []
-            for i in range(size):
-                temp = wordQueue.pop(0)
-                for j in range(len(temp)):
-                    part1 = temp[:j]
-                    part2 = temp[j+1:]
-                    for ch in alphaString:
-                        if temp[j] != ch:
-                            neighbour = part1 + ch + part2
-                            if neighbour in wordList and neighbour not in visited:
-                                subVisit.append(neighbour)
-                                if neighbour == endWord:
-                                    isFound = True
-                                    break
-                                wordQueue.append(neighbour)
-                    if isFound:
-                        break  
-                if isFound:
-                    break  
-            if len(subVisit)>0:
-                length+=1
-            visited.update(subVisit)
-            if isFound:
-                length+=1
-                break
+        dictionary = set(wordList)
+        cur, visited= [beginWord], set([beginWord])
+        length = 0
 
-        if isFound:
-            return length
-        else:
-            return 0
-             
+        while cur:
+            for word in cur:
+                visited.add(word)
+
+            currentVisit = set()
+            for word in cur:
+                for i in range(len(word)):
+                    for c in ascii_lowercase:
+                        if c == word[i]:
+                            continue
+                        candidate = word[:i] + c + word[i + 1:]
+                        if candidate not in visited and candidate in dictionary:
+                            if candidate == endWord:
+                                return length+2
+                            currentVisit.add(candidate)
+            cur = currentVisit
+            length+=1
+            
+        return 0      
 # @lc code=end
 

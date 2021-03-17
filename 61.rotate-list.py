@@ -53,7 +53,7 @@ class Solution(object):
         :type k: int
         :rtype: ListNode
         """
-        # 扭曲 move
+        # 扭曲 move 链表 旋转
         if not head:
             return head
         tail = head

@@ -60,11 +60,9 @@ class Solution(object):
     def searchWord(self, board, word, iRow, iCol, nRow, nCol, visit, index):
         if index == len(word):
             return True
-        if iRow < 0 or iRow == nRow or iCol == nCol or iCol < 0:
+        if iRow < 0 or iRow == nRow or iCol == nCol or iCol < 0 or board[iRow][iCol]!=word[index]:
             return False
         if visit[iRow][iCol] == True:
-            return False
-        if board[iRow][iCol]!=word[index]:
             return False
         visit[iRow][iCol] = True
         res = self.searchWord(board, word, iRow-1, iCol, nRow, nCol, visit, index+1) or \

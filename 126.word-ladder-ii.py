@@ -78,23 +78,28 @@ class Solution(object):
         """
         # word ladder 变形
         dictionary = set(wordList)
-        result, cur, visited, found, trace = [], [beginWord], set([beginWord]), False, defaultdict(list)
+        result, cur, visited, found, trace = [], [beginWord], set([beginWord]), False, {}
 
         while cur and not found:
             for word in cur:
                 visited.add(word)
 
-            next = set()
+            currentVisit = set()
             for word in cur:
                 for i in range(len(word)):
                     for c in ascii_lowercase:
+                        if c == word[i]:
+                            continue
                         candidate = word[:i] + c + word[i + 1:]
                         if candidate not in visited and candidate in dictionary:
                             if candidate == endWord:
                                 found = True
-                            next.add(candidate)
-                            trace[candidate].append(word)
-            cur = next
+                            currentVisit.add(candidate)
+                            if candidate in trace:
+                                trace[candidate].append(word)
+                            else:
+                                trace[candidate] = [word]
+            cur = currentVisit
 
         if found:
             self.backtrack(result, trace, [], endWord)
@@ -102,7 +107,7 @@ class Solution(object):
         return result
 
     def backtrack(self, result, trace, path, word):
-        if not trace[word]:
+        if word not in trace:
             result.append([word] + path)
         else:
             for prev in trace[word]:

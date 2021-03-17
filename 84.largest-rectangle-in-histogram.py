@@ -46,7 +46,8 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
-        # 最大面积
+        # 最大面积 time complexity is O(n) 
+        # storage complexity is also O(n)
         stack = []
         i, length = 0, len(heights)
         area = 0

@@ -53,9 +53,9 @@ class Solution(object):
             while cur:
                 nodeStack.append(cur)
                 cur = cur.left
-            cur = nodeStack.pop()
-            res.append(cur.val)
-            cur = cur.right
+            node = nodeStack.pop()
+            res.append(node.val)
+            cur = node.right
         return res
 
     #     res = []

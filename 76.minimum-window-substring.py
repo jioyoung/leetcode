@@ -22,7 +22,7 @@ class Solution:
                 if tLen == 0:
                     # when tLen is 0 it will never increase to positive
                     # the move of slow pointer is guaranteed to cover t
-                    while (s[slow] not in tCount) or (s[slow] in tCount and tCount[s[slow]] + 1 <= 0):
+                    while (s[slow] not in tCount) or (tCount[s[slow]] + 1 <= 0):
                         if s[slow] in tCount:
                             tCount[s[slow]] += 1
                         slow += 1

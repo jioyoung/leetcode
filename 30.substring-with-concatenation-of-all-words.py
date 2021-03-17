@@ -49,6 +49,32 @@ class Solution(object):
         :type words: List[str]
         :rtype: List[int]
         """
+        # the complexity is O(n*m)
+        # m is the # word in words
+        # n is the length of s
+        wordCount = {}
+        for oneWord in words:
+            wordCount[oneWord] = wordCount.get(oneWord, 0) + 1
+        strLen = len(words) * len(words[0])
+        wordNum = len(words)
+        wordLen = len(words[0])
+        res = []
+        for i in range(len(s)-strLen+1):
+            count = 0
+            sCount = {}
+            while count < wordNum:
+                start = i+count*wordLen
+                candidate = s[start:start+wordLen]
+                if candidate not in wordCount:
+                    break
+                else:
+                    sCount[candidate] = sCount.get(candidate, 0) + 1
+                    if sCount[candidate] > wordCount[candidate]:
+                        break
+                count += 1
+            if count == wordNum:
+                res.append(i)
+        return res
         
 # @lc code=end
 
