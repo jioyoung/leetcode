@@ -21,6 +21,5 @@ class Solution:
                 elif nums[i] < n:
                     combinationDP[n] += combinationDP[n-nums[i]]
         return combinationDP[-1]
-        
 # @lc code=end
 

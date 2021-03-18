@@ -20,17 +20,14 @@ class Solution:
         maxLen = 1
         start = 0
         dp = [[False for j in range(len(s))] for i in range(len(s))]
-        for i in range(len(s)):
-            dp[i][i] = True
-            for j in range(i):
-                if i == j+1:
-                    dp[j][i] = (s[i] == s[j])
-                else:
-                    if s[i] == s[j] and dp[j+1][i-1]:
-                        dp[j][i] = True
-                if dp[j][i] and i-j+1> maxLen:
-                    maxLen = i-j+1
-                    start = j
+        for length in range(0, len(s)):
+            for i in range(0, len(s)-length):
+                j = i+length
+                if (s[i]==s[j]) and (length<=2 or dp[i+1][j-1]):
+                    dp[i][j] = True
+                    if j-i+1> maxLen:
+                        maxLen = j-i+1
+                        start = i
         return s[start:start+maxLen]
     #     sLen = len(s)
     #     res = ''
