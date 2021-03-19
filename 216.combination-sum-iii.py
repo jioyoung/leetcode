@@ -50,20 +50,6 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # 组合的和 combination sum 组合
-        if k > 9:
-            return []
-        maxSum = 0
-        for i in range(9, 10-k, -1):
-            maxSum += i
-        left = n - maxSum
-        if left >= 11-k:
-            return []
-        minSum = 0
-        for i in range(1, k):
-            minSum += i
-        right = n - minSum
-        if right <= k-1:
-            return []
         res = []
         self.getCombination(k,n,1, 9, res, [])
         return res
