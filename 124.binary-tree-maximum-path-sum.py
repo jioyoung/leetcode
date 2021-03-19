@@ -63,7 +63,7 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        # 树 最大三角 三角
+        # 树 最大 一条线
         max_all = [root.val]
         self.getRes(root, max_all)
         return max_all[0]

@@ -41,7 +41,7 @@ class Solution(object):
         :type k: int
         :rtype: List[List[int]]
         """
-        # 组合 部分 所有
+        # 组合 部分 所有 n选k
         res = []
         self.getCombine(n, k, 1, res, [])
         return res

@@ -65,7 +65,7 @@ class Solution(object):
         if right <= k-1:
             return []
         res = []
-        self.getCombination(k,n,max(left,1), min(right, 9), res, [])
+        self.getCombination(k,n,1, 9, res, [])
         return res
 
     def getCombination(self, k, n, left, right, res, rec_res):
