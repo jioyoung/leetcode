@@ -1,0 +1,3 @@
+# leetcode
+leetcode solutions of JIOYOUNG
+These solutions are for self-learning purpose... 
