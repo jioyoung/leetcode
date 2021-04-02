@@ -1,3 +1,3 @@
 # leetcode
-leetcode solutions of JIOYOUNG
+leetcode solutions of Yang
 These solutions are for self-learning purpose... 
