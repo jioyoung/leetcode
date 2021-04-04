@@ -46,10 +46,10 @@ class Solution(object):
         nums.sort()
         ret = []
         for i in range(len(nums)-3):
-            if i > 0 and nums[i] == nums[i-1]:
-                continue
             if sum(nums[i:i+4]) > target:
                 return ret
+            if i > 0 and nums[i] == nums[i-1]:
+                continue
             three_target = target - nums[i]
             for j in range(i+1, len(nums)-2):
                 if j > i+1 and nums[j] == nums[j-1]:
@@ -62,8 +62,12 @@ class Solution(object):
                     two_sum = nums[left] + nums[right]
                     if two_sum > two_target:
                         right -=1
+                        while left < right and nums[right] == nums[right+1]:
+                            right-=1
                     elif two_sum < two_target:
                         left+=1
+                        while left < right and nums[left] == nums[left-1]:
+                            left+=1
                     else:
                         ret.append([nums[i], nums[j], nums[left], nums[right]])
                         left +=1 
