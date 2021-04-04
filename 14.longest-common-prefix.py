@@ -54,3 +54,17 @@ class Solution(object):
                 break
         return res
 
+        # res = ''
+        # if not strs:
+        #     return ''
+        # for i in range(len(strs[0])):
+        #     for j in range(1, len(strs)):
+        #         if i >= len(strs[j]):
+        #             return res
+        #         if strs[j][i] == strs[0][i]:
+        #             continue
+        #         else:
+        #             return res
+        #     res+=strs[0][i]
+        # return res
+
