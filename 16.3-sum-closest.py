@@ -39,6 +39,12 @@ class Solution(object):
         minDiff = abs(sum(nums[:3])-target)
         res = sum(nums[:3])
         for i in range(len(nums)-2):
+            if sum(nums[i:i+3]) > target:
+                diff = abs(sum(nums[i:i+3]) - target)
+                if diff < minDiff:
+                    return sum(nums[i:i+3])
+                else:
+                    return res
             left, right = i+1, len(nums)-1
             while left < right:
                 threeSum = nums[i] + nums[left] + nums[right]
