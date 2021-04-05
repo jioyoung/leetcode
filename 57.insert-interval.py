@@ -15,6 +15,7 @@ class Solution:
         j = 0
         res = []
         while i < len(intervals) or j < 1:
+            # never forget update the index
             if i < len(intervals) and j < 1:
                 if intervals[i][0] <= newInterval[0]:
                     candidate = intervals[i]
