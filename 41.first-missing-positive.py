@@ -49,6 +49,10 @@ class Solution(object):
         """
         # 缺少的数 缺少的第一个 正数
         # if nums[i] > 0 and <= len(nums) nums[i] should be equal to i+1
+        # put nums[i] to nums[nums[i]-1]
+        # nums[i] 应该出现在 idx:nums[i] -1
+        # 交换 nums[i], nums[nums[i]-1] 直到不需要交换 
+        # 直到（nums[i]不在 1和length之间 或者 nums[i]==nums[nums[i]-1]）        
         length = len(nums)
         for i in range(length):
             while 0 < nums[i]<= length and nums[i]!=nums[nums[i]-1]:
