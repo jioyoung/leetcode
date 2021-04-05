@@ -41,10 +41,15 @@ class Solution(object):
         :rtype: int
         """
         # 最长有效括号 parenthesis 括号
-        #dp: dp[i] is the max length that ends with the i-th character
-        # if dp[i] == '(' then dp[i]=0
-        # if dp[i] == ')' then check dp[i-1] seperate the two situations that 
-        # dp[i-1] is '(' or ')'
+        # dp: dp[i] is the max length that ends with the i-th character
+        # if s[i] == '(' then dp[i]=0
+        # if s[i] == ')' then check s[i-1] seperate the two situations that 
+        # s[i-1] is '(' or ')'
+        # if s[i-1] is '(' dp[i] = dp[i-2] + 2
+        # if s[i-1] is ')' check start = i-1-dp[i-1]
+        # start >=0 and s[start] should be '(' 
+        # check start - 1 >= 0? if so dp[i] = dp[i-1] + 2 + dp[start-1]
+        # if start - 1 < 0 (that is start == 0): dp[i] = dp[i-1] + 2
         if not s:
             return 0
         len_dp = [0]*len(s)
@@ -62,6 +67,7 @@ class Solution(object):
                     if start < 0 or s[start]==')':
                         continue
                     else:
+                        # s[start] == '(', check if start -1 >=0
                         if start - 1 >= 0:
                             len_dp[i] = len_dp[i-1] + len_dp[start-1]+2
                         else:
