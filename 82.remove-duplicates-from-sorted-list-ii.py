@@ -46,6 +46,7 @@ class Solution(object):
         :rtype: ListNode
         """
         # 删除 重复 链表 有序
+        # update slow when fast!=fast.next: slow.next = fast
         slow = dummy = ListNode(0)
         isEqual = False
         fast = head
@@ -67,10 +68,5 @@ class Solution(object):
             slow.next = fast
         return dummy.next
 
-
-
-                
-
-        
 # @lc code=end
 
