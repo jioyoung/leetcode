@@ -78,6 +78,7 @@ class Solution(object):
         return dp[n]
 
     def clone(self, node, diff):
+        # do not forget the situation when node is None 
         if node is None:
             return None
         newnode = TreeNode(node.val + diff)
