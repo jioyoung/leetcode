@@ -51,6 +51,7 @@ class Solution(object):
                 n_left = root-1
                 n_right = i - root
                 dp[i]+=dp[n_left]*dp[n_right]
+                # += be careful!
         return dp[n]
 
 # 数字个数是 0 的所有解
