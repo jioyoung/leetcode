@@ -65,6 +65,14 @@ class Solution(object):
             
             depth+=1
         return depth
-        
+
+    #     return self.getMaxDep(root)
+    
+    # def getMaxDep(self, root):
+    #     if not root:
+    #         return 0
+    #     return 1+ max(self.getMaxDep(root.left), self.getMaxDep(root.right))
+
+
 # @lc code=end
 
