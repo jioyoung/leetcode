@@ -78,7 +78,8 @@ class Solution(object):
         # word ladder 变形
         dictionary = set(wordList)
         result, cur, visited, found, trace = [], [beginWord], set([beginWord]), False, {}
-
+        # trace dict; key is new word, value is list of words can be 
+        # changed to new word
         while cur and not found:
             for word in cur:
                 visited.add(word)
