@@ -71,6 +71,7 @@ class Solution(object):
     def getRes(self, root, max_all):
         if root is None:
             return 0
+        # left and right are non-negative
         left = max(self.getRes(root.left, max_all), 0)
         right = max(self.getRes(root.right, max_all), 0)
         max_cur = root.val + left + right
