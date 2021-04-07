@@ -65,7 +65,15 @@ class Solution(object):
                 if node.right:
                     nodeQueue.append(node.right)
             depth+=1
-        return depth            
+        return depth
+    #     return self.getMinDepth(root)
+    # def getMinDepth(self, root):
+    #     if root is None:
+    #         return 0
+    #     if root.left is None or root.right is None:
+    #         return 1+max(self.getMinDepth(root.left), self.getMinDepth(root.right))
+    #     else:
+    #         return 1+min(self.getMinDepth(root.left), self.getMinDepth(root.right))
         
 # @lc code=end
 

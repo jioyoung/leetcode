@@ -59,29 +59,47 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # 树 分层 路径 和 目标
-        if not root:
-            return []
-        nodeQueue = [root]
-        sumQueue = [root.val]
-        visitQueue = [[root.val]]
+        # if not root:
+        #     return []
+        # nodeQueue = [root]
+        # sumQueue = [root.val]
+        # visitQueue = [[root.val]]
+        # res = []
+        # while nodeQueue:
+        #     levelLen = len(nodeQueue)
+        #     for i in range(levelLen):
+        #         node = nodeQueue.pop(0)
+        #         currentSum = sumQueue.pop(0)
+        #         tempPath = visitQueue.pop(0)
+        #         if node.left:
+        #             nodeQueue.append(node.left)
+        #             sumQueue.append(node.left.val+currentSum)
+        #             visitQueue.append(tempPath+[node.left.val])
+        #         if node.right:
+        #             nodeQueue.append(node.right)
+        #             sumQueue.append(node.right.val+currentSum)
+        #             visitQueue.append(tempPath+[node.right.val])
+        #         if node.left is None and node.right is None and currentSum == sum:
+        #             res.append(list(tempPath))
+        # return res
         res = []
-        while nodeQueue:
-            levelLen = len(nodeQueue)
-            for i in range(levelLen):
-                node = nodeQueue.pop(0)
-                currentSum = sumQueue.pop(0)
-                tempPath = visitQueue.pop(0)
-                if node.left:
-                    nodeQueue.append(node.left)
-                    sumQueue.append(node.left.val+currentSum)
-                    visitQueue.append(tempPath+[node.left.val])
-                if node.right:
-                    nodeQueue.append(node.right)
-                    sumQueue.append(node.right.val+currentSum)
-                    visitQueue.append(tempPath+[node.right.val])
-                if node.left is None and node.right is None and currentSum == sum:
-                    res.append(list(tempPath))
+        self.getPath(root, sum, res, [])
         return res
+
+    def getPath(self, root, sum, res, rec_res):
+        if not root:
+            return 
+        if root.left is None and root.right is None:
+            if sum == root.val:
+                res.append(rec_res + [root.val])
+        rec_res.append(root.val)
+        self.getPath(root.left, sum-root.val, res, rec_res)
+        rec_res.pop()
+
+        rec_res.append(root.val)
+        self.getPath(root.right, sum-root.val, res, rec_res)
+        rec_res.pop()
+        return
 
 # @lc code=end
 

@@ -71,6 +71,20 @@ class Solution(object):
             res.append(subList)
         return res[::-1]
 
+    #     res = []
+    #     self.getRes(0, root, res)
+    #     return res[::-1]
+    
+    # def getRes(self, level, root, res):
+    #     if root:
+    #         if len(res) < level+1:
+    #             res.append([])
+    #         res[level].append(root.val)
+    #         self.getRes(level+1, root.left, res)
+    #         self.getRes(level+1, root.right, res)
+    #     return
+
+
 
         
 # @lc code=end
