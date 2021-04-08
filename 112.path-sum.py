@@ -70,21 +70,23 @@ class Solution(object):
         #         if node.left is None and node.right is None and currentSum == sum:
         #             return True
         # return False
-
-
         return self.dfs(root, sum)
-        
+
+
+    
     def dfs(self, root, sum):
         if not root:
             return False
         else:
-            if not root.left and not root.right:
-                if root.val == sum:
+            if root.left is None and root.right is None:
+                if sum == root.val:
                     return True
                 else:
                     return False
+
             return self.dfs(root.left, sum-root.val) or \
                 self.dfs(root.right, sum-root.val)
+
 
         
 # @lc code=end
