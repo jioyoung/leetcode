@@ -86,18 +86,21 @@ class Solution(object):
         self.getPath(root, sum, res, [])
         return res
 
-    def getPath(self, root, sum, res, rec_res):
+    def getPath(self, root, target, res, rec_res):
         if not root:
-            return 
+            return
         if root.left is None and root.right is None:
-            if sum == root.val:
-                res.append(rec_res + [root.val])
+            if root.val == target:
+                res.append(rec_res+[root.val])
+                return
+            else:
+                return
         rec_res.append(root.val)
-        self.getPath(root.left, sum-root.val, res, rec_res)
+        self.getPath(root.left, target-root.val, res, rec_res)
         rec_res.pop()
 
         rec_res.append(root.val)
-        self.getPath(root.right, sum-root.val, res, rec_res)
+        self.getPath(root.right, target-root.val, res, rec_res)
         rec_res.pop()
         return
 
