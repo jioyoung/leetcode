@@ -68,6 +68,9 @@ class Solution(object):
     # 多加了前一天的最大收益
     # 在第 j 天买入 prices[j] - prices[j] + dp[k-1][j]
     # localMax is max(array of kp[k-1][a]-prices[a]) a=0,1,2....j 
+    # for j in range(1, length):
+    # localMax = max(localMax, dp[(i-1)%2][j]-prices[j])
+    # dp[i%2][j] = max(dp[i%2][j-1], prices[j]+localMax)
 
         length = len(prices)
         if k == 0 or length == 0:
