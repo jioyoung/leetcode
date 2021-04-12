@@ -46,18 +46,13 @@ class Solution(object):
         # Solution 1
         # since in the range(len(nums)) the largest one that is 
         # len(nums) is not included
-        # result = len(nums)
-        # for i in range(len(nums)):
-        #     result = result ^ i ^ nums[i]
-        # return result
+        result = len(nums)
+        for i in range(len(nums)):
+            result = result ^ i ^ nums[i]
+        return result
 
         # Solution 2
         # return (len(nums)+1)*len(nums)/2 - sum(nums)
-
-        res = len(nums)
-        for i in range(len(nums)):
-            res = res ^ i ^ nums[i]
-        return res
         
 # @lc code=end
 

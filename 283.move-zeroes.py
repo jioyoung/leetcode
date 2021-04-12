@@ -47,6 +47,16 @@ class Solution(object):
                 nums[i], nums[j] = nums[j], nums[i]
                 j+=1
         return
+        # j= 0 
+        # for value in nums:
+        #     if value == 0:
+        #         continue
+        #     else:
+        #         nums[j]=value
+        #         j+=1
+        # for i in range(j, len(nums)):
+        #     nums[i]=0
+        # return
 
         
 # @lc code=end

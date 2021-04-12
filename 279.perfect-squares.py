@@ -39,20 +39,19 @@ class Solution(object):
         :rtype: int
         """
         # bfs 平方和 平方 完美平方数
-        num_dict = {0:0}
-        return self.getNumSquares(n, num_dict)
-
-
-    def getNumSquares(self, n, num_dict):
-        if n in num_dict:
-            return num_dict[n]
-        count = n
-        i = 1 
+        numDict = {0:0}
+        return self.getRes(n, numDict)
+    
+    def getRes(self, n, numDict):
+        if n in numDict:
+            return numDict[n]
+        res = n
+        i = 1
         while i*i<=n:
-            count = min(count, 1+self.getNumSquares(n-i*i, num_dict))
-            i+=1    
-        num_dict[n] = count
-        return count
+            res = min(res, 1+self.getRes(n-i*i, numDict))
+            i+=1
+        numDict[n] = res
+        return res
 
 
 # @lc code=end
