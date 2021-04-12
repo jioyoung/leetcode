@@ -56,14 +56,14 @@ class Solution(object):
         """
         # 有条件重复 是否有重复
         numDict = dict()
-        for i in range(len(nums)):
-            if nums[i] in numDict:
-                if i-numDict[nums[i]]<=k:
+        for i, value in enumerate(nums):
+            if value in numDict:
+                if i-numDict[value]<=k:
                     return True
                 else:
-                    numDict[nums[i]] = i
+                    numDict[value]=i
             else:
-                numDict[nums[i]] = i
+                numDict[value]=i
         return False
         
 # @lc code=end

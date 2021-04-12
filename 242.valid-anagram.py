@@ -51,10 +51,7 @@ class Solution(object):
             return False
         sDict = {}
         for c in s:
-            if c in sDict:
-                sDict[c]+=1
-            else:
-                sDict[c]=1
+            sDict[c] = sDict.get(c,0)+1
         
         for c in t:
             value = sDict.get(c, 0)

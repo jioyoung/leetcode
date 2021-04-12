@@ -66,7 +66,9 @@ class Solution(object):
             return
         if n==0 or k==0:
             return
-        if left > right:
+        # if left > right:
+        #     return
+        if n < 0:
             return
         for i in range(left, right+1):
             rec_res.append(i)

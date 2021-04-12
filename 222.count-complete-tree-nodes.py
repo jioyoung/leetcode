@@ -13,22 +13,25 @@
 #         self.right = right
 class Solution:
     def countNodes(self, root: TreeNode) -> int:
+        # if not root:
+        #     return 0
+        # nodeQueue = [root]
+        # count = 0
+        # while nodeQueue:
+        #     level_len = len(nodeQueue)
+        #     tempArr = []
+        #     count += level_len
+        #     for i in range(level_len):
+        #         node = nodeQueue[i]
+        #         if node.left:
+        #             tempArr.append(node.left)
+        #         if node.right:
+        #             tempArr.append(node.right)
+        #     nodeQueue = tempArr
+        # return count
         if not root:
             return 0
-        nodeQueue = [root]
-        count = 0
-        while nodeQueue:
-            level_len = len(nodeQueue)
-            tempArr = []
-            count += level_len
-            for i in range(level_len):
-                node = nodeQueue[i]
-                if node.left:
-                    tempArr.append(node.left)
-                if node.right:
-                    tempArr.append(node.right)
-            nodeQueue = tempArr
-        return count
+        return self.countNodes(root.left) + self.countNodes(root.right)+1
 
         
 # @lc code=end

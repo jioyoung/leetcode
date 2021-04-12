@@ -43,7 +43,7 @@ class Solution:
             result[i][i].append(numList[i])
 
         # result[1][3] 就代表第一个数字 3 到第三个数字 5 范围内的表达式 3 - 4 * 5 的所有解。
-
+        # 可以重复
         # n is the number of the nums from 2 to numN
         for n in range(2, numN+1):
             for i in range(numN-n+1):
