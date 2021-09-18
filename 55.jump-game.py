@@ -57,11 +57,10 @@ class Solution(object):
             return True
         stepMax = nums[0]
         for i in range(len(nums)-1):
-            if nums[i]==0:
+            if nums[i] == 0:
                 if stepMax <= i:
                     return False
-            else:
-                stepMax = max(stepMax, i+nums[i])
-        return True if stepMax >= len(nums)-1 else False
+            stepMax = max(stepMax, nums[i]+i)
+        return True if stepMax >= len(nums) - 1 else False
 
 

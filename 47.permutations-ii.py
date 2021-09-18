@@ -41,23 +41,23 @@ class Solution(object):
         # 排列 有重复
         nums.sort()
         res = []
-        self.getPermuteUnique(nums, res, [], [])
+        self.getPermute(nums, res, [], [])
         return res
 
-    def getPermuteUnique(self, nums, res, rec_res, rec_idx):
+    def getPermute(self, nums, res, rec_res, rec_idx):
         if len(rec_res) == len(nums):
             res.append(list(rec_res))
             return
         for i in range(len(nums)):
             if i in rec_idx:
                 continue
-            if i > 0 and i-1 not in rec_idx and nums[i-1] == nums[i]:
+            if i > 0 and i - 1 not in rec_idx and nums[i] == nums[i-1]:
                 continue
-            rec_res.append(nums[i])
             rec_idx.append(i)
-            self.getPermuteUnique(nums, res, rec_res, rec_idx)
-            rec_res.pop()
+            rec_res.append(nums[i])
+            self.getPermute(nums, res, rec_res, rec_idx)
             rec_idx.pop()
+            rec_res.pop()
         return
 
     #     res = []

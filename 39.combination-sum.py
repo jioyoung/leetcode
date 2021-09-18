@@ -72,8 +72,7 @@ class Solution(object):
             return 
         for i in range(start, len(candidates)):
             rec_res.append(candidates[i])
-            # update target
-            self.getCombination(candidates, target - candidates[i], i, res, rec_res)
+            self.getCombination(candidates, target-candidates[i], i, res, rec_res)
             rec_res.pop()
-        return
+        return 
 

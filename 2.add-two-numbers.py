@@ -53,9 +53,9 @@ class Solution(object):
         # iterate until one list is empty
         remain = 0
         value = 0
-        head = dummy = ListNode(0)
+        dummy = head = ListNode(0)
         while l1 or l2:
-            value = remain # this update is important 
+            value = remain
             if l1:
                 value+=l1.val
                 l1=l1.next
@@ -63,8 +63,8 @@ class Solution(object):
                 value+=l2.val
                 l2=l2.next
             if value > 9:
-                remain = 1
                 value-=10
+                remain = 1
             else:
                 remain = 0
             head.next = ListNode(value)
@@ -73,6 +73,4 @@ class Solution(object):
             head.next = ListNode(1)
         return dummy.next
 
-                
-               
 

@@ -53,13 +53,14 @@ class Solution(object):
         # nums[i] 应该出现在 idx:nums[i] -1
         # 交换 nums[i], nums[nums[i]-1] 直到不需要交换 
         # 直到（nums[i]不在 1和length之间 或者 nums[i]==nums[nums[i]-1]）        
-        length = len(nums)
-        for i in range(length):
-            while 0 < nums[i]<= length and nums[i]!=nums[nums[i]-1]:
-                temp = nums[i] - 1
+
+        for i in range(len(nums)):
+            while 0 < nums[i] <= len(nums) and nums[i]!= nums[nums[i]-1]:
+                temp = nums[i]-1
                 nums[i], nums[temp] = nums[temp], nums[i]
-        for i in range(length):
-            if nums[i]!=i+1:
+        for i, value in enumerate(nums):
+            if value!=i+1:
                 return i+1
-        return length + 1 
+        return len(nums)+1
+
 

@@ -55,23 +55,21 @@ class Solution(object):
         """
         # 扭曲 move 链表 旋转
         if not head:
-            return head
-        tail = head
+            return None
         length = 1
+        tail = head
         while tail.next:
             length+=1
-            tail=tail.next
-        k = k%length
-        if k == 0: # check if k == 0
+            tail = tail.next
+        k = k % length
+        if k == 0:
             return head
-        cur = head
+        slow = head
         for _ in range(length-k-1):
-            cur = cur.next
-        newHead = cur.next
-        cur.next = None
+            slow = slow.next
+        newHead = slow.next
+        slow.next = None
         tail.next = head
         return newHead
-
-
 # @lc code=end
 

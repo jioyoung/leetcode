@@ -43,19 +43,16 @@ class Solution(object):
         :type intervals: List[List[int]]
         :rtype: List[List[int]]
         """
-        # 合并 区间 interval
-        # first sort and then merge 
-        if len(intervals) <= 1:
-            return intervals
+        if not intervals:
+            return []
         intervals.sort(key=lambda x:x[0])
         res = [intervals[0]]
-        for candidate in intervals[1:]:
-            if candidate[0] > res[-1][1]:
-                res.append(candidate)
+        for oneInterval in intervals:
+            if oneInterval[0] > res[-1][1]:
+                res.append(oneInterval)
             else:
-                res[-1][1] = max(res[-1][1], candidate[1])
+                res[-1][1] = max(res[-1][1], oneInterval[1])
         return res
-            
 
 # @lc code=end
 

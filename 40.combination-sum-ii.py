@@ -77,5 +77,4 @@ class Solution(object):
             self.getCombination(candidates, target-candidates[i], i+1, res, rec_res)
             rec_res.pop()
         return
-
  

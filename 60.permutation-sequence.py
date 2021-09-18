@@ -66,19 +66,19 @@ class Solution(object):
         factArr = [None]*(n-1)
         factArr[0] = 1
         for i in range(1, n-1):
-            factArr[i] = factArr[i-1]*(i+1)
-        res = ""
+            factArr[i] = (i+1)*factArr[i-1]
         factIdx = n-2
-        nums = list(range(1, n+1))
-        while 1:
-            if factIdx == -1:
-                res+=str(nums[0])
-                break
+        nums = [i for i in range(1, n+1)]
+        res = ''
+        while factIdx >= 0:
             nGroup = (k-1)//factArr[factIdx]
-            res+=str(nums.pop(nGroup))
-            k = k%factArr[factIdx]
-            factIdx-=1
+            candidate = nums.pop(nGroup)
+            res = res + str(candidate)
+            k = k % factArr[factIdx]
+            factIdx -= 1
+        res = res + str(nums[0])
         return res
+
 
 
 # @lc code=end

@@ -40,14 +40,15 @@ class Solution(object):
         :rtype: int
         """
 
-        newS = s.rstrip()
+        newS = s.strip()
         if not newS:
             return 0
-        i = len(newS) -1 
         count = 0
-        while i >= 0 and newS[i].isalpha():
-            i-=1
-            count+=1
+        for i in range(len(newS)-1,-1,-1):
+            if newS[i].isalpha():
+                count+=1
+            else:
+                break
         return count
 
         # word_start = 0

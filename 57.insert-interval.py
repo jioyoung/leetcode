@@ -11,13 +11,11 @@ class Solution:
             return [newInterval]
         if not newInterval:
             return intervals
-        i = 0
-        j = 0
         res = []
+        i, j = 0, 0
         while i < len(intervals) or j < 1:
-            # never forget update the index
             if i < len(intervals) and j < 1:
-                if intervals[i][0] <= newInterval[0]:
+                if intervals[i][0]<=newInterval[0]:
                     candidate = intervals[i]
                     i+=1
                 else:
@@ -32,7 +30,7 @@ class Solution:
             if not res:
                 res.append(candidate)
             else:
-                if res[-1][1] < candidate[0]:
+                if candidate[0] > res[-1][1]:
                     res.append(candidate)
                 else:
                     res[-1][1] = max(res[-1][1], candidate[1])

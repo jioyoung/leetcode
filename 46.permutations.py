@@ -44,12 +44,11 @@ class Solution(object):
         res = []
         self.getPermute(nums, res, [])
         return res
-        
 
     def getPermute(self, nums, res, rec_res):
-        if len(rec_res) == len(nums):
+        if len(nums) == len(rec_res):
             res.append(list(rec_res))
-            return 
+            return
         for i in range(len(nums)):
             if nums[i] in rec_res:
                 continue
@@ -57,6 +56,7 @@ class Solution(object):
             self.getPermute(nums, res, rec_res)
             rec_res.pop()
         return
+
 
     # method 1: recursive swap
     # https://www.geeksforgeeks.org/write-a-c-program-to-print-all-permutations-of-a-given-string/

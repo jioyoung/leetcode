@@ -41,19 +41,19 @@ class Solution(object):
         :rtype: int
         """
         # 跳跃 游戏 最少
-        if len(nums)<=1:
+        if len(nums) <= 1:
             return 0
         stepLeft = 0
         stepRight = nums[0]
         nStep = 1
         while stepLeft <= stepRight:
-            if stepRight>=len(nums)-1:
+            if stepRight >= len(nums) - 1:
                 return nStep
             else:
+                nStep+=1
                 oldRight = stepRight
-                nStep+=1 #do not forget update nstep
                 for i in range(stepLeft, oldRight+1):
-                    stepRight = max(stepRight, nums[i]+i)
+                    stepRight = max(stepRight, i + nums[i])
                 stepLeft = oldRight+1
         
 

@@ -45,12 +45,12 @@ class Solution(object):
         # 字谜
         # sort string as a key in the dictionary
         wordDict = {}
-        for oneStr in strs:
-            tempStr = ''.join(sorted(oneStr))
-            if tempStr in wordDict:
-                wordDict[tempStr].append(oneStr)
+        for oneWord in strs:
+            temp = ''.join(sorted(oneWord))
+            if temp in wordDict:
+                wordDict[temp].append(oneWord)
             else:
-                wordDict[tempStr] = [oneStr]
+                wordDict[temp] = [oneWord]
         return wordDict.values()
 
 # @lc code=end

@@ -38,13 +38,14 @@ class Solution(object):
         """
         # 最大子数组 子 子集 
         # curMax is 以current element 结尾的子数组的元素的最大的和
-        curMax = allMax = nums[0]
+        curMax = allmax = nums[0]
         for i in range(1, len(nums)):
             if curMax < 0:
                 curMax = nums[i]
             else:
                 curMax += nums[i]
-            if curMax > allMax:
-                allMax = curMax
-        return allMax
+            if curMax > allmax:
+                allmax = curMax
+        return allmax
+
 
