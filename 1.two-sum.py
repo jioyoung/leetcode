@@ -39,8 +39,11 @@ class Solution(object):
         # use dictionary
         # diff between value and target is the key of the dict
         numDict = {}
-        for i in range(len(nums)):
-            if nums[i] not in numDict:
-                numDict[target-nums[i]] = i
+        for i, val in enumerate(nums):
+            if val not in numDict:
+                numDict[target - val] = i
             else:
-                return [numDict[nums[i]], i]
+                return [numDict[val], i]
+        return
+
+
