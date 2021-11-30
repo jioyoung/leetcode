@@ -462,3 +462,48 @@ WHERE tb1.people >= 100 AND tb2.people >=100 AND tb3.people>=100
     (tb1.id = tb2.id|1 AND tb2.id = tb3.id|1))
 ORDER BY tb1.visit_date;
 ```
+
+#### FB sql Friending
+
+friending:
+  ds = date
+  action = {'send_request', 'accept_request', 'unfriend'}        （注意这个unfriend选项，回答第二问时别忘了）
+  actor_uid = uid of person pressing the button to take the action
+  target_uid = uid of the other person involved
+
+
+
+##### Q1: How is the overall friending acceptance rate changing over time? */  
+SELECT IFNULL(SUM(CASE WHEN date = 'accept_request' THEN 1 ELSE 0 END)/SUM(CASE WHEN date = 'send_request' THEN 1 ELSE 0 END), 0) 
+FROM friending
+GROUP BY date
+;
+
+##### Q2: Who has the most number of friends?*/
+SELECT id, n_friend - IFNULL(delete_friend, 0) as cnt
+FROM 
+(SELECT count(*) as n_friend, id
+FROM 
+(SELECT actor_uid as id
+FROM friending
+WHERE action = 'accept_request'
+UNION ALL
+SELECT target_uid as id
+FROM friending
+WHERE action = 'accept_request') AS tb1
+GROUP BY id) AS friend_num
+LEFT JOIN
+(SELECT count(*) as delete_friend, id
+FROM 
+(SELECT actor_uid as id
+FROM friending
+WHERE action = 'unfriend'
+UNION ALL
+SELECT target_uid as id
+FROM friending
+WHERE action = 'unfriend') AS tb2
+GROUP BY id) AS defriend_num
+ON friend_num.id = defiend_num.id) 
+ORDER BY cnt
+LIMIT 1
+;
