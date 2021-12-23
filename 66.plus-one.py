@@ -46,13 +46,11 @@ class Solution(object):
         """
         # find a value that is less than or equal to 8 then done!
         for i in range(len(digits)-1, -1, -1):
-            if digits[i]<=8:
-                digits[i]+=1
+            if digits[i] <= 8:
+                digits[i] += 1
                 return digits
             else:
-                digits[i]=0
-        if digits[0] == 0:
-            return [1]+digits
-
+                digits[i] = 0
+        return [1] + digits
         
 
