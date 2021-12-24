@@ -37,19 +37,5 @@ class Solution:
             return s[minSlow:minSlow+minL]
 
 
-
-        # if max(tCount.values()) <= 0: # cover
-        #     while (s[slow] not in tCount) or (s[slow] in tCount and tCount[s[slow]] + 1 <= 0):
-        #         if s[slow] in tCount:
-        #             tCount[s[slow]] += 1
-        #         slow += 1
-        #     length = fast - slow + 1
-        #     if length < minL:
-        #         minL = length
-        #         minSlow = slow
-
-
-
-
 # @lc code=end
 
