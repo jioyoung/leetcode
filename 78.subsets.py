@@ -42,6 +42,9 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # 子集 所有子集 无重复
+        # Complexity Analysis
+        # Time complexity: O(N \times 2^N)
+        # Space complexity: O(N)
         res = []
         self.getSubsets(nums, 0, res, [])
         return res

@@ -42,6 +42,8 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # 组合 部分 所有 n选k
+        # Time complexity: \mathcal{O}(k C_N^k)
+        # Space Complexity: \mathcal{O}(C_N^k)
         res = []
         self.getCombine(n, k, 1, res, [])
         return res
