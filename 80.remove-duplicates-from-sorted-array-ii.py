@@ -6,6 +6,8 @@
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         # 删除 重复数组 有两个
+        # Time Complexity: O(N)
+        # Space Complexity: O(1)
         slow = 0
         dupCount = 1
         for fast in range(1, len(nums)):

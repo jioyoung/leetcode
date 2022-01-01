@@ -43,6 +43,10 @@ class Solution(object):
         :rtype: bool
         """
         # 找单词 寻找单词 DFS
+        # Time Complexity: \mathcal{O}(N \cdot 3 ^ L)
+        # where N is the number of cells in the board and L is the length of the word to be matched.
+        # Space Complexity: \mathcal{O}(L) where L is the length of the word to be matched   
+
         nRow = len(board)
         if nRow == 0:
             return False
