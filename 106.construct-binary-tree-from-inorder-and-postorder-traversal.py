@@ -62,4 +62,3 @@ class Solution(object):
             return root
         else:
             return None
-

@@ -49,12 +49,13 @@ class Solution(object):
             return [[1]]
         if n == 2:
             return [[1], [1,1]]
-        res = [[1], [1, 1]]
-        for i in range(3, n+1):
+        res = [[1], [1,1]]
+        for i in range(3, numRows+1):
             temp = i*[None]
-            temp[-1] = temp[0] = 1
+            temp[0] = temp[-1] = 1
             for j in range(1, i-1):
-                temp[j] = res[-1][j] + res[-1][j-1]
+                temp[j] = res[-1][j-1] + res[-1][j]
             res.append(temp)
         return res
+        
 

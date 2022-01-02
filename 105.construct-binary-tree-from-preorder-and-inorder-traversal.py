@@ -51,7 +51,7 @@ class Solution(object):
         # 前序 中序 构造 树
         root = self.getTree(preorder, inorder)
         return root
-        
+
     def getTree(self, preorder, inorder):
         if inorder:
             index = inorder.index(preorder.pop(0))
