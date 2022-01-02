@@ -41,19 +41,21 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         # 所有子集 所有 子集 有重复
+        # Time complexity: O(n \cdot 2 ^ n) 复制的time complexity为n
+        # Space complexity: O(n)
         res = []
         nums.sort()
-        self.getSubsets(nums, 0, res, [])
+        self.getSubsetswithDup(nums, 0, res, [])
         return res
 
-
-    def getSubsets(self, nums, start, res, rec_res):
+    def getSubsetswithDup(self, nums, start, res, rec_res):
         res.append(list(rec_res))
         for i in range(start, len(nums)):
             if i > start and nums[i] == nums[i-1]:
                 continue
             rec_res.append(nums[i])
-            self.getSubsets(nums, i+1, res, rec_res)
+            self.getSubsetswithDup(nums, i+1, res, rec_res)
             rec_res.pop()
         return
+
 
