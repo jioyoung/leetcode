@@ -45,7 +45,10 @@ def assign_center(n_sample, X, center_array, center_idx):
         center_idx[i] = min_center_idx
     return
 
-
+def update_center(X, k, center_array, center_idx):
+    for i in range(k):
+        center_array[i] = np.mean(X[center_idx == i], axis=0)
+    return
 
 def kmeans_fit(X, k, max_it, epson):
 
@@ -57,14 +60,21 @@ def kmeans_fit(X, k, max_it, epson):
     while it < max_it and not is_converge:
         # assign the points to the clusters 
         # calculate the distance from each point to each center, choose the nearest center
-        cener_array_lag = copy.deepcopy(center_array)
+        center_array_lag = copy.deepcopy(center_array)
         assign_center(n_sample, X, center_array, center_idx)
         
         # update the clusters
-        for i in range(k):
-            center_array[i] = np.mean(X[center_idx == i], axis=0)
+        update_center(X, k, center_array, center_idx)
         it+=1
-        max_distance, is_converge = check_converge(center_array, cener_array_lag, epson)
+        max_distance, is_converge = check_converge(center_array, center_array_lag, epson)
         print(max_distance)
-    return center_idx, center_array
-    
+    return (center_idx, center_array)
+
+
+X = np.random.rand(100,5)
+k = 3
+epson = 0.01
+n_iter = 20
+cluster_idx, center_array = kmeans_fit(X, k,  n_iter, epson)
+
+print(center_array)
