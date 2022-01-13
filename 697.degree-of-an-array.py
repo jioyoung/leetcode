@@ -7,25 +7,23 @@
 # @lc code=start
 class Solution:
     def findShortestSubArray(self, nums: List[int]) -> int:
-        num_count = {}
+        numCount = {}
         degree = 0
-        
-        for i in range(len(nums)):
-            number = nums[i]
-            if number not in num_count:
-                num_count[number] = [i, i, 1]
+        for i, value in enumerate(nums):
+            if value not in numCount:
+                numCount[value] = [i, i, 1]
             else:
-                num_count[number][1] = i
-                num_count[number][2] +=1
-            if num_count[number][2] > degree:
-                degree = num_count[number][2]
-
-        minLen = len(nums)
-        for number in nums:
-            if num_count[number][2] == degree:
-                minLen = min(minLen, num_count[number][1] - num_count[number][0]+1)
-
-        return minLen
+                numCount[value][1] = i
+                numCount[value][2] += 1
+            if numCount[value][2] > degree:
+                degree = numCount[value][2]
+        minL = len(nums)
+        for value in numCount:
+            if numCount[value][2] == degree:
+                distance = numCount[value][1] - numCount[value][0] + 1
+                if distance < minL:
+                    minL = distance
+        return minL
 
         
 # @lc code=end
