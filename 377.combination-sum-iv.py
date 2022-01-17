@@ -13,13 +13,12 @@ class Solution:
     # traversal 
     # if nums[i] == n: dp[n] +=1
     # elif nums[i] <n: dp[n] += dp[n-nums[i]]
-        combinationDP = [0] * (target+1)
+        dp=[0]*(target+1)
+        dp[0]=1
         for n in range(1, target+1):
             for i in range(len(nums)):
-                if nums[i] == n:
-                    combinationDP[n] += 1
-                elif nums[i] < n:
-                    combinationDP[n] += combinationDP[n-nums[i]]
-        return combinationDP[-1]
+                if nums[i] <= n:
+                    dp[n] += dp[n-nums[i]]
+        return dp[-1]
 # @lc code=end
 
