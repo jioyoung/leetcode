@@ -45,21 +45,21 @@ Successfully deliver the procedure which is a indispensible compliment to the SA
 
 # Tell me about a project that you had failed
 ## scenario
-In the parameter learning feature of the Sequencial Monte Carlo produre, I developed a algorithm based on the gradient decent method. It works well in many cases and it is computation convenient. However, sometimes this algorithm has unstable results and the performance depends on the initial values of the parameters. Moreover, the algorithm needs the derivative functions of all the distribution functions which is not user-friendly for complicated models.
+In the parameter learning feature of the Sequencial Monte Carlo produre, I developed a algorithm based on the gradient decent method. It works well in many cases and it is efficient in computation. However, sometimes this algorithm has unstable results and the performance depends on the initial values of the parameters to much extent. Moreover, the algorithm needs the derivative functions of all the distribution functions which is not user-friendly for complicated models.
 
 ## task
 I need to solve the problem to guarantee the parameter learning in the product is stable and easy to learn.
 
 
 ## action 
-1. I dive deep into papers about the gradient decent methods in the State space model and try to find some solutions. However, I found there are few papers that cover the compliated model which has issues in the gradient decent methods. 
+1. I dive deep into papers about the gradient decent methods in the State space model and try to find some solutions. However, I found there are few papers that cover the compliated models which has issues in the gradient decent methods. 
 
 2. I talked with my manager about add more options or features to the product about complicated models. For example, I can save built-in derivative functions for some common compliated models so they can be directly called when they are necessary. I can also give some instructions in the document about how to initialize the paramters to have a good result. However, such solutions still add to the complexity of the product and make it not user friendly, especially for some basic users who do not have enough experience in the parameter initialization.
 
 ## Result
 Though the gradient decent method works well in most cases and it has unique advantages in the computaion complexity, we decide not to implement in our product. Then I use another algorithm that combines sequential monte carlo and MCMC method in the parameter learning for the state space mdoel.
 
-The lesson I learned from this failure is that we need to think about a problem from the standpoint of the customers. As a developer, I am expertise in the product. But I need to simplify the product such that there are no subjective settings in the method that requires much experience in the area. It is important that our product is user friendly for all customers no matter whether they have expertise or not. 
+The lesson I learned from this failure is that we need to think about a problem from the standpoint of the customers. As a developer, I am expertise in the product. But I need to simplify the product such that there are no subjective settings in the method that requires much experience in the area. It is important that our product is user friendly for all customers no matter whether they have expertise or not. Moreover, when developing a new product, besides some classical examples, we also need to test the product on practical problems to guarantee it covers all situations.
 
 # Tell me about a time you took risk and succeed/failed
 ## succeed:
@@ -76,10 +76,9 @@ In didi labs, I work in the internation carpool pricing team. Most of our custom
 We need to develop a coupon dispatch policy in order to increase the conversion rate of the coupon. Since initializing a coupon campain costs much, it is better we can complete the dispatch policy as soon as possible
 
 ## action
-1. I tried to figure out the problem quickly. I set up a conference meeting with my manager and the product manager. We do not have enough data for this new wallet coupon campains but we need to optimize the coupon dispatch policy. This is a cold-start problem. However, for the previous riding coupon campains, we have plenty of data. Thus, I decide to use the idea that is similar to transfer learning. We 
-use the previous riding coupon campains (like cash and discount coupons) data and treat it as a observational study. Though this is not a perfect solution, but it is what we can do currently for the cold-start problem.
+1. I tried to figure out the problem quickly. I set up a conference meeting with my manager and the product manager. We do not have enough data for this new wallet coupon campains but we need to optimize the coupon dispatch policy. This is a cold-start problem. However, for the previous riding coupon campains, we have plenty of data. Thus, I come up with a solution that is similar to transfer learning. We use the previous riding coupon campains (like cash and discount coupons) data and treat it as a observational study. Though this is not a perfect solution, but it is what we can do currently for the cold-start problem.
 
-2. I think about how to simply the work. I select some representative coupon activities based on the number of customers that receive the coupons. I also think about how to build a model to help us make the coupon dispatch automatically. A stand-up meeting with my manager is setup every day and I will summarize the daily progress in the document. A causal inference model is proposed to estimate the treatment effect of each coupon on each user. We tried to find as many demographic adn behavior covariates as possible that can represent the customer. 
+2. I think about how to simplify the work. I select some representative coupon activities based on the number of customers that receive the coupons. I also think about how to build a model to help us make the coupon dispatch automatically. A stand-up meeting with my manager is setup every day and I will summarize the daily progress in the document. A causal inference model is proposed to estimate the treatment effect of each coupon on each user. We tried to find as many demographic and  behavior covariates as possible that can represent the customer. 
 
 3. I hold a meeting with the data analytics team to check whether I can have the corresponding user related features. The dataset for each coupon is really large and training a model on that dataset is time consuming. I narrow the locations of the customers to the few main cities and quickly train the causal inference models to estimate the individual treatment effect of each user on each coupon. Dispatching the coupon is like a optimization problem since we want to maximize the general register rate of all riding users within the limit of the budget. I rank the ITE and choose the customer with the largest ITE to dispatch the coupon. This is like a greedy algorithm and very easy to implement compared to the traditional integer programming optimization problem.
 
@@ -91,10 +90,10 @@ The algorithm works well for the offline data and we double the conversion rate 
 I develop a algorithm to optimzie the coupon dispatch policy and have a good offline result. 
 
 ## Task: 
-I need to present to the head of the operatiosn team to show him the results.
+I need to present to the head of the operation team to show him the results.
 
 ## Actions: 
-In the presentation, I went through my model in very details including the algorithm, the features I chose and the details of the pipeline. I presented to my team at first and receive high compliments on my work from many team members. However, I received nagative feedback of not showing the detailed metrics of the project in a more direct way. The details of model or algorithms are important; however, for a ops team, theay are very customer centric and care more about the results. I need to quantify the comparisons between the previous and current coupon dispatch methods and it's better to give some plots to show the difference. 
+In the presentation, I went through my model in details including the algorithm, and  the features I chose. I presented to my team at first and receive high compliments on my work from many team members. However, I received nagative feedback of not showing the detailed metrics of the project in a more direct way. The details of model or algorithms are important; however, for a ops team, theay are very customer centric and care more about the results. I need to quantify the comparisons between the previous and current coupon dispatch methods and it's better to give some plots to show the difference. 
 
 ## Results:
 I rewrote the slides and firstly show the offline metric results with highlights. I visualize the results and display the comparisons with the previous result in plots. Some ideas of the experiment design are also discussd but the details of the model and algorithm are summarized in a flowchart in just one page. The feedback is excellent.
