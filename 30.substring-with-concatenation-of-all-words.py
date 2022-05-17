@@ -55,25 +55,24 @@ class Solution(object):
         wordCount = {}
         for oneWord in words:
             wordCount[oneWord] = wordCount.get(oneWord, 0) + 1
-        strLen = len(words) * len(words[0])
-        wordNum = len(words)
+        nWord = len(words)
         wordLen = len(words[0])
+        strLen = nWord * wordLen
         res = []
-        for i in range(len(s)-strLen+1):
+        for i in range(len(s) - strLen + 1):
             count = 0
-            sCount = {}
-            while count < wordNum:
-                start = i+count*wordLen
+            newStrCount = {}
+            for start in range(i, i+strLen, wordLen):
                 candidate = s[start:start+wordLen]
                 if candidate not in wordCount:
                     break
                 else:
-                    sCount[candidate] = sCount.get(candidate, 0) + 1
-                    if sCount[candidate] > wordCount[candidate]:
+                    newStrCount[candidate] = newStrCount.get(candidate, 0) + 1
+                    if newStrCount[candidate] > wordCount[candidate]:
                         break
-                count += 1
-            if count == wordNum:
-                res.append(i)
+                    count += 1
+                if count == nWord:
+                    res.append(i)
         return res
         
 # @lc code=end
