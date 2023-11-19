@@ -8,37 +8,33 @@
 class Solution:
     def findOrder(self, numCourses, prerequisites):
         # 上课
-        courseCount = {}
-        coursePre = {}
-        for oneCourse in prerequisites:
-            if oneCourse[0] not in courseCount:
-                courseCount[oneCourse[0]] = 1
+        if not prerequisites:
+            return list(range(numCourses))
+        preCourseCount = {}
+        childCourse = {}
+        for oneList in prerequisites:
+            preCourseCount[oneList[0]] = preCourseCount.get(oneList[0], 0) + 1
+            if oneList[1] not in childCourse:
+                childCourse[oneList[1]] = set([oneList[0]])
             else:
-                courseCount[oneCourse[0]] += 1
-            
-            if oneCourse[1] not in coursePre:
-                coursePre[oneCourse[1]] = set([oneCourse[0]])
-            else:
-                coursePre[oneCourse[1]].add(oneCourse[0])
-        courseTake = set()
-        for i in range(numCourses):
-            if i not in courseCount:
-                courseTake.add(i)
-        if len(courseTake) == 0:
+                childCourse[oneList[1]].add(oneList[0])
+        
+        courseCanTake = [i for i in range(numCourses) if i not in preCourseCount]
+        res = list(courseCanTake)
+        while courseCanTake:
+            oneCourse = courseCanTake.pop()
+            if oneCourse in childCourse:
+                for oneChild in childCourse[oneCourse]:
+                    preCourseCount[oneChild]-=1
+                    if preCourseCount[oneChild] == 0:
+                        courseCanTake.append(oneChild)
+                        res.append(oneChild)
+        if sum(preCourseCount.values()) > 0:
             return []
-        res = list(courseTake)
-        while courseTake:
-            courseLearn = courseTake.pop()
-            if courseLearn in coursePre:
-                for oneCourse in coursePre[courseLearn]:
-                    courseCount[oneCourse]-=1
-                    if courseCount[oneCourse] == 0:
-                        courseTake.add(oneCourse)
-                        res.append(oneCourse)
-        if sum(courseCount.values()) > 0:
-            return []
-        else: 
+        else:
             return res
+
+
 
 # print(Solution().findOrder(2, [[1,0]]))
         
