@@ -20,10 +20,10 @@ class Solution:
         maxLen = 1
         start = 0
         dp = [[False for j in range(len(s))] for i in range(len(s))]
-        for length in range(0, len(s)):
-            for i in range(0, len(s)-length):
-                j = i+length
-                if (s[i]==s[j]) and (length<=2 or dp[i+1][j-1]):
+        for distance in range(0, len(s)):
+            for i in range(0, len(s)-distance):
+                j = i+distance
+                if (s[i]==s[j]) and (distance<=2 or dp[i+1][j-1]):
                     dp[i][j] = True
                     if j-i+1> maxLen:
                         maxLen = j-i+1
