@@ -47,7 +47,7 @@ class Solution(object):
             return []
         intervals.sort(key=lambda x:x[0])
         res = [intervals[0]]
-        for oneInterval in intervals:
+        for oneInterval in intervals[1:]:
             if oneInterval[0] > res[-1][1]:
                 res.append(oneInterval)
             else:
