@@ -82,8 +82,7 @@ class Solution(object):
         length = 0
 
         while cur:
-            for word in cur:
-                visited.add(word)
+            visited.update(cur)
 
             currentVisit = set()
             for word in cur:
