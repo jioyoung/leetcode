@@ -41,6 +41,7 @@ class Solution(object):
         :rtype: int
         """
         # 跳跃 游戏 最少
+        # this is BFS; get positions you can get after nSteps
         if len(nums) <= 1:
             return 0
         stepLeft = 0
