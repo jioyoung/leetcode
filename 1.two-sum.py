@@ -44,6 +44,6 @@ class Solution(object):
                 numDict[target - val] = i
             else:
                 return [numDict[val], i]
-        return
+        return 
 
 
