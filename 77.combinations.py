@@ -43,26 +43,25 @@ class Solution(object):
         """
         # 组合 部分 所有 n选k
         # Time complexity: \mathcal{O}(k C_N^k)
-        # Space Complexity: \mathcal{O}(C_N^k)
+        # Space Complexity: \mathcal{O}(k C_N^k)
         res = []
-        self.getCombine(n, k, 1, res, [])
+        self.getCombine(n, 1, k, res, [])
         return res
 
-
-    def getCombine(self, n, k, start, res, rec_res):
+    def getCombine(self, n, start, k, res, rec_res):
         if len(rec_res) == k:
             res.append(list(rec_res))
             return
-        if len(rec_res) + n - start + 1 == k:
-            res.append(rec_res+list(range(start,n+1)))
-            return 
+        if len(rec_res) + n + 1 - start == k:
+            res.append(rec_res + list(range(start, n+1)))
+            return
         
-        if len(rec_res) + n - start + 1 < k:
+        if len(rec_res) + n + 1 - start < k:
             return
         
         for i in range(start, n+1):
             rec_res.append(i)
-            self.getCombine(n, k, i+1, res, rec_res)
+            self.getCombine(n, i+1, k, res, rec_res)
             rec_res.pop()
         return
 
