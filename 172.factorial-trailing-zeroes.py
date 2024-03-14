@@ -45,8 +45,8 @@ class Solution(object):
         #尾巴 末尾 0 数量
         count = 0
         while n:
-            n = (n//5)
-            count+=n
+            count += (n //5)
+            n = n // 5
         return count
         
 # @lc code=end
