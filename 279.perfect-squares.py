@@ -39,6 +39,7 @@ class Solution(object):
         :rtype: int
         """
         # bfs 平方和 平方 完美平方数
+        # O(n * sqrt(n))
         numDict = {0:0}
         return self.getRes(n, numDict)
     
