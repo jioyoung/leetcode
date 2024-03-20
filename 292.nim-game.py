@@ -60,9 +60,8 @@ class Solution(object):
     #         if (self.canIwin(n-i-1, winMap) and self.canIwin(n-i-2, winMap) and self.canIwin(n-i-3, winMap)):
     #             winMap[n] = True
     #             return True
-    #         else:
-    #             winMap[n] = False
-    #             return False
+    #     winMap[n] = False
+    #     return False
         
 # @lc code=end
 
