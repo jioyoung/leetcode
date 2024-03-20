@@ -54,19 +54,18 @@ class Solution(object):
         # 原数组不是有序，但是我们知道重复的那个数字肯定是 1 到 n 中的某一个，
         # 而 1,2...,n 就是一个有序序列。因此我们可以对 1,2...,n 进行二分查找。
         # 一个数重复 重复
-        length = len(nums)
-        left = 1
-        right = length -1
+        # complexity is O(n * log(n))
+        left, right = 1, len(nums) - 1
         while left < right:
-            mid = (left+right)//2
+            mid = (left + right) // 2
             count = 0
             for value in nums:
                 if value <= mid:
-                    count+=1
-            if count <=mid:
-                left = mid+1
-            else:
+                    count += 1
+            if count > mid:
                 right = mid
+            else:
+                left = mid + 1
         return left
 
         
